@@ -30,7 +30,7 @@ var Dashboard = {};
     
     function getAllMetrics(limit) {
         var metrics = {};
-        var not_metrics = ['id','date','month','year'];
+        var not_metrics = ['id','date','month','year','week'];
         $.each(Report.getDataSources(), function(index, ds) {
             var metrics_ds = [];
             for (key in ds.getData()) {
