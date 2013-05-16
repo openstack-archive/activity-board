@@ -1,0 +1,74 @@
+/* Shared CSS Style in all Envision Bitergia Reports */
+
+.envision-component-container {
+    width: 325px;
+    height : 50px;	
+}
+
+.envision-component-container.envision-first {
+    width: 325px;
+    height : 200px;			
+}
+
+.envision-component {
+    width: 100%;
+    height: 100%;
+}
+
+.report-connection.envision-component-container {
+  height: 20px;
+}
+
+.report-summary.envision-component-container {
+  cursor: all-scroll;
+  height : 50px;
+  margin-top: -2px;
+}
+
+
+/* .milestone0-scm-committers {
+  border-top: 0px;
+}
+ */
+ 
+/* Connection overlay */
+.milestone0-connection .canvas {
+  z-index: 10;
+  background: #fff;
+}
+
+.milestone0-connection .canvas .object {
+  position: absolute;
+  top: 0px;
+}
+
+/* X-Axis Labels */
+.milestone0-summary .flotr-grid-label {
+  margin-top: 5px;
+}
+
+/* Mouse Tracker */
+.envision-component-container.envision-first .flotr-mouse-value {
+    font-size: 12px;
+    display:inline;    
+}
+
+.envision-component-container .flotr-mouse-value
+ {
+  display: none;
+}
+
+/* @media screen and (max-width: 600px) {
+  .milestone0-scm-commits {
+    width: 100%;
+  }  
+ 
+  .milestone0-scm-commits .envision-component 
+   {
+    height: 120px;
+  }
+  .milestone0-scm-summary .envision-component,
+  .milestone0-scm-committers .envision-component {
+    height: 40px;
+  }
+} */
