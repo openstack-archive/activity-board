@@ -1,7 +1,0 @@
-{
-"date" :"Apr 2013",
-"project_name" :"OpenStack",
-"scm_url":"https://github.com/openstack/",
-"scm_name":"OpenStack Github",
-"scm_type":"git"
-}
