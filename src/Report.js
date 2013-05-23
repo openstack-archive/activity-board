@@ -678,7 +678,9 @@ var Report = {};
             }
             
             if (repo !== null) repo_valid = Report.getValidRepo(repo, DS);
-            if (repo_valid !== null) {                
+            // Hide all information for this data source
+            if (repo_valid === null) $("#"+DS.getName()+"-repo").hide();
+            else {                
                 var divid = DS.getName()+"-refcard-repo";
                 if ($("#"+divid).length > 0) {
                     DS.displayRepoSummary(divid, repo_valid, this);
