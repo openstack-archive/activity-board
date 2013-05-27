@@ -30,7 +30,7 @@ var Dashboard = {};
     
     function getAllMetrics(limit) {
         var metrics = {};
-        var not_metrics = ['id','date','month','year','week'];
+        var not_metrics = ['id','date','month','year','week', 'unixtime', 'companies'];
         $.each(Report.getDataSources(), function(index, ds) {
             var metrics_ds = [];
             for (key in ds.getData()) {
@@ -265,6 +265,9 @@ var Dashboard = {};
                     $.each(metrics, function(index, metric) {
                         options.push(metric);
                     });
+                    // OpenStack does not need mailing list metrics
+                    // https://bugs.launchpad.net/openstack-community/+bug/1183788
+                    if (ds === "mls") return;
                     div.append(buildSelector(ds,"metrics_"+ds,options));
                 });
             }
