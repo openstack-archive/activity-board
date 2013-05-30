@@ -673,9 +673,9 @@ function DataSource(name, basic_metrics) {
             list += "</strong> +info</a>";
             list += "<br><a href='#nav'>^</a>";
             list += "</div>";
-            list += "<div style='height:150px'>";
+            list += "<div style='height:150px;'>";
             $.each(metrics, function(id, metric) {
-                list += "<div id='"+item+"-"+metric+"'";
+                list += "<div id='"+item+"-"+metric+"' style='margin-right:30px;'";
                 list +=" class='subreport-list-item'></div>";
             });
             list += "</div>";
