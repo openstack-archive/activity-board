@@ -1,0 +1,16 @@
+src_files:
+  - "src/jquery-1.7.1.min.js"
+  - "src/jquery.gridster.js"
+  - "src/envision.js"
+  - "src/Report.js"
+  - "src/ITS.js"
+  - "src/MLS.js"
+  - "src/SCM.js"
+  - "src/Envision_Report.js"
+  - "src/Viz.js"
+helpers:
+  - "helpers/jquery-1.7.1.min.js"
+spec_files:
+  - "vizgrimoireSpec.js"
+src_dir: "../../"
+spec_dir: "spec/"

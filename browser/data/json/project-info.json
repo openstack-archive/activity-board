@@ -1,0 +1,15 @@
+{
+"date" :"",
+"project_name" :"OpenStack",
+"project_url" :"http://openstack.org",
+"title" :"OpenStack Development Dashboard",
+"scm_url":"https://github.com/openstack/",
+"scm_name":"OpenStack Github",
+"scm_type":"git",
+"its_url":"https://bugs.launchpad.net/openstack",
+"its_name":"Launchpad Bugs",
+"its_type":"launchpad",
+"mls_url":"http://lists.openstack.org",
+"mls_name":"OpenStack Mailing lists",
+"mls_type":"mailman"
+}

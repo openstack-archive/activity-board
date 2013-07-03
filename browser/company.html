@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta name="keywords" content="bitergia, floss, libresoft, oss, linux, research, reports, free software, software analysis" />
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, maximum-scale=1.0">
+        <meta name="description" content="Bitergia company website" />
+	    <link rel="stylesheet" type="text/css" id="theme" href="VizGrimoireJS/vizgrimoire.css" />
+        <script type="text/javascript" src="VizGrimoireJS/lib/jquery-1.7.1.min.js"></script>
+        <title>Report by Bitergia: Company information</title>
+        <style type="text/css">
+        </style>
+    </head>
+
+    <body>
+        <div id="wrapper">
+            <div id="header"></div>
+                        
+            <div id="info-column1"  style="width:200px">
+            	<div id="navigation"></div>
+                <div class="info-pill">
+            	    <div id="scm-refcard-company"></div>            	
+                </div>
+            </div>
+            <div style="float:left">
+                <div style="float:left">
+                    <div style="margin-bottom:15px;">
+                        <div class="scm-flotr2-metrics-company"
+                             style="width:350px;height:250px;margin-bottom:5px;"
+                             data-metrics="commits" data-legend="false"></div> 
+                        <i><b>Reviewed commits per month</b></i>
+                        <a href="notes.html#note:charts:company:commits"><img src="qm_15.png"></a>
+                    </div>
+
+                    <div style="margin-bottom:15px;">
+                        <div class="scm-flotr2-metrics-company"
+                             style="width:350px;height:250px;margin-bottom:5px;"
+                             data-metrics="authors" data-legend="false"></div>                        
+                        <i><b>Authors per month</b></i>
+                        <a href="notes.html#note:charts:company:authors"><img src="qm_15.png"></a>
+                    </div>                 
+                     
+                    <div> 
+                        <div class="scm-flotr2-metrics-company"
+                             style="width:350px;height:250px;margin-bottom:5px;"
+                             data-metrics="added_lines,removed_lines" data-legend="true"></div>                 
+                        <i><b>Lines added/removed per month</b></i>
+                        <a href="notes.html#note:charts:company:lines"><img src="qm_15.png"></a>
+                    </div>
+              </div>            
+    			<div style="float:left; margin-left:10px;">
+                    <div class="info-pill">
+                        <h1>Top authors (total)<a href="notes.html#note:tables:company:authors"><img src="qm_15.png"></a></h1>
+                        <div class="scm-flotr2-top-company" 
+                            data-metric="authors" data-period="all" data-titles="false"></div>                           
+                        </div>
+                    <div class="info-pill">
+                        <h1>Top authors (2006)<a href="notes.html#note:tables:company:authors"><img src="qm_15.png"></a></h1>
+                        <div class="scm-flotr2-top-company" 
+                            data-metric="authors" data-period="2006" data-titles="false"></div>                            
+                    </div>
+                    <div class="info-pill">
+                        <h1>Top authors (2009)<a href="notes.html#note:tables:company:authors"><img src="qm_15.png"></a></h1>
+                        <div class="scm-flotr2-top-company" 
+                            data-metric="authors" data-period="2009" data-titles="false"></div>
+                    </div>                   
+                    <div class="info-pill">
+                        <h1>Top authors (2012)<a href="notes.html#note:tables:company:authors"><img src="qm_15.png"></a></h1>
+                        <div class="scm-flotr2-top-company" 
+                            data-metric="authors" data-period="2012" data-titles="false"></div>
+                    </div> 
+                </div>
+            </div>
+		<div id="footer"></div>
+
+		</div>
+<!--         <script type="text/javascript" src="VizGrimoireJS/vizgrimoire.min.js"></script> -->
+        <script type="text/javascript" src="VizGrimoireJS/src/envision.js"></script>
+        <script type="text/javascript" src="VizGrimoireJS/src/DataSource.js"></script>
+        <script type="text/javascript" src="VizGrimoireJS/src/Loader.js"></script>
+        <script type="text/javascript" src="VizGrimoireJS/src/Report.js"></script>
+        <script type="text/javascript" src="VizGrimoireJS/src/ITS.js"></script>
+        <script type="text/javascript" src="VizGrimoireJS/src/MLS.js"></script>
+        <script type="text/javascript" src="VizGrimoireJS/src/SCM.js"></script>
+        <script type="text/javascript" src="VizGrimoireJS/src/Envision_Report.js"></script>
+        <script type="text/javascript" src="VizGrimoireJS/src/Viz.js"></script>
+    </body>
+</html>

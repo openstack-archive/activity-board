@@ -1,0 +1,169 @@
+/* Shared CSS Style in all Envision Bitergia Reports */
+
+.envision-component-container {
+    width: 325px;
+    height : 50px;    
+}
+
+.envision-component-container.envision-first {
+    width: 325px;
+    height : 200px;			
+}
+
+.envision-component {
+    width: 100%;
+    height: 100%;
+    margin: 5px;
+}
+
+.report-connection.envision-component-container {
+  height: 20px;
+}
+
+.report-summary.envision-component-container {
+  cursor: all-scroll;
+  height : 50px;
+  margin-top: -2px;
+}
+
+
+/* .milestone0-scm-committers {
+  border-top: 0px;
+}
+ */
+ 
+/* Connection overlay */
+.milestone0-connection .canvas {
+  z-index: 10;
+  background: #fff;
+}
+
+.milestone0-connection .canvas .object {
+  position: absolute;
+  top: 0px;
+}
+
+/* X-Axis Labels */
+.milestone0-summary .flotr-grid-label {
+  margin-top: 5px;
+}
+
+/* Mouse Tracker */
+.envision-component-container.envision-first .flotr-mouse-value {
+    font-size: 12px;
+    display: inline;    
+}
+
+.envision-component-container .flotr-mouse-value
+ {
+  display: none;
+}
+
+/* Flotr2 */
+
+.m0-box-div {
+    height: 130px;    
+}
+
+.m0-box {
+    width:  180px;
+    height: 100px;
+    float:  right;
+    margin-right: 5px;
+    margin-left: 5px;
+}
+
+/* Specific layout for some vizs */
+
+/* 
+    MLS 
+*/
+
+.mls-dyn-list {
+    float: left;
+    margin-left: 8px;
+    margin-right: 8px;
+    width: 380px;
+}
+
+#mls-envision .envision-component-container.envision-first {
+    width: 500px;
+}
+
+#mls-envision .envision-component-container {
+    width: 500px;
+}
+
+#mls-envision-lists .envision-component-container.envision-first {
+    width: 325px;
+    height : 150px;         
+}
+
+#mls-envision-lists .report-summary .envision-component {
+  cursor: all-scroll;
+  height : 30px;
+  margin-top: -2px;
+  /* align envision and flotr2 graphs*/
+  margin-bottom: 200px;
+}
+
+/*
+    OTHER STYLES FOR SPECIFIC CHARTS
+*/
+
+.flotr-grid-label {
+    font-size: 0.8em
+}
+
+.flotr-mouse-value
+ {
+    font-size: 0.8em
+}
+
+.graph {
+    height:200px;
+    width:200px;
+}
+
+.bubbles {
+    height:200px;
+    width:600px;
+}
+
+.radar {
+    height:350px;
+    width:500px;
+}
+
+.demographics {
+    height:400px;
+    width:400px;
+}
+
+.treemap {
+    position: relative;
+    width: 700px;
+    height: 500px;
+}
+
+.treemap-node {
+  border: solid 1px white;
+  font: 10px sans-serif;
+  line-height: 12px;
+  overflow: hidden;
+  position: absolute;
+  text-indent: 2px;
+}
+
+.basic-metric-html {height:100px;}
+
+.subreport-list {height:120px;}
+
+.subreport-list-item {float:right;height:100px;width:40%;}
+
+#footer {
+    overflow: hidden;
+    clear: both;
+    padding: 20px 0;
+    /* border-top: 1px dashed #000; */
+}
