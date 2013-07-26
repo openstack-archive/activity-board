@@ -1,0 +1,11 @@
+td#aleft {
+text-align: left;
+}
+
+td#aright {
+text-align: right;
+}
+
+td {
+text-align: right;
+}    
