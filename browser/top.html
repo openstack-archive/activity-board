@@ -1,7 +1,6 @@
 <!DOCTYPE html>
-
 <html>
-    <head>
+  <head>
       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
       <meta charset="utf-8">
       <title></title>
@@ -38,34 +37,21 @@
     <body>
         <div id="navbar"></div>
         <div class="container-fluid">
-            <div class="row-fluid">                        
-              <div id="info-column1"  style="width:200px">
-                  <div class="info-pill">
-              	    <div id="mls-refcard-repo"></div>            	
-                  </div>
-              </div>
-               <div style="float:left">
-                  <div style="float:left">
-                      <div style="margin-bottom:15px;">
-                          <div class="mls-flotr2-metrics-repo"
-                               style="width:350px;height:150px;margin-bottom:5px;"
-                               data-metrics="mls_sent" data-legend="false"></div> 
-                          <i><b>Sent messages per month</b></i>
-                      </div>
-  
-                      <div style="margin-bottom:15px;">
-                          <div class="mls-flotr2-metrics-repo"
-                               style="width:350px;height:150px;margin-bottom:5px;"
-                               data-metrics="mls_senders" data-legend="false"></div>                        
-                          <i><b>Senders per month</b></i>
-                      </div>
-                  </div>            
-              </div>
-             </div>
-         </div>          
-         <div id="footer"></div>
-		  <script type="text/javascript" src="VizGrimoireJS/lib/jquery-1.7.1.min.js"></script>
-          <script type="text/javascript" src="VizGrimoireJS/bootstrap/js/bootstrap.js"></script>
-          <script type="text/javascript" src="VizGrimoireJS/vizgrimoire.min.js"></script>   
+            <div class="row-fluid">
+            <div style="float: left;margin-left:120px;">
+              <div id="scm-top-bars" data-show_all="true"></div>
+            </div>
+            <div style="float: left;margin-left:40px;">
+              <div id="its-top-bars" data-show_all="true"></div>
+            </div>
+           <div style="float: left;margin-left:40px">
+              <div id="mls-top-bars" data-show_all="true"></div>
+            </div>
+        </div>
+      </div>
+      <div id="footer"></div>
+       <script type="text/javascript" src="VizGrimoireJS/lib/jquery-1.7.1.min.js"></script>
+       <script type="text/javascript" src="VizGrimoireJS/bootstrap/js/bootstrap.js"></script>
+       <script type="text/javascript" src="VizGrimoireJS/vizgrimoire.min.js"></script>                
     </body>
 </html>

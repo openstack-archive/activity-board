@@ -1,5 +1,3 @@
-.subreport-list-item {float:right;height:100px;width:50%;margin-right:15px;}/* For lists with graphs */
-
 .container-fluid {
     padding-left: 20px;
     padding-right: 20px;
@@ -8,7 +6,9 @@
     margin-right: auto;
 }
 
+
 .row-fluid{
     padding-top: 20px;
 }
+
 

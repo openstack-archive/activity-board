@@ -1,87 +1,106 @@
 <!DOCTYPE html>
 
 <html>
-    <head>
-        <meta name="keywords" content="bitergia, floss, libresoft, oss, linux, research, reports, free software, software analysis" />
-        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, maximum-scale=1.0">
-        <meta name="description" content="Bitergia company website" />
-	    <!--<link rel="stylesheet" type="text/css" id="theme" href="VizGrimoireJS/vizgrimoire.css" />-->
-            <link rel="stylesheet" type="text/css" href="theme.css" />
-        <script type="text/javascript" src="VizGrimoireJS/lib/jquery-1.7.1.min.js"></script>
-        <script type="text/javascript" src="menu.js"></script>
-        <title>Report by Bitergia: Repository information</title>
-        <style type="text/css">
-        </style>
-    </head>
+  <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <meta charset="utf-8">
+      <title></title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="description" content="">
+      <meta name="author" content="">
+  
+      <link rel="stylesheet" type="text/css" id="theme" href="VizGrimoireJS/vizgrimoire.css" />
+      <link href="VizGrimoireJS/bootstrap/css/bootstrap.css" rel="stylesheet">
+      <style type="text/css">
+        body {
+          padding-top: 60px;
+          padding-bottom: 40px;
+        }
+        .sidebar-nav {
+          padding: 9px 0;
+        }
+      </style>
+      <link href="VizGrimoireJS/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+      <link rel="stylesheet" type="text/css" href="custom.css" />    
+      <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+      <!--[if lt IE 9]>
+        <script src="../assets/js/html5shiv.js"></script>
+      <![endif]-->
+  
+      <!-- Fav and touch icons -->
+      <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://twitter.github.io/bootstrap/assets/ico/apple-touch-icon-144-precomposed.png">
+      <link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://twitter.github.io/bootstrap/assets/ico/apple-touch-icon-114-precomposed.png">
+      <link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://twitter.github.io/bootstrap/assets/ico/apple-touch-icon-72-precomposed.png">
+      <link rel="apple-touch-icon-precomposed" href="http://twitter.github.io/bootstrap/assets/ico/apple-touch-icon-57-precomposed.png">
+      <link rel="shortcut icon" href="favicon.png">
+  </head>
 
     <body>
-      <div id="header"></div>
-      <div id="navigation" class="clearfix"></div>
-      <div id="wrapper">
-        <div id="centerdiv">
-
-           	<div style="float:left;margin:10px">
-                <div class="info-pill">
+        <div id="navbar"></div>
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span2">
             	    <div id="scm-refcard-repo"></div>
             	    <div id="its-refcard-repo"></div>            	
                 </div>
-            </div>
-            <!--  SCM -->
-            <div id="scm-repo" style="float:left;margin-right:25px;">
-                <div style="margin-bottom:15px;">
-                    <div class="scm-flotr2-metrics-repo"
-                         style="width:350px;height:150px;margin-bottom:5px;"
-                         data-metrics="scm_commits" data-legend="false"></div> 
-                    <i><b>Commits per month</b></i>
+                <div class="span4">
+                  <div id="scm-repo" style="float:left">
+                      <div style="margin-bottom:15px;">
+                          <div class="scm-flotr2-metrics-repo"
+                               style="width:350px;height:150px;margin-bottom:5px;"
+                               data-metrics="scm_commits" data-legend="false"></div> 
+                          <i><b>Commits per month</b></i>
+                      </div>
+      
+                      <div style="margin-bottom:15px;">
+                          <div class="scm-flotr2-metrics-repo"
+                               style="width:350px;height:150px;margin-bottom:5px;"
+                               data-metrics="scm_authors" data-legend="false"></div>                        
+                          <i><b>Authors per month</b></i>
+                      </div>
+                      <div style="margin-bottom:15px;">
+                          <div class="scm-flotr2-metrics-repo"
+                               style="width:350px;height:150px;margin-bottom:5px;"
+                               data-metrics="scm_files" data-legend="false"></div>                        
+                          <i><b>Files per month</b></i>
+                      </div>                                                                                            
+                      <div style="margin-bottom:15px;">
+                          <div class="scm-flotr2-metrics-repo"
+                               style="width:350px;height:150px;margin-bottom:5px;"
+                               data-metrics="scm_added_lines,scm_removed_lines" data-legend="true"></div>                        
+                          <i><b>Lines added/removed</b></i>
+                      </div>                                                                                            
+                  </div>
                 </div>
-
-                <div style="margin-bottom:15px;">
-                    <div class="scm-flotr2-metrics-repo"
-                         style="width:350px;height:150px;margin-bottom:5px;"
-                         data-metrics="scm_authors" data-legend="false"></div>                        
-                    <i><b>Authors per month</b></i>
-                </div>
-                <div style="margin-bottom:15px;">
-                    <div class="scm-flotr2-metrics-repo"
-                         style="width:350px;height:150px;margin-bottom:5px;"
-                         data-metrics="scm_files" data-legend="false"></div>                        
-                    <i><b>Files per month</b></i>
-                </div>                                                                                            
-                <div style="margin-bottom:15px;">
-                    <div class="scm-flotr2-metrics-repo"
-                         style="width:350px;height:150px;margin-bottom:5px;"
-                         data-metrics="scm_added_lines,scm_removed_lines" data-legend="true"></div>                        
-                    <i><b>Lines added/removed</b></i>
-                </div>                                                                                            
+                <div class="span4">
+                 <div id="its-repo" style="float:left">
+                    <div style="margin-bottom:15px;">
+                        <div class="its-flotr2-metrics-repo"
+                             style="width:350px;height:150px;margin-bottom:5px;"
+                             data-metrics="its_closed,its_opened" data-legend="true"></div> 
+                        <i><b>Closed/Opened tickets per month</b></i>
+                    </div>
+      
+                    <div style="margin-bottom:15px;">
+                        <div class="its-flotr2-metrics-repo"
+                             style="width:350px;height:150px;margin-bottom:5px;"
+                             data-metrics="its_closers,its_openers" data-legend="true"></div>                        
+                        <i><b>Closers/Openers per month</b></i>
+                    </div>
+                    <div style="margin-bottom:15px;">
+                        <div class="its-flotr2-metrics-repo"
+                             style="width:350px;height:150px;margin-bottom:5px;"
+                             data-metrics="its_changed" data-legend="true"></div>                        
+                        <i><b>Changed per month</b></i>
+                    </div>
+                </div>            
+              </div>
             </div>
-            <!--  ITS -->
-           <div id="its-repo" style="float:left">
-              <div style="margin-bottom:15px;">
-                  <div class="its-flotr2-metrics-repo"
-                       style="width:350px;height:150px;margin-bottom:5px;"
-                       data-metrics="its_closed,its_opened" data-legend="true"></div> 
-                  <i><b>Closed/Opened tickets per month</b></i>
-              </div>
+          </div>
 
-              <div style="margin-bottom:15px;">
-                  <div class="its-flotr2-metrics-repo"
-                       style="width:350px;height:150px;margin-bottom:5px;"
-                       data-metrics="its_closers,its_openers" data-legend="true"></div>                        
-                  <i><b>Closers/Openers per month</b></i>
-              </div>
-              <div style="margin-bottom:15px;">
-                  <div class="its-flotr2-metrics-repo"
-                       style="width:350px;height:150px;margin-bottom:5px;"
-                       data-metrics="its_changed" data-legend="true"></div>                        
-                  <i><b>Changed per month</b></i>
-              </div>
-          </div>            
-        </div>
-      </div>
-
-     <div id="footer"></div>
-     <script type="text/javascript" src="VizGrimoireJS/vizgrimoire.min.js"></script>
+          <div id="footer"></div>
+          <script type="text/javascript" src="VizGrimoireJS/lib/jquery-1.7.1.min.js"></script>
+          <script type="text/javascript" src="VizGrimoireJS/bootstrap/js/bootstrap.js"></script>
+          <script type="text/javascript" src="VizGrimoireJS/vizgrimoire.min.js"></script>             
     </body>
 </html>
