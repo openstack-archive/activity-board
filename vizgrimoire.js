@@ -12772,7 +12772,7 @@ var DataProcess = {};
     };
     
     sortGlobal = function (ds, metric_id, kind) {
-        if (metric_id === undefined) metric_id = "commits";
+        if (metric_id === undefined) metric_id = "scm_commits";
         var metric = [];
         var sorted = [];
         var global = null;
@@ -12780,19 +12780,19 @@ var DataProcess = {};
             global = ds.getCompaniesGlobalData();
             if (ds.getCompaniesData().length === 0) return sorted;
             if (global[ds.getCompaniesData()[0]][metric_id] === undefined)
-                metric_id = "commits";
+                metric_id = "scm_commits";
         } 
         else if (kind === "repos") {
             global = ds.getReposGlobalData();
             if (ds.getReposData().length === 0) return sorted;
             if (global[ds.getReposData()[0]][metric_id] === undefined)
-                metric_id = "commits";
+                metric_id = "scm_commits";
         }
         else if (kind === "countries") {
             global = ds.getCountriesGlobalData();
             if (ds.getCountriesData().length === 0) return sorted;
             if (global[ds.getCountriesData()[0]][metric_id] === undefined)
-                metric_id = "commits";
+                metric_id = "scm_commits";
         }
         $.each(global, function(item, data) {
            metric.push([item, data[metric_id]]);
@@ -12821,6 +12821,51 @@ var DataProcess = {};
             clean = email.split('@')[0];
         }
         return clean;
+    };
+    
+    // Clean 0s at the start and end of metrics in history
+    DataProcess.frameTime = function(history, metrics) {
+        var new_history = {};
+        var offset_start = -1;
+        var offset_end = -1;
+        var new_offset = 0;
+        if (metrics.length === 0) return history;
+        var total = history[metrics[0]].length;
+        var i = 0;
+        // Detect 0s start
+        $.each(metrics, function(id, metric) {
+            new_offset = 0;
+            for (i =  0; i < history[metric].length; i++) {
+                if (history[metric][i] === 0) new_offset++;
+                else {
+                    if (offset_start === -1) offset_start = new_offset;
+                    if (new_offset<offset_start) offset_start = new_offset;
+                    break;
+                }
+            }
+        });
+        // Detect 0s end
+        $.each(metrics, function(id, metric) {
+            new_offset = 0;
+            for (i = history[metric].length-1  ; i >=0; i--) {
+                if (history[metric][i] === 0) new_offset++;
+                else {
+                    if (offset_end === -1) offset_end = new_offset;
+                    if (new_offset<offset_end) offset_end = new_offset;
+                    break;
+                }
+            }        
+        });
+        
+        for (var key in history) {
+            new_history[key] = [];
+            for (i =  0; i < history[key].length; i++) {
+                if (i<offset_start) continue;
+                if (i>=total-offset_end) continue;
+                new_history[key].push(history[key][i]);
+            }
+        }
+        return new_history;  
     };
     
     DataProcess.filterDates = function(start_id, end_id, history) {        
@@ -12988,6 +13033,21 @@ var DataProcess = {};
             new_data[metric] = data[metric];
         });
         new_data.substract = substract;
+        return new_data;
+    };
+
+    DataProcess.divide = function(data, metric1, metric2) {
+        var new_data = {};
+        var divide = [];
+        for (var i=0; i<data[metric1].length; i++) {
+            if (data[metric1][i] === 0 || data[metric2][i] === 0)
+                divide[i] = 0;
+            else divide[i] = parseInt(data[metric1][i]/data[metric2][i],null);
+        }
+        $.each(data, function(metric, mdata) {
+            new_data[metric] = data[metric];
+        });
+        new_data.divide = divide;
         return new_data;
     };
 })();/* 
@@ -13229,7 +13289,8 @@ var Report = {};
             $(".summary-menu")[0].className = 
                 $(".summary-menu")[0].className + " active";
         } else {
-            $(".experimental-menu")[0].className = 
+            if ($(".experimental-menu")[0])
+                $(".experimental-menu")[0].className = 
                 $(".experimental-menu")[0].className + " active";
         }
     }
@@ -13298,11 +13359,14 @@ var Report = {};
             Report.registerDataSource(scm);
             var scr = new SCR();
             Report.registerDataSource(scr);
+            var irc = new IRC();
+            Report.registerDataSource(irc);
         
             its.setDataDir(project);
             mls.setDataDir(project);
             scm.setDataDir(project);
             scr.setDataDir(project);
+            irc.setDataDir(project);
             scm.setITS(its);
         });
         
@@ -13324,12 +13388,26 @@ var Report = {};
                         html += '<h4>'+total+' '+ds.getMetrics()[metric].name+'</h4>';
                         html += '</div>';
                         html += '<div id="microdash" '+
-                                'class="scm-flotr2-metrics-min" data-metrics="'+
+                                'class="'+ds.getName()+'-flotr2-metrics-min" data-metrics="'+
                                 metric+'" style="margin-left:10px; float:left;width:100px; height:25px;"></div>';
                         html += '<div style="clear:both"></div><div>';
                         $.each({7:'week',30:'month',365:'year'}, function(period, name) {
-                            html += "<em>"+name+"</em>:"+ds.getGlobalData()[metric+"_"+period]+"&nbsp;";
-                            html += '<i class="icon-circle-arrow-up"></i>';
+                            var value = ds.getGlobalData()[metric+"_"+period];
+                            var value2 = ds.getGlobalData()[metric+"_"+(period*2)];
+                            var old_value = value2-value;
+                            html += "<em>"+name+"</em>:"+value+"&nbsp;";
+                            var inc = parseInt(((value-old_value)/old_value)*100,null);
+                            if (value === old_value) {
+                                html += '';
+                            }
+                            else if (value > old_value) {
+                                html += '<i class="icon-circle-arrow-up"></i>';
+                                html += '<small>('+inc+'%)</small>&nbsp;';
+                            } else if (value < old_value) {
+                                html += '<i class="icon-circle-arrow-down"></i>';
+                                html += '<small>('+inc+'%)</small>&nbsp;';
+                            }
+                            
                         });
                         html += '</div>';
                         html += '<div>';
@@ -13339,17 +13417,27 @@ var Report = {};
             }
         }
     };
+    
+    Report.addDataDir = function () {
+        var addURL;
+        var querystr = window.location.search.substr(1);
+        if (querystr && querystr.indexOf("data_dir")!==-1) {
+            addURL = window.location.search.substr(1);
+        }
+        return addURL;
+    };
         
     var basic_divs = {
         "navigation": {
             convert: function() {
                 $.get(html_dir+"navigation.html", function(navigation) {
                     $("#navigation").html(navigation);
-                    var querystr = window.location.search.substr(1);
-                    if (querystr && querystr.indexOf("data_dir")!==-1) {
+                    var addURL = Report.addDataDir(); 
+                    if (addURL) {
                         var $links = $("#navigation a");
                         $.each($links, function(index, value){
-                            value.href += "?"+window.location.search.substr(1);
+                            if (value.href.indexOf("data_dir")!==-1) return;
+                            value.href += "?"+addURL;
                         });
                     }
                 });                
@@ -13361,11 +13449,12 @@ var Report = {};
                     $("#navbar").html(navigation);
                     displayReportData();
                     displayActiveMenu();
-                    var querystr = window.location.search.substr(1);
-                    if (querystr && querystr.indexOf("data_dir")!==-1) {
+                    var addURL = Report.addDataDir(); 
+                    if (addURL) {                    
                         var $links = $("#navbar a");
                         $.each($links, function(index, value){
-                            value.href += "?"+window.location.search.substr(1);
+                            if (value.href.indexOf("data_dir")!==-1) return;
+                            value.href += "?"+addURL;
                         });
                     }
                 });                
@@ -13376,22 +13465,12 @@ var Report = {};
                 $.get(html_dir+"header.html", function(header) {
                     $("#header").html(header);
                     displayReportData();
-                    var div_companies_links = "companies_links";
-                    if ($("#"+div_companies_links).length > 0) {
-                        var limit = $("#"+div_companies_links).data('limit');
-                        var order_by = $("#"+div_companies_links).data('order-by');
-                        var DS = null;
-                        // scm support only
-                        $.each(data_sources, function(i, ds) {
-                            if (ds.getName() === "scm") {DS = ds; return false;}
-                        });
-                        DS.displayCompaniesLinks(div_companies_links, limit, order_by);
-                    }
-                    var querystr = window.location.search.substr(1);
-                    if (querystr && querystr.indexOf("data_dir")!==-1) {
+                    var addURL = Report.addDataDir();
+                    if (addURL) {                    
                         var $links = $("#header a");
                         $.each($links, function(index, value){
-                            value.href += "?"+window.location.search.substr(1);
+                            if (value.href.indexOf("data_dir")!==-1) return;
+                            value.href += "?"+addURL;
                         });
                     }
                 });
@@ -13401,6 +13480,7 @@ var Report = {};
             convert: function() {
                 $.get(html_dir+"footer.html", function(footer) {
                     $("#footer").html(footer);
+                    $("#vizjs-lib-version").append(vizjslib_git_tag);
                 });
             }
         },
@@ -13490,7 +13570,18 @@ var Report = {};
                 config_metric[key] = value;
             });
         }
-
+        
+        var div_companies_links = "companies_links";
+        if ($("#"+div_companies_links).length > 0) {
+            var limit = $("#"+div_companies_links).data('limit');
+            var order_by = $("#"+div_companies_links).data('order-by');
+            var DS = null;
+            // scm support only
+            $.each(data_sources, function(i, ds) {
+                if (ds.getName() === "scm") {DS = ds; return false;}
+            });
+            DS.displayCompaniesLinks(div_companies_links, limit, order_by);
+        }
         
         var company = null;
         var querystr = window.location.search.substr(1);
@@ -13548,7 +13639,10 @@ var Report = {};
             divs = $("."+div_company);
             if (divs.length > 0 && company) {
                 $.each(divs, function(id, div) {
-                    config_metric.show_legend = false;
+                    config_metric.help = true;
+                    var help = $(this).data('help');
+                    if (help !== undefined) config_metric.help = help;
+                    config_metric.show_legend = false;                    
                     var metrics = $(this).data('metrics');
                     if ($(this).data('legend')) config_metric.show_legend = true;
                     div.id = metrics.replace(/,/g,"-")+"-flotr2-metrics-company-"+$(this).id;
@@ -13568,9 +13662,12 @@ var Report = {};
                 $.each(divs, function(id, div) {
                     var metrics = $(this).data('metrics');
                     var sort_metric = $(this).data('order-by');
+                    var show_links = true; 
+                    if ($(this).data('show_links') !== undefined) 
+                        show_links = $(this).data('show_links');
                     div.id = metrics.replace(/,/g,"-")+"-flotr2-companies-list";
                     DS.displayCompaniesList(metrics.split(","),div.id,
-                            config_metric, sort_metric);
+                            config_metric, sort_metric, show_links);
                 });
             }
 
@@ -13634,9 +13731,12 @@ var Report = {};
                 $.each(divs, function(id, div) {
                     var metrics = $(this).data('metrics');
                     var order_by = $(this).data('order-by');
+                    var show_links = true; 
+                    if ($(this).data('show_links') !== undefined) 
+                        show_links = $(this).data('show_links');
                     div.id = metrics.replace(/,/g,"-")+"-flotr2-countries-list";
                     DS.displayCountriesList(metrics.split(","),div.id, 
-                            config_metric, order_by);
+                            config_metric, order_by, show_links);
                 });
             }
             
@@ -13709,9 +13809,12 @@ var Report = {};
                     var metrics = $(this).data('metrics');
                     var order_by = $(this).data('order-by');
                     var scm_and_its = $(this).data('scm-and-its');
+                    var show_links = true; 
+                    if ($(this).data('show_links') !== undefined) 
+                        show_links = $(this).data('show_links');
                     div.id = metrics.replace(/,/g,"-")+"-flotr2-repos-list";
                     DS.displayReposList(metrics.split(","),div.id, 
-                            config_metric, order_by, scm_and_its);
+                            config_metric, order_by, scm_and_its, show_links);
                 });
             }
             
@@ -13728,9 +13831,13 @@ var Report = {};
                 divs = $("."+div_repo);
                 if (divs.length) {
                     $.each(divs, function(id, div) {
-                        var metrics = $(this).data('metrics');
+                        var metrics = $(this).data('metrics');                        
                         config.show_legend = false;
-                        if ($(this).data('legend')) config_metric.show_legend = true;
+                        config.frame_time = false;
+                        if ($(this).data('legend')) 
+                            config_metric.show_legend = true;
+                        if ($(this).data('frame-time')) 
+                            config_metric.frame_time = true;
                         div.id = metrics.replace(/,/g,"-")+"-flotr2-metrics-repo";
                         DS.displayBasicMetricsRepo(repo_valid, metrics.split(","),
                                 div.id, config_metric);
@@ -13844,10 +13951,14 @@ var Report = {};
             if (divs.length > 0) {
                 $.each(divs, function(id, div) {
                     var metrics = $(this).data('metrics');
+                    config_metric.help = true;
+                    var help = $(this).data('help');
+                    if (help !== undefined) config_metric.help = help;
                     config_metric.show_legend = false;
-                    config_metric.help = false;
                     if ($(this).data('legend'))
                         config_metric.show_legend = true;
+                    if ($(this).data('frame-time'))
+                        config_metric.frame_time = true;
                     div.id = metrics.replace(/,/g,"-")+"-flotr2-metrics-"+this.id;
                     DS.displayBasicMetrics(metrics.split(","),div.id,
                             config_metric, $(this).data('convert'));
@@ -13863,7 +13974,7 @@ var Report = {};
                     config_metric.show_legend = false;
                     config_metric.show_labels = false;
                     config_metric.show_grid = false;
-                    config_metric.show_mouse = false;
+                    // config_metric.show_mouse = false;
                     config_metric.help = false;
                     div.id = metrics.replace(/,/g,"-")+"-flotr2-metrics-"+this.id;
                     DS.displayBasicMetrics(metrics.split(","),div.id,
@@ -13899,7 +14010,8 @@ var Report = {};
         if ($("#all-envision").length > 0) {
             var relative = $('#all-envision').data('relative');
             var legend = $('#all-envision').data('legend-show');
-            Viz.displayEvoSummary('all-envision', relative, legend);
+            var summary_graph = $('#all-envision').data('summary-graph');
+            Viz.displayEvoSummary('all-envision', relative, legend, summary_graph);
         }
         var already_shown = [];
         $.each(Report.getDataSources(), function(index, DS) {
@@ -13910,15 +14022,16 @@ var Report = {};
                     return;
                 var legend = $('#'+div_envision).data('legend-show');
                 var relative = $('#'+div_envision).data('relative');
+                var summary_graph = $('#'+div_envision).data('summary-graph');
                 if (DS instanceof MLS) {
-                    DS.displayEvo(div_envision, relative, legend);
+                    DS.displayEvo(div_envision, relative, legend, summary_graph);
                     // DS.displayEvoAggregated(div_envision);
                     if (Report.getProjectsList().length === 1)
                         if ($("#" + DS.getName() + "-envision"+"-lists").length > 0)
                             DS.displayEvoListsMain
                                 (DS.getName() + "-envision"+"-lists");
                 } else if ($.inArray(DS.getName(), already_shown) === -1) { 
-                    DS.displayEvo(div_envision, relative, legend); 
+                    DS.displayEvo(div_envision, relative, legend, summary_graph); 
                 }
                 already_shown.push(DS.getName());
             }
@@ -13946,14 +14059,19 @@ var Report = {};
             if ($("#"+div_id_top).length > 0) {
                 if ($("#"+div_id_top).data('show_all')) show_all = true;
                 var top_metric = $("#"+div_id_top).data('metric');
-                DS.displayTop(div_id_top, show_all, top_metric);
+                var limit = $("#"+div_id_top).data('limit');
+                var graph = null;
+                DS.displayTop(div_id_top, show_all, top_metric, graph, limit);
             }           
             $.each(['pie','bars'], function (index, chart) {
                 var div_id_top = DS.getName()+"-top-"+chart;
                 if ($("#"+div_id_top).length > 0) {
                     if ($("#"+div_id_top).data('show_all')) show_all = true;
+                    var people_links = $("#"+div_id_top).data('people_links');
                     var show_metric = $("#"+div_id_top).data('metric');
-                    DS.displayTop(div_id_top, show_all, show_metric, chart);
+                    var limit = $("#"+div_id_top).data('limit');
+                    DS.displayTop(div_id_top, show_all, show_metric, 
+                            chart, limit, people_links);
                 }
                 div_id_top = DS.getName()+"-top-basic-"+chart;
                 if ($("#"+div_id_top).length > 0) {
@@ -14067,6 +14185,19 @@ var Report = {};
         });
     }
     
+    function convertGlobalNumbers(){
+        $.each(Report.getDataSources(), function(index, DS) {
+           var data = DS.getGlobalData();
+           var divs = $(".global-data");
+           if (divs.length > 0) {
+               $.each(divs, function(id, div) {
+                   var key = $(this).data('field');
+                   $(this).text(data[key]);
+                });
+             }
+       });
+    }
+    
     function configDataSources() {
         var prjs_dss = Report.getProjectsDataSources();
         $.each(Report.getDataSources(), function (index, ds) {
@@ -14113,6 +14244,7 @@ var Report = {};
         convertSummary();
         convertActivity();
         convertPeople(); // using on demand file loading
+        convertGlobalNumbers(); // from Liferay
     }
     
     function convertStudies() {
@@ -14133,11 +14265,21 @@ var Report = {};
 Loader.data_ready_global(function() {
     Report.convertGlobal();    
 });
-    
+
 Loader.data_ready(function() {
     Report.convertStudies();
     $("body").css("cursor", "auto");
-    // $('.help').popover();
+    // Popover helps systema
+    $('.help').popover({
+        html: true,
+        trigger: 'manual'
+    }).click(function(e) {
+        $(this).popover('toggle');
+        e.stopPropagation();
+    });
+    $('html').click(function(e) {
+        $('.help').popover('hide');
+    });
 });
 
 $(document).ready(function() {
@@ -14641,13 +14783,15 @@ function DataSource(name, basic_metrics) {
 
     this.displayBasicMetricsCompany = function (
             company, metrics, div_id, config) {
-        Viz.displayBasicMetricsCompany(company, metrics,
-                this.getCompaniesMetricsData()[company], div_id, config);
+        var data = this.getCompaniesMetricsData()[company];
+        if (data === undefined) return;
+        Viz.displayBasicMetricsCompany(company, metrics, data, div_id, config);
     };
     
     this.displayBasicMetricsRepo = function (repo, metrics, div_id, config) {
-        Viz.displayBasicMetricsRepo(repo, metrics,
-                this.getReposMetricsData()[repo], div_id, config);
+        var data = this.getReposMetricsData()[repo];
+        if (data === undefined) return;
+        Viz.displayBasicMetricsRepo(repo, metrics, data, div_id, config);
     };
     
     this.displayBasicMetricsPeople = function (upeople_id, upeople_identifier, metrics, div_id, config) {
@@ -14657,8 +14801,9 @@ function DataSource(name, basic_metrics) {
             history = nameSpaceMetrics(history, self);
             Viz.displayBasicMetricsPeople(upeople_identifier, metrics, history, div_id, config);
         }).fail(function() {
-            $("#people").empty();
-            $("#people").html('No data available for people');
+            $("#"+div_id).hide();
+            // $("#people").empty();
+            // $("#people").html('No data available for people');
         });
     };
     
@@ -14681,7 +14826,10 @@ function DataSource(name, basic_metrics) {
                 metric_ids = ['substract'];
                 data = DataProcess.aggregate(data, metric_ids);
             }
-
+            if (convert === "divide") {
+                data = DataProcess.divide(data, metric_ids[0], metric_ids[1]);
+                metric_ids = ['divide'];
+            }
         }
         Viz.displayBasicMetricsHTML(metric_ids, data, div_target, config);
     };
@@ -14720,8 +14868,11 @@ function DataSource(name, basic_metrics) {
         var links = "";
         var i = 0;
         $.each(sorted_companies, function(id, company) {
-            links += '<a href="company.html?company='+company+'">'+company+'</a> | ';
-            if (i++>limit) return false;
+            links += '<a href="company.html?company='+company;
+            if (Report.addDataDir())
+                links += '&'+Report.addDataDir();
+            links += '">'+company+'</a>| ';
+            if (i++>=limit-1) return false;
         });
         $("#"+div_links).append(links);
     };
@@ -14743,7 +14894,7 @@ function DataSource(name, basic_metrics) {
             if (scm_and_its && (!(Report.getReposMap()[repo]))) return;
             nav += "<a href='#" + repo + "-nav'>";
             var label = repo;
-            if (repo.lastIndexOf("http") === 0) {
+            if (repo.lastIndexOf("http") === 0 || repo.split("_").length > 3) {
                 var aux = repo.split("_");
                 label = aux.pop();
                 if (label === '') label = aux.pop();
@@ -14762,28 +14913,29 @@ function DataSource(name, basic_metrics) {
 
 
     this.displayCompaniesList = function (metrics,div_id, 
-            config_metric, sort_metric) {
+            config_metric, sort_metric, show_links) {
         this.displaySubReportList("companies",metrics,div_id, 
-                config_metric, sort_metric);
+                config_metric, sort_metric, undefined, show_links);
     };
     
     this.displayReposList = function (metrics,div_id, 
-            config_metric, sort_metric, scm_and_its) {
+            config_metric, sort_metric, scm_and_its, show_links) {
         this.displaySubReportList("repos",metrics,div_id, 
-                config_metric, sort_metric, scm_and_its);
+                config_metric, sort_metric, scm_and_its, show_links);
     };
     
     this.displayCountriesList = function (metrics,div_id, 
-            config_metric, sort_metric) {
+            config_metric, sort_metric, show_links) {
         this.displaySubReportList("countries",metrics,div_id, 
-                config_metric, sort_metric);
+                config_metric, sort_metric, undefined, show_links);
     };
     
     this.displaySubReportList = function (report, metrics,div_id, 
-            config_metric, sort_metric, scm_and_its) {
+            config_metric, sort_metric, scm_and_its, show_links) {
         var list = "";
         var ds = this;
         var data = null, sorted = null;
+        if (show_links === undefined) show_links = true;
         if (report === "companies") {
             data = this.getCompaniesMetricsData();
             sorted = DataProcess.sortCompanies(this, sort_metric);
@@ -14803,31 +14955,37 @@ function DataSource(name, basic_metrics) {
 
         $.each(sorted, function(id, item) {
             if (scm_and_its && (!(Report.getReposMap()[item]))) return;
-            list += "<div class='subreport-list' id='"+item+"-nav' style='height:175px'>";
-            list += "<div>";
-            if (report === "companies") 
-                list += "<a href='company.html?company="+item+"'>";
-            else if (report === "repos") {
-                list += "<a href='";
-                // Show together SCM and ITS
-                if ((ds.getName() === "scm" || ds.getName() === "its")
-                        && (Report.getReposMap().length === undefined));
-                else
-                    list += ds.getName() + "-";
-                list += "repository.html";
-                list += "?repository=" + encodeURIComponent(item);
-                list += "&data_dir=" + Report.getDataDir();
-                list += "'>";
-            }
-            else if (report === "countries") {
-                list += "<a href='"+ds.getName();
-                list += "-country.html?country="+item;
-                list += "&data_dir=" + Report.getDataDir();
-                list += "'>";
+            list += "<div class='subreport-list' id='"+item+"-nav'>";
+            list += "<div style='float:left;'>";
+            var addURL = Report.addDataDir();
+            if (show_links) {
+                if (report === "companies") { 
+                    list += "<a href='company.html?company="+item;
+                    if (addURL) list += "&"+addURL;
+                    list += "'>";
+                }
+                else if (report === "repos") {
+                    list += "<a href='";
+                    // Show together SCM and ITS
+                    if ((ds.getName() === "scm" || ds.getName() === "its")
+                            && (Report.getReposMap().length === undefined));
+                    else
+                        list += ds.getName() + "-";
+                    list += "repository.html";
+                    list += "?repository=" + encodeURIComponent(item);
+                    if (addURL) list += "&"+addURL;
+                    list += "'>";
+                }
+                else if (report === "countries") {
+                    list += "<a href='"+ds.getName();
+                    list += "-country.html?country="+item;
+                    if (addURL) list += "&"+addURL;
+                    list += "'>";
+                }
             }
             list += "<strong>";
             var label = item;
-            if (item.lastIndexOf("http") === 0) {
+            if (item.lastIndexOf("http") === 0 || item.split("_").length > 3) {
                 var aux = item.split("_");
                 label = aux.pop();
                 if (label === '') label = aux.pop();
@@ -14839,16 +14997,15 @@ function DataSource(name, basic_metrics) {
             else if (item.lastIndexOf("<") === 0)
                 label = MLS.displayMLSListName(item);
             list += label;
-            list += "</strong> +info</a>";
+            list += "</strong>";
+            if (show_links) list += "+info</a>";
             list += "<br><a href='#nav'>^</a>";
             list += "</div>";
-            list += "<div style='height:150px'>"; 
             $.each(metrics, function(id, metric) {
                 list += "<div id='"+item+"-"+metric+"'";
                 list +=" class='subreport-list-item'></div>";
             });
             list += "</div>";
-            list += "</div>"
         });
         $("#"+div_id).append(list);
         // Draw the graphs
@@ -14868,7 +15025,9 @@ function DataSource(name, basic_metrics) {
                 var div_id = item+"-"+metric;
                 var items = {};
                 items[item] = item_data;
-                var title = ds.getMetrics()[metric].name;
+                var title = metric;
+                if (ds.getMetrics()[metric])
+                    title = ds.getMetrics()[metric].name;
                 Viz.displayMetricSubReportLines(div_id, metric, items, title);
             });
         });
@@ -14897,9 +15056,12 @@ function DataSource(name, basic_metrics) {
         $.getJSON(this.getDataDir()+"/"+json_file, null, function(history) {
             html = "<h4>"+upeople_identifier+"</h4>";
             html += "Start: "+history.first_date+" End: "+ history.last_date;
+            html += "<br>";
             if (ds.getName() == "scm") html += " Commits:" + history.commits;
             else if (ds.getName() == "its") html += " Closed:" + history.closed;
             else if (ds.getName() == "mls") html += " Sent:" + history.sent;
+            else if (ds.getName() == "irc") html += " Sent:" + history.sent;
+            else if (ds.getName() == "scr") html += " Closed:" + history.closed;
             $("#"+divid).append(html);
         });
     };
@@ -14951,9 +15113,10 @@ function DataSource(name, basic_metrics) {
         Viz.displayTimeToFix(div_id, this.getTimeToFixData(), column, labels, title);
     };
     
-    this.displayTop = function(div, all, show_metric, graph) {
+    this.displayTop = function(div, all, show_metric, graph, limit, people_links) {
         if (all === undefined) all = true;
-        Viz.displayTop(div, this, all, show_metric, graph);
+        var titles = null;
+        Viz.displayTop(div, this, all, show_metric, graph, titles, limit, people_links);
     };
     
     this.displayTopBasic = function(div, action, doer, graph) {
@@ -14979,10 +15142,10 @@ function DataSource(name, basic_metrics) {
         }
     };
     
-    this.envisionEvo = function(div_id, history, relative, legend_show) {
+    this.envisionEvo = function(div_id, history, relative, legend_show, summary_graph) {
         config = Report.getConfig();
         var options = Viz.getEnvisionOptions(div_id, history, this.getName(),
-                Report.getConfig()[this.getName()+"_hide"]);
+                Report.getConfig()[this.getName()+"_hide"], summary_graph);
         options.legend_show = legend_show;
         
         if (relative)
@@ -14991,14 +15154,14 @@ function DataSource(name, basic_metrics) {
         new envision.templates.Envision_Report(options, [ this ]);
     };
     
-    this.displayEvo = function(divid, relative, legend_show) {
+    this.displayEvo = function(divid, relative, legend_show, summary_graph) {
         var projects_full_data = Report.getProjectsDataSources();
         
-        this.envisionEvo(divid, projects_full_data, relative, legend_show);
+        this.envisionEvo(divid, projects_full_data, relative, legend_show, summary_graph);
     };    
 }
 /* 
- * Copyright (C) 2012 Bitergia
+ * Copyright (C) 2012-2013 Bitergia
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -15032,6 +15195,7 @@ var Viz = {};
     Viz.displayTopCompany = displayTopCompany;
     Viz.displayTopGlobal = displayTopGlobal;
     Viz.displayBasicHTML = displayBasicHTML;
+    Viz.displayBasicChart = displayBasicChart;
     Viz.displayBasicMetricHTML = displayBasicMetricHTML;
     Viz.displayBasicMetricCompaniesHTML = displayBasicMetricCompaniesHTML;
     Viz.displayBasicMetricSubReportStatic = displayBasicMetricSubReportStatic;
@@ -15093,24 +15257,28 @@ var Viz = {};
         });
     }
 
-    function displayTopMetricTable(history, metric_id, doer) {
+    function displayTopMetricTable(history, metric_id, doer, limit, people_links) {
         var table = "<table><tbody>";
         table += "<tr><th></th><th>" + metric_id + "</th></tr>";
+        if (people_links === undefined) people_links = true;
         if (history[metric_id] === undefined) return;
         if (!(history[metric_id] instanceof Array)) {
             history[metric_id] = [history[metric_id]];
             history[doer] = [history[doer]];
         }
-        for ( var i = 0; i < history[metric_id].length; i++) {
+        for (var i = 0; i < history[metric_id].length; i++) {
             var metric_value = history[metric_id][i];
             var doer_value = history[doer][i];
-            var doer_id = history.id[i];
+            var doer_id = null;
+            if (history.id) doer_id = history.id[i];
             table += "<tr><td>";
-            // table += "<a href='people.html?id="+doer_id+"&name="+doer_value+"'>";
-            table += DataProcess.hideEmail(doer_value) + "</a></td><td>";
-            // table += "</a>";
+            if (doer_id && people_links)
+                table += "<a href='people.html?id="+doer_id+"&name="+doer_value+"'>";
+            table += DataProcess.hideEmail(doer_value);
+            if (doer_id && people_links) table += "</a>";
             table += "</td><td>";
             table += metric_value + "</td></tr>";
+            if (limit && limit <= i) break;
         }
         table += "</tbody></table>";
 
@@ -15118,13 +15286,13 @@ var Viz = {};
     }
 
     function displayTopMetric
-        (div_id, project, metric, metric_period, history, graph, titles) {
+        (div_id, project, metric, metric_period, history, graph, titles, limit, people_links) {
 
         if (!history) return;
         var metric_id = metric.action;
         var doer = metric.column;
         if (doer === undefined) doer = findMetricDoer(history, metric_id);
-        var table = displayTopMetricTable(history, metric_id, doer);
+        var table = displayTopMetricTable(history, metric_id, doer, limit, people_links);
         // var doer = findMetricDoer(history, metric_id);
         var div = null;
 
@@ -15135,7 +15303,7 @@ var Viz = {};
             return;
         }
 
-        var top_metric_id = metric.divid;
+        var top_metric_id = metric.name;
         var div_graph = '';
         var new_div = '';
         // new_div += "<div class='info-pill'>";
@@ -15154,9 +15322,19 @@ var Viz = {};
 
         div = $("#" + div_id);
         div.append(new_div);
-        if (graph)
-            displayBasicChart(div_graph, history[doer], history[metric_id],
-                    graph);
+        if (graph) {
+            var labels = history[doer];
+            var data = history[metric_id];
+            if (limit) {
+                labels = [];
+                data = [];
+                for (var i=0; i<limit;i++) {
+                    labels.push(history[doer][i]);
+                    data.push(history[metric_id][i]);
+                }
+            }
+            displayBasicChart(div_graph, labels, data, graph);
+        }
     }
 
     function displayBasicLinesFile(div_id, json_file, column, labels, title, projects) {
@@ -15255,7 +15433,7 @@ var Viz = {};
         var content = "";
         var addContent = function (id, value) {
             if (metrics[i] === id) {
-                content += id +":"+ value.desc + "<br>";
+                content += "<strong>"+value.name +"</strong>: "+ value.desc + "<br>";
                 return false;
             }            
         };
@@ -15272,6 +15450,7 @@ var Viz = {};
         var lines_data = [];
         $.each(metrics, function(id, metric) {
             if (!history[metric]) return;
+            if (config.frame_time) history = DataProcess.frameTime(history, metrics);
             var mdata = [[],[]];
             $.each(history[metric], function (i, value) {
                 mdata[i] = [history.id[i], history[metric][i]];
@@ -15390,18 +15569,21 @@ var Viz = {};
             legend_div = $('#'+config_metric.legend.container);
         var chart_data = [], i;
 
+        var label = '';
         if (!horizontal) {
-            for (i = 0; i < labels.length; i++) {
+            for (i = 0; i < data.length; i++) {
+                if (labels) label = DataProcess.hideEmail(labels[i]);
                 chart_data.push({
                     data : [ [ i, data[i] ] ],
-                    label : DataProcess.hideEmail(labels[i])
+                    label : label
                 });
             }
         } else {
-            for (i = 0; i < labels.length; i++) {
+            for (i = 0; i < data.length; i++) {
+                if (labels) label = DataProcess.hideEmail(labels[i]);
                 chart_data.push({
                     data : [ [ data[i], i ] ],
-                    label : DataProcess.hideEmail(labels[i])
+                    label : label
                 });
             }
         }
@@ -15427,10 +15609,11 @@ var Viz = {};
                 track : true,
                 trackFormatter : function(o) {
                     var i = 'x';
-                    if (horizontal)
-                        i = 'y';
-                    return DataProcess.hideEmail(labels[parseInt(o[i], 10)]) + ": "
-                            + data[parseInt(o[i], 10)];
+                    if (horizontal) i = 'y';
+                    var label = '';
+                    if (labels)
+                        label = DataProcess.hideEmail(labels[parseInt(o[i], 10)]) + ": ";
+                    return label + data[parseInt(o[i], 10)];
                 }
             },
             legend : {
@@ -15468,9 +15651,10 @@ var Viz = {};
             config.yaxis = {
                 showLabels : true, min:0
             };
-//            config.xaxis = {
-//                    showLabels : true, min:0
-//            };
+            if (config_metric && config_metric.xaxis)
+                config.xaxis = {
+                        showLabels : config_metric.xaxis, min:0
+                };
         }
         if (graph === "pie") {
             config.pie = {show : true};
@@ -15577,8 +15761,7 @@ var Viz = {};
 
     function displayDemographicsChart(divid, ds, data, period_year) {
         if (!data) return;
-        
-        if (!period_year) period = 365/4;
+        if (!period_year) period_year = 0.25;
         else period = 365*period_year;
 
         // var data = ds.getDemographicsData();
@@ -15595,7 +15778,8 @@ var Viz = {};
         }
 
         for (i = 0; i < period_data.length; i++) {
-            labels[i] = "" + parseInt(i, 10);
+            var label_months = "" + parseInt(i * (period/30), 10) +" months";
+            labels[i] = label_months;
         }
 
         if (data)
@@ -15731,7 +15915,7 @@ var Viz = {};
     // For example: "committers.all":{"commits":[5310, ...],"name":["Brion
     // Vibber",..]}
     // TODO: Data load should be done in Loader
-    function displayTop(div, ds, all, show_metric, graph, titles) {
+    function displayTop(div, ds, all, show_metric, graph, titles, limit, people_links) {
         var top_file = ds.getTopDataFile();
         var basic_metrics = ds.getMetrics();
         var project = ds.getProject();
@@ -15749,7 +15933,7 @@ var Viz = {};
                     var metric = basic_metrics[id];
                     if (metric.column == top_metric) {
                         displayTopMetric(div, project, metric, 
-                                top_period, history[key], graph);
+                                top_period, history[key], graph, titles, limit, people_links);
                         if (!all) return false;
                         break;
                     }
@@ -15773,6 +15957,8 @@ var Viz = {};
         var project = ds.getProject();
         var metric = ds.getMetrics()[metric_id];
         var graph = null;
+        var data = ds.getCompaniesTopData()[company];
+        if (data === undefined) return;
         data = ds.getCompaniesTopData()[company][period];
         displayTopMetric(div, project, metric, period, data, graph, titles);
     }
@@ -15899,7 +16085,7 @@ var Viz = {};
         return options;
     };
     
-    function getEnvisionOptions(div_id, projects_data, ds_name, hide) {
+    function getEnvisionOptions(div_id, projects_data, ds_name, hide, summary_graph) {
 
         var basic_metrics, main_metric="", summary_data = [[],[]];
 
@@ -15918,6 +16104,8 @@ var Viz = {};
             if ((ds_name === null && DS.getName() === "scm") ||
                 (ds_name && DS.getName() == ds_name)) {
                 summary_data = [DS.getData().id, DS.getData()[main_metric]];
+                if (summary_graph === false) 
+                    summary_data = [DS.getData().id, []];
                 return false;
             }
         });
@@ -16022,26 +16210,29 @@ var Viz = {};
                 }                                    
             }
             
-            value  = "<table><tr><td align='right'>"+dates[1][index];
-            value += "</td></tr><tr><td></td>";
+            value  = "<table><tr><td align='right'>"+dates[1][index]+"</td></tr>";
+            value += "<tr>";
+            if (projects.length>1) value +="<td></td>";
             for (metric in basic_metrics) {
                 if (options.data[metric] === undefined) continue;
                 if ($.inArray(metric,options.data.envision_hide) > -1) 
                     continue;
-                value += "<td>"+metric+"</td>";
+                value += "<td>"+basic_metrics[metric].name+"</td>";
             }
             value += "</tr>";
             $.each(project_metrics, function(project, metrics) {
-                value += "<tr><td>"+project+"</td>";
+                var row = "<tr>";
                 for (var metric in basic_metrics) {
                     if (options.data[metric] === undefined) continue;
                     if ($.inArray(metric,options.data.envision_hide) > -1) 
                         continue;
                     mvalue = project_metrics[project][metric];
                     if (mvalue === undefined) mvalue = "n/a";
-                    value += "<td>" + mvalue + "</td>";
+                    row += "<td>" + mvalue + "</td>";
                 }
-                value += "</tr>";   
+                if (projects.length>1) row = "<td>"+project+"</td>"+row;
+                row += "</tr>";
+                value += row;
             });
             value += "</table>";
 
@@ -16142,7 +16333,7 @@ var Viz = {};
         $.each(data, function(item, data) {
             // TODO: find a generic way to filter labels
             var label = item;
-            if (item.lastIndexOf("http") === 0) {
+            if (item.lastIndexOf("http") === 0 || item.split("_").length > 3) {
                 var aux = item.split("_");
                 label = aux.pop();
                 if (label === '') label = aux.pop();
@@ -16277,11 +16468,11 @@ var Viz = {};
         $("#" + div_id).html(html);
     }
 
-    function displayEvoSummary(div_id, relative, legend_show) {
+    function displayEvoSummary(div_id, relative, legend_show, summary_graph) {
         var projects_full_data = Report.getProjectsDataSources();
         var config = Report.getConfig();
         var options = Viz.getEnvisionOptions(div_id, projects_full_data, null,
-                config.summary_hide);
+                config.summary_hide, summary_graph);
         options.legend_show = legend_show;
         if (relative) {
             // TODO: Improve main metric selection. Report.getMainMetric()
@@ -16296,6 +16487,136 @@ var Viz = {};
     }
 })();
 /* 
+ * Copyright (C) 2013 Bitergia
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+ *
+ * This file is a part of the VizGrimoireJS package
+ *
+ * Authors:
+ *   Alvaro del Castillo San Felix <acs@bitergia.com>
+ */
+
+function IRC() {
+    
+    var self = this;
+    
+    this.basic_metrics = {
+        'irc_sent' : {
+            'divid' : "irc_sent",
+            'column' : "sent",
+            'name' : "Sent",
+            'desc' : "Messages sent"
+        },
+        'irc_senders' : {
+            'divid' : "irc_senders",
+            'column' : "senders",
+            'name' : "Senders",
+            'desc' : "Messages senders",
+            'action' : 'sent'
+        }
+    };
+        
+    this.getMainMetric = function() {
+        return "irc_sent";
+    };
+    
+    // TODO: Move to generic DataSource?
+    this.displaySummary = function(report, divid, item, ds) {
+        if (!item) item = "";
+        var label = item;
+        if (item.lastIndexOf("http") === 0) {
+            var aux = item.split("_");
+            label = aux.pop();
+            if (label === '') label = aux.pop();
+        }
+        var html = "<h4>" + label + "</h4>";
+        var global_data = null;
+        if (report === "companies")
+            global_data = ds.getCompaniesGlobalData()[item];
+        if (report === "countries")
+            global_data = ds.getCountriesGlobalData()[item];
+        else if (report === "repositories")
+            global_data = ds.getReposGlobalData()[item];
+        else global_data = ds.getGlobalData();        
+        if (!global_data) return;
+
+        var id_label = {
+                first_date : "Start",
+                last_date : "End"
+        };
+
+        var self = this;
+        $.each(global_data,function(id,value) {
+            if (self.getMetrics()[id])
+                html += self.getMetrics()[id].name + ": " + value + "<br>";
+            else if (id_label[id]) 
+                html += id_label[id] + ": " + value + "<br>";
+            else
+                if (report) html += id + ": " + value + "<br>";
+        });
+        $("#"+divid).append(html);
+    };
+
+
+    this.displayData = function(divid) {
+        var div_id = "#" + divid;
+
+        var str = this.global_data.url;
+        if (!str || str.length === 0) {
+            $(div_id + ' .irc_info').hide();
+            return;
+        }
+        
+        var url = '';
+        if (this.global_data.repositories === 1) {
+            url = this.global_data.url;
+        } else {
+            url = Report.getProjectData().mls_url;
+        }
+
+        if (this.global_data.type)
+            $(div_id + ' #irc_type').text(this.global_data.type);
+        if (this.global_data.url && this.global_data.url !== "." && this.global_data.type !== undefined)  {
+            $(div_id + ' #irc_url').attr("href", url);
+            $(div_id + ' #irc_name').text("IRC " + this.global_data.type);
+        } else {
+            $(div_id + ' #irc_url').attr("href", Report.getProjectData().irc_url);
+            $(div_id + ' #irc_name').text(Report.getProjectData().irc_name);            
+            $(div_id + ' #irc_type').text(Report.getProjectData().irc_type);
+        }
+
+        var company = this.getCompanyQuery();
+        var data = this.getGlobalData();
+        if (company) {
+            data = this.getCompaniesGlobalData()[company];
+        }
+
+        $(div_id + ' #ircFirst').text(data.first_date);
+        $(div_id + ' #ircLast').text(data.last_date);
+        $(div_id + ' #ircSent').text(data.irc_sent);
+    };
+    
+    this.displayBubbles = function(divid, radius) {
+        if (false)    
+            Viz.displayBubbles(divid, "irc_sent", "irc_senders", radius);
+    };
+
+    this.getTitle = function() {return "IRC Messages";};    
+}
+IRC.prototype = new DataSource("irc");/* 
  * Copyright (C) 2012 Bitergia
  *
  * This program is free software; you can redistribute it and/or modify
@@ -17399,6 +17720,20 @@ function SCR() {
             'column' : "people",
             'name' : "People",
             'desc' : "Number of active people"
+        },
+        'scr_closers' : {
+            'divid' : "scr_closers",
+            'column' : "closers",
+            'name' : "Closers",
+            'desc' : "Reviews closers",
+            'action' : 'closed'
+        },
+        'scr_openers' : {
+            'divid' : "scr_openers",
+            'column' : "openers",
+            'name' : "Openers",
+            'desc' : "Reviews openers",
+            'action' : 'opened'
         }
     };
         
@@ -17409,7 +17744,7 @@ function SCR() {
     this.displaySummary = function(report, divid, item, ds) {
         if (!item) item = "";
         var label = item;
-        if (item.lastIndexOf("http") === 0) {
+        if (item.lastIndexOf("http") === 0 || item.split("_").length > 3) {
             var aux = item.split("_");
             label = aux.pop();
             if (label === '') label = aux.pop();
@@ -17618,3 +17953,6 @@ var Identity = {};
         sortSelList(list_divid, list, ds.getName()+"-sortable");
     };
 })();
+
+vizjslib_git_revision='8a725d9dbb190a7ba2423a1ecdb5ba4da06dd3cb';
+vizjslib_git_tag='1.0-25-g8a725d9';
