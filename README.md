@@ -26,6 +26,10 @@ The whole machinery consists of several steps.
 * Metrics Grimoire: in charge of the retrieval process, providing MySQL databases
 * VizGrimoireR: in charge of parsing databases and providing polished JSON files
 * VizGrimoireJS: in charge of visualizing the JSON files. 
+* In order to get the latest version of the data use the command below and place
+it under the directory "browser/data/"
+** wget http://activity.openstack.org/dash/browser/data/db/json.7z
+** 7zr x json.7z
 
 
 
