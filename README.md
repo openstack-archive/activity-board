@@ -4,11 +4,11 @@ Activity Board
 Description
 -----------
 
-The current code is only the web front end to visualize development activity 
+The current code is the web front end to visualize development activity 
 metrics from the OpenStack community.
 
-It is intended to add in the following days the machinery to retrieve all
-of the dataset so this can be easily reproduced.
+It is intended to add in the following days the files to configure the
+MetricsGrimoire/VizGrimoire  toolset that produces the actual data.
 
 
 Configuration
