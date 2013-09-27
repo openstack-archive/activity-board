@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<title></title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" type="text/css" id="theme"
+  href="VizGrimoireJS/vizgrimoire.css" />
+<link href="VizGrimoireJS/bootstrap/css/bootstrap.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="custom.css" />
+<link href="VizGrimoireJS/bootstrap/css/bootstrap-responsive.css"
+  rel="stylesheet">
+<link rel="shortcut icon" href="favicon.png">
+</head>
+
+<body>
+  <div class="container-narrow">
+  <div id="navbar"></div>
+          <div class="row-fluid">    
+          <div style="float:left;width:150px">
+			</div>
+            <div style="float:left">
+                <div>
+                    <div id="info-pill">
+                        <h4 style="font-weight: bold;">Source Code Review: Gerrit</h4>
+                    </div>
+                    <div id="scr-summary" style="float:left;margin:10px"></div>                    
+                    <!--<div id="scr-envision" style="float:left;margin:10px"></div>
+                    <div id="scr-flotr2" style="float:left;width:300px;margin:10px"></div>-->
+                    <div style="float:left; margin-right:20px;heigth:700px;width:400px;">
+                       <h4 style="font-weight:bold;">REVIEWS</h4>
+                       <div style="margin-bottom:15px;">
+                          <div class="scr-flotr2-metrics"
+                               style="width:350px;height:150px;margin-top:5px;"
+                               data-metrics="scr_submitted" data-legend="false"></div>                   
+                          <i><b>Submissions per week</b></i>
+                       </div>
+
+                       <div style="margin-bottom:15px;">
+                          <div class="scr-flotr2-metrics"
+                               style="width:350px;height:150px;margin-top:20px;"
+                               data-metrics="scr_opened" data-legend="false"></div>             
+                          <i><b>Remaining Opened</b></i>
+                       </div>
+
+                       <div style="margin-bottom:15px;">
+                          <div class="scr-flotr2-metrics"
+                               style="width:350px;height:150px;margin-top:20px;"
+                               data-metrics="scr_merged" data-legend="false"></div>   
+                          <i><b>Merged</b></i>
+                       </div>
+  
+                       <div style="margin-bottom:15px;">
+                          <div class="scr-flotr2-metrics"
+                               style="width:350px;height:150px;margin-top:20px;"
+                               data-metrics="scr_abandoned" data-legend="false"></div>   
+                          <i><b>Abandoned</b></i>
+                       </div>
+
+                       <div style="margin-bottom:15px;">
+                          <div class="scr-flotr2-metrics"
+                               style="width:350px;height:150px;margin-bottom:20px;"
+                               data-metrics="scr_closed" data-legend="false"></div>   
+                          <i><b>Closed</b></i>
+                       </div>
+
+
+                    </div>
+ 
+                    <div style="float:left; margin-right:20px;heigth:700px;width:400px;">
+                      <h4 style="font-weight:bold;">PATCHES</h4>
+                      <div style="margin-bottom:15px;">
+                          <div class="scr-flotr2-metrics"
+                               style="width:350px;height:150px;margin-top:5px;"
+                               data-metrics="scr_verified" data-legend="false"></div>
+                          <i><b>Verified</b></i>
+
+                          <div class="scr-flotr2-metrics"
+                               style="width:350px;height:150px;margin-top:20px;"
+                               data-metrics="scr_approved" data-legend="false"></div>
+                          <i><b>Approved</b></i>
+
+                          <div class="scr-flotr2-metrics"
+                               style="width:350px;height:150px;margin-top:20px;"
+                               data-metrics="scr_codereview" data-legend="false"></div>
+                          <i><b>Code Review</b></i>
+
+                          <div class="scr-flotr2-metrics"
+                               style="width:350px;height:150px;margin-top:20px;"
+                               data-metrics="scr_sent" data-legend="false"></div>
+                          <i><b>Sent</b></i>
+                 
+                          <div class="scr-flotr2-metrics"
+                               style="width:350px;height:150px;margin-top:20px;"
+                               data-metrics="scr_WaitingForReviewer" data-legend="false"></div>
+                          <i><b>Waiting for reviewer</b></i>
+
+                          <div class="scr-flotr2-metrics"
+                               style="width:350px;height:150px;margin-top:20px;"
+                               data-metrics="scr_WaitingForSubmitter" data-legend="false"></div>
+                          <i><b>Waiting for submitter</b></i>
+                       </div>
+                    </div>
+
+                </div>
+                <div style="clear: both;"></div>
+                <div style="margin:40px">
+                </div>
+            </div>
+
+        </div>
+	  </div>
+
+
+
+    <footer>
+      <div id="footer"></div>
+    </footer>
+  </div>
+
+  <script type="text/javascript" src="VizGrimoireJS/lib/jquery-1.7.1.min.js"></script>
+  <script type="text/javascript" src="VizGrimoireJS/bootstrap/js/bootstrap.js"></script>
+  <script type="text/javascript" src="VizGrimoireJS/vizgrimoire.min.js"></script>
+</body>
+</html>
