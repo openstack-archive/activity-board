@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<title></title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" type="text/css" id="theme"
+  href="VizGrimoireJS/vizgrimoire.css" />
+<link href="VizGrimoireJS/bootstrap/css/bootstrap.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="custom.css" />
+<link href="VizGrimoireJS/bootstrap/css/bootstrap-responsive.css"
+  rel="stylesheet">
+<link rel="shortcut icon" href="favicon.png">
+</head>
+
+<body>
+  <div class="container-narrow">
+    <div id="navbar"></div>
+
+    <div class="row-fluid">
+      <div class="span12">
+        <h4>Information about all companies</h4>
+        Some charts and tables for top companies in the project, and a summary of
+        the evolution of their participation with links to more detailed
+        information per company.
+      </div>
+    </div><!--row-fluid-->
+
+    <div class="row-fluid">
+      <div class="span6">
+        <div class="scm-flotr2-metrics" data-metrics="scm_companies"
+          data-legend="false"></div>
+        <i><b>Active Companies with authors</b></i>
+      </div>
+      <div class="span6">
+        <div class="row-fluid">
+          <div class="span1"><strong class="count"><span class="global-data" data-field="scm_companies"></span></strong></div>
+          <div class="span4">companies</div>
+          <div class="span1"></div>
+          <div class="span2"></div>
+          <div class="span3"></div>
+         </div>
+
+      </div>
+    </div><!--row-fluid-->
+
+    <div id="summary-static" class="row-fluid">
+      <div class="span5">
+        <div class="scm-flotr2-companies-static" data-metric="scm_commits"
+          data-limit="10" data-order-by="scm_commits"
+          data-legend-div='companies_legend'></div>
+        <i><b>Commits per company (aggregated)</b></i>
+      </div>
+      <div class="span2" id="companies_legend"></div>
+      <div class="span5">
+        <div class="scm-flotr2-companies-static" data-metric="scm_authors"
+          data-limit="10" data-order-by="scm_commits" data-legend='false'></div>
+        <i><b>Authors per company (aggregated)</b></i>
+      </div>
+    </div>
+    <div id="nav" class="row-fluid">
+      <h4 style="font-weight: bold;">List of companies</h4>
+      <div id="scm-flotr2-companies-nav" data-order-by="scm_commits"></div>
+    </div>
+    <div id="list" class="row-fluid">
+      <div class="scm-flotr2-companies-list"
+        data-metrics="scm_commits,scm_authors" data-order-by="scm_commits""></div>
+    </div>
+    <footer>
+      <div id="footer"></div>
+    </footer>
+  </div>
+
+  <script type="text/javascript" src="VizGrimoireJS/lib/jquery-1.7.1.min.js"></script>
+  <script type="text/javascript" src="VizGrimoireJS/bootstrap/js/bootstrap.js"></script>
+  <script type="text/javascript" src="VizGrimoireJS/vizgrimoire.min.js"></script>
+</body>
+</html>
