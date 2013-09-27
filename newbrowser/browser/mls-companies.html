@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<title></title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" type="text/css" id="theme"
+  href="VizGrimoireJS/vizgrimoire.css" />
+<link href="VizGrimoireJS/bootstrap/css/bootstrap.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="custom.css" />
+<link href="VizGrimoireJS/bootstrap/css/bootstrap-responsive.css"
+  rel="stylesheet">
+<link rel="shortcut icon" href="favicon.png">
+</head>
+
+<body>
+  <div class="container-narrow">
+  <div id="navbar"></div>
+    <div id="info" class="row-fluid">
+      <h4>Information about all companies</h4>
+      Some charts and tables for top companies in the project, and a summary of
+      the evolution of their participation with links to more detailed
+      information per company.
+    </div>
+    <div id="summary-evol" class="row-fluid">
+      <div class="span6">
+        <div class="mls-flotr2-metrics" data-metrics="mls_companies"
+          data-legend="false"></div>
+        <i><b>Active Companies per month</b></i>
+      </div>
+      <div class="span6">
+        <div id="mls-companies-summary"></div>
+      </div>
+    </div>
+    <div id="summary-static" class="row-fluid">
+      <div class="span6">
+        <div class="mls-flotr2-companies-static" data-metric="mls_sent"
+          data-limit="10" data-order-by="mls_sent"></div>
+        <i><b>Sent per company (aggregated)</b></i>
+      </div>
+      <div class="span6">
+        <div class="mls-flotr2-companies-static" data-metric="mls_senders"
+          data-limit="10" data-order-by="mls_sent"></div>
+        <i><b>Senders per company (aggregated)</b></i>
+      </div>
+    </div>
+    <div id="nav" class="row-fluid">
+      <h4 style="font-weight: bold;">List of companies</h4>
+      <div id="mls-flotr2-companies-nav" data-order-by="mls_sent"></div>
+    </div>
+    <div id="list" class="row-fluid">
+      <div class="mls-flotr2-companies-list" data-metrics="mls_sent,mls_senders"
+        data-order-by="mls_sent"></div>
+    </div>
+    <footer>
+      <div id="footer"></div>
+    </footer>
+  </div>
+
+  <script type="text/javascript" src="VizGrimoireJS/lib/jquery-1.7.1.min.js"></script>
+  <script type="text/javascript" src="VizGrimoireJS/bootstrap/js/bootstrap.js"></script>
+  <script type="text/javascript" src="VizGrimoireJS/vizgrimoire.min.js"></script>
+</body>
+</html>

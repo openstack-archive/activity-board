@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, maximum-scale=1.0">
+<link rel="stylesheet" type="text/css" id="theme"
+ href="VizGrimoireJS/vizgrimoire.css" />
+<script type="text/javascript"
+ src="VizGrimoireJS/lib/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="VizGrimoireJS/vizgrimoire.min.js"></script>
+<title>Bitergia JSON Visualization Sample</title>
+</head>
+
+<body>
+ <div id="jsonViz" style="height: 200px"></div>
+ <div id="jsonViz1" style="height: 200px"></div>
+ <div id="jsonViz2" style="height: 200px"></div>
+
+ <script type="text/javascript">
+  // Load JSON
+  var json_file = 'data/json/scm-evolutionary.json';
+  $.getJSON(json_file, null, function(data) {
+    // Viz
+    var metric_ids = ['authors','committers'];
+    var div_target = 'jsonViz';
+    var div_target1 = 'jsonViz1';
+    var div_target2 = 'jsonViz2';
+    var config = {};
+    Viz.displayBasicMetricsHTML(metric_ids, data, div_target, config);
+    Viz.displayBasicMetricsHTML(metric_ids, data, div_target1, config);
+    Viz.displayBasicMetricsHTML(metric_ids, data, div_target2, config);
+  });
+</script>
+
+</body>
+</html>
