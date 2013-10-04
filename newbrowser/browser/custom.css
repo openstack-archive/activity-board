@@ -180,6 +180,7 @@ body {
     margin-right: auto;
 }
 
+
 /*.row-fluid {
     width: 100%;
     float:none;
@@ -270,6 +271,7 @@ width: 100%;
     border: 1px solid #DDDDDD;
     border-radius: 3px 3px 3px 3px;
     margin-bottom: 20px;
+    margin-top: 40px;
               }
 .stats-switcher-viewport { 
     height: 25px;
