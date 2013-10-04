@@ -314,7 +314,7 @@ var Dashboard = {};
                         grizzly: {
                             start: (new Date('2012-09').getTime())/(msec),
                             end: (new Date('2013-04').getTime())/(msec),
-                        }
+                        },
                         havana: {
                             start: (new Date('2013-04').getTime())/(msec),
                             end: (new Date('2013-10').getTime())/(msec),
