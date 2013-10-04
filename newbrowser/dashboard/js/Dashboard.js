@@ -89,7 +89,8 @@ var Dashboard = {};
                     }                
                 } else if (name === "projects") {
                     if (ds.getReposData().length === 0 ||
-                            ds.getName() === "mls" || ds.getName() === "irc") {
+                            ds.getName() === "mls"//HACK until projects DS join
+                                ) {
                         cleanSelector("metrics_"+ds.getName());
                         disableSelector("metrics_"+ds.getName(),true);
                     }             
@@ -203,7 +204,7 @@ var Dashboard = {};
         }
         
         var config_metric = {show_desc: false, show_title: true, 
-                show_legend: true};  
+                show_legend: true, help: false};  
         $.each(Report.getDataSources(), function(index, ds) {
             if (ds_div && ds_div !== ds.getName()) return;
             var metrics = metrics_selected[ds.getName()];
@@ -222,7 +223,6 @@ var Dashboard = {};
                 else {
                     config_metric.show_title = false;
                     var data = ds.getData();
-                    config_metric.help = false;
                     if (year || release) data = DataProcess.filterDates(start, end, data);
                     Viz.displayBasicMetricsHTML([metric], data, 
                             metric_div, config_metric);
@@ -265,6 +265,9 @@ var Dashboard = {};
                     $.each(metrics, function(index, metric) {
                         options.push(metric);
                     });
+                    // OpenStack does not need mailing list metrics
+                    // https://bugs.launchpad.net/openstack-community/+bug/1183788
+                    if (ds === "mls") return;
                     div.append(buildSelector(ds,"metrics_"+ds,options));
                 });
             }
@@ -294,22 +297,28 @@ var Dashboard = {};
                 var div = $('#filter_releases');
                 var msec = 1000;
                 var releases = {
-                        "1.18": {
+                        // Apr 2011-Sep 2011
+                        diablo: {
                             // start: 2011*12+4,
-                            start: (new Date('2011-05').getTime())/(msec),
-                            end: (new Date('2011-11').getTime())/(msec),
+                            start: (new Date('2011-04').getTime())/(msec),
+                            end: (new Date('2011-09').getTime())/(msec),                            
                         },
-                        "1.19": {
-                            start: (new Date('2011-11').getTime())/(msec),
-                            end: (new Date('2012-05').getTime())/(msec),
+                        essex: {
+                            start: (new Date('2011-09').getTime())/(msec),
+                            end: (new Date('2012-04').getTime())/(msec),                            
                         },
-                        "1.20": {
-                            start: (new Date('2012-05').getTime())/(msec),
-                            end: (new Date('2012-11').getTime())/(msec),
+                        folsom: {
+                            start: (new Date('2012-04').getTime())/(msec),
+                            end: (new Date('2012-09').getTime())/(msec),                            
                         },
-                        "1.21": {
-                            start: (new Date('2012-11').getTime())/(msec),
-                            end: (new Date('2013-05').getTime())/(msec),
+                        grizzly: {
+                            start: (new Date('2012-09').getTime())/(msec),
+                            end: (new Date('2013-04').getTime())/(msec),
+                        }
+                        havana: {
+                            start: (new Date('2013-04').getTime())/(msec),
+                            end: (new Date('2013-10').getTime())/(msec),
+
                         }
                 };                
                 var html = "<form id='form_dashboard_"+name+"'>";
@@ -328,11 +337,7 @@ var Dashboard = {};
             convert: function() {
                 var name = "year";
                 var div = $('#filter_year');
-                var years = [];
-                var year_start = '2008', year_end='2013';
-                for (var i=year_start;i<=year_end;i++) {
-                    years.push(i);
-                }
+                var years = ['2010','2011','2012','2013'];
                 var html = "<form id='form_dashboard_"+name+"'>";
                 html += "<select name='year' ";
                 html += "onChange=\"Dashboard.selection(\''+name+'\');\">";
