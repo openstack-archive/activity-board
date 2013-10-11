@@ -3472,7 +3472,7 @@ Text.prototype = {
 
     var div = D.create('div');
 
-    D.setStyles(div, { 'position' : 'absolute', 'top' : '-10000px' });
+    D.setStyles(div, { 'position' : 'absolute', 'top' : '-100000px' });
     D.insert(div, '<div style="'+style+'" class="'+className+' flotr-dummy-div">' + text + '</div>');
     D.insert(this.o.element, div);
 
@@ -12614,11 +12614,14 @@ var Loader = {};
             for (key in DS.getCompaniesGlobalData()) {companies_loaded++;}
             if (companies_loaded !== DS.getCompaniesData().length)
                 return false;
-            if (DS.getCompaniesTopData() === null) return false;
-            companies_loaded = 0;
-            for (key in DS.getCompaniesTopData()) {companies_loaded++;}
-            if (companies_loaded !== DS.getCompaniesData().length) 
-                return false;
+            // Don't check scr top now
+            if (DS.getName() !== "scr") {
+                if (DS.getCompaniesTopData() === null) return false;
+                companies_loaded = 0;
+                for (key in DS.getCompaniesTopData()) {companies_loaded++;}
+                if (companies_loaded !== DS.getCompaniesData().length)
+                    return false;
+            }
         }
         return true;
     }
@@ -18156,5 +18159,5 @@ var Identity = {};
     };
 })();
 
-vizjslib_git_revision='4ae4826a0d3d4b55a9004b5942fd21fde4fd100e';
-vizjslib_git_tag='1.0-38-g4ae4826';
+vizjslib_git_revision='ad13f8314b7001b0ea6947e5de2cb86f9fb00b97';
+vizjslib_git_tag='1.0-43-gad13f83';
