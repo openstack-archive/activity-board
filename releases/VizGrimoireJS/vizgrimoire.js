@@ -3472,7 +3472,7 @@ Text.prototype = {
 
     var div = D.create('div');
 
-    D.setStyles(div, { 'position' : 'absolute', 'top' : '-10000px' });
+    D.setStyles(div, { 'position' : 'absolute', 'top' : '-100000px' });
     D.insert(div, '<div style="'+style+'" class="'+className+' flotr-dummy-div">' + text + '</div>');
     D.insert(this.o.element, div);
 
@@ -12614,11 +12614,14 @@ var Loader = {};
             for (key in DS.getCompaniesGlobalData()) {companies_loaded++;}
             if (companies_loaded !== DS.getCompaniesData().length)
                 return false;
-            if (DS.getCompaniesTopData() === null) return false;
-            companies_loaded = 0;
-            for (key in DS.getCompaniesTopData()) {companies_loaded++;}
-            if (companies_loaded !== DS.getCompaniesData().length) 
-                return false;
+            // Don't check scr top now
+            if (DS.getName() !== "scr") {
+                if (DS.getCompaniesTopData() === null) return false;
+                companies_loaded = 0;
+                for (key in DS.getCompaniesTopData()) {companies_loaded++;}
+                if (companies_loaded !== DS.getCompaniesData().length)
+                    return false;
+            }
         }
         return true;
     }
@@ -12759,6 +12762,17 @@ var DataProcess = {};
 (function() {
     DataProcess.info = function() {};
     
+    DataProcess.paginate = function(data, page) {
+        if (page === undefined || page === 0 || isNaN(page)) return data;
+        var page_items = [];
+        var psize = Report.getPageSize();
+        var start = (page-1)*psize;
+        for (var i=start; i<psize*page; i++ ) {
+            if (data[i]) page_items.push(data[i]);
+        }
+        return page_items;
+    };
+
     DataProcess.sortCompanies = function(ds, metric_id) {
         return sortGlobal(ds, metric_id, "companies");
     };
@@ -12821,6 +12835,51 @@ var DataProcess = {};
             clean = email.split('@')[0];
         }
         return clean;
+    };
+    
+    // Clean 0s at the start and end of metrics in history
+    DataProcess.frameTime = function(history, metrics) {
+        var new_history = {};
+        var offset_start = -1;
+        var offset_end = -1;
+        var new_offset = 0;
+        if (metrics.length === 0) return history;
+        var total = history[metrics[0]].length;
+        var i = 0;
+        // Detect 0s start
+        $.each(metrics, function(id, metric) {
+            new_offset = 0;
+            for (i =  0; i < history[metric].length; i++) {
+                if (history[metric][i] === 0) new_offset++;
+                else {
+                    if (offset_start === -1) offset_start = new_offset;
+                    if (new_offset<offset_start) offset_start = new_offset;
+                    break;
+                }
+            }
+        });
+        // Detect 0s end
+        $.each(metrics, function(id, metric) {
+            new_offset = 0;
+            for (i = history[metric].length-1  ; i >=0; i--) {
+                if (history[metric][i] === 0) new_offset++;
+                else {
+                    if (offset_end === -1) offset_end = new_offset;
+                    if (new_offset<offset_end) offset_end = new_offset;
+                    break;
+                }
+            }        
+        });
+        
+        for (var key in history) {
+            new_history[key] = [];
+            for (i =  0; i < history[key].length; i++) {
+                if (i<offset_start) continue;
+                if (i>=total-offset_end) continue;
+                new_history[key].push(history[key][i]);
+            }
+        }
+        return new_history;  
     };
     
     DataProcess.filterDates = function(start_id, end_id, history) {        
@@ -12990,6 +13049,21 @@ var DataProcess = {};
         new_data.substract = substract;
         return new_data;
     };
+
+    DataProcess.divide = function(data, metric1, metric2) {
+        var new_data = {};
+        var divide = [];
+        for (var i=0; i<data[metric1].length; i++) {
+            if (data[metric1][i] === 0 || data[metric2][i] === 0)
+                divide[i] = 0;
+            else divide[i] = parseInt(data[metric1][i]/data[metric2][i],null);
+        }
+        $.each(data, function(metric, mdata) {
+            new_data[metric] = data[metric];
+        });
+        new_data.divide = divide;
+        return new_data;
+    };
 })();/* 
  * Copyright (C) 2012-2013 Bitergia
  *
@@ -13031,8 +13105,8 @@ var Report = {};
         config_file = data_dir + "/viz_cfg.json",
         markers_file = data_dir + "/markers.json",
         repos_map_file = data_dir + "/repos-map.json";
+    var page_size = 10;
 
-    // TODO: Why is it public? Markup API! useful for testing!
     // Public API
     Report.convertBasicDivs = convertBasicDivs;
     Report.convertCompanies = convertCompanies;
@@ -13052,6 +13126,8 @@ var Report = {};
     Report.getMetricDS = getMetricDS;
     Report.getGridster = getGridster;
     Report.setGridster = setGridster;
+    Report.getPageSize = function() {return page_size;};
+    Report.setPageSize = function(size) {page_size = size;};
     Report.getProjectData = getProjectData;
     Report.getProjectsData = getProjectsData;
     Report.getBasicDivs = function() {
@@ -13191,6 +13267,16 @@ var Report = {};
         });
     };
     
+    // http://stackoverflow.com/questions/901115/how-can-i-get-query-string-values
+    function getParameterByName(name) {
+        // _jshint_ does not like it
+        // name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]"); 
+        name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+        var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+            results = regex.exec(location.search);
+        return results === null ? undefined : decodeURIComponent(results[1].replace(/\+/g, " "));
+    }
+
     function getMetricDS(metric_id) {
         var ds = [];
         $.each(Report.getDataSources(), function(i, DS) {
@@ -13299,11 +13385,14 @@ var Report = {};
             Report.registerDataSource(scm);
             var scr = new SCR();
             Report.registerDataSource(scr);
+            var irc = new IRC();
+            Report.registerDataSource(irc);
         
             its.setDataDir(project);
             mls.setDataDir(project);
             scm.setDataDir(project);
             scr.setDataDir(project);
+            irc.setDataDir(project);
             scm.setITS(its);
         });
         
@@ -13331,22 +13420,192 @@ var Report = {};
                         $.each({7:'week',30:'month',365:'year'}, function(period, name) {
                             var value = ds.getGlobalData()[metric+"_"+period];
                             var value2 = ds.getGlobalData()[metric+"_"+(period*2)];
+                            var old_value = value2-value;
                             html += "<em>"+name+"</em>:"+value+"&nbsp;";
-                            var inc = parseInt((value/(value2-value))*100,null);
-                            if (value === (value2-value)) {
+                            var inc = parseInt(((value-old_value)/old_value)*100,null);
+                            if (value === old_value) {
                                 html += '';
                             }
-                            else if (value > (value2-value)) { 
+                            else if (value > old_value) {
                                 html += '<i class="icon-circle-arrow-up"></i>';
-                                html += '<small>('+inc+'%)</small>';
-                            } else {
+                                html += '<small>('+inc+'%)</small>&nbsp;';
+                            } else if (value < old_value) {
                                 html += '<i class="icon-circle-arrow-down"></i>';
-                                html += '<small>('+inc+'%)</small>';
+                                html += '<small>('+inc+'%)</small>&nbsp;';
                             }
                             
                         });
                         html += '</div>';
                         html += '<div>';
+                        $(div).append(html);
+                    });
+                }
+            }
+        },
+        "microdash2": {
+            convert: function() {
+                var divs = $(".microdash2");
+                if (divs.length > 0) {
+                    $.each(divs, function(id, div) {
+                        var metric = $(this).data('metric');
+                        var ds = getMetricDS(metric)[0];
+                        var total = ds.getGlobalData()[metric];
+                        var change7 = ds.getGlobalData()[metric+"_7"];
+                        //initial square: total
+                        var html = '<div class="row-fluid"><div class="span3">';
+                        html += '<h4>'+total+'</h4> '+ds.getMetrics()[metric].name;
+                        html += '</div><!--span3-->';
+                         
+                        //second square: arrow + % for last 7 days
+                        html += '<div class="span3">';
+                        var value = ds.getGlobalData()[metric+"_7"];
+                        var value2 = ds.getGlobalData()[metric+"_14"];
+                        var old_value = value2 - value;
+                        var inc = parseInt(((value-old_value)/old_value)*100,null);
+                        if (inc > 0) inc = '+' + inc;
+                        if (value === old_value) {
+                            html += '';
+                        }
+                        else if (value > old_value) {
+                            html += '<i class="icon-circle-arrow-up"></i>&nbsp;';
+                            html += old_value + '<span class="fppercent">&nbsp;('+inc+'%)</span>&nbsp;';
+                        } else if (value < old_value) {
+                            html += '<i class="icon-circle-arrow-down"></i>&nbsp;';
+                            html += old_value + '<span class="fppercent">&nbsp;('+inc+'%)</span>&nbsp;';
+                        }
+                        html += '<br><span class="dayschange">7 Days Change</span>';
+                        html += '</div><!--span3-->';
+
+                        //third square: arrow + % for last 30 days
+                        html += '<div class="span3">';
+                        value = ds.getGlobalData()[metric+"_30"];
+                        value2 = ds.getGlobalData()[metric+"_60"];
+                        old_value = value2 - value;
+                        inc = parseInt(((value-old_value)/old_value)*100,null);
+                        if (inc > 0) inc = '+' + inc;
+                        if (value === old_value) {
+                            html += '';
+                        }
+                        else if (value > old_value) {
+                            html += '<i class="icon-circle-arrow-up"></i>&nbsp;';
+                            html += old_value + '<span class="fppercent">&nbsp;('+inc+'%)</span>&nbsp;';
+                        } else if (value < old_value) {
+                            html += '<i class="icon-circle-arrow-down"></i>&nbsp;';
+                            html += old_value + '<span class="fppercent">&nbsp;('+inc+'%)</span>&nbsp;';
+                        }
+                        html += '<br><span class="dayschange">30 Days Change</span>';
+                        html += '</div><!--span3-->';
+                        
+                        //fourth square: arrow + % for last 365 days
+                        html += '<div class="span3">';
+                        value = ds.getGlobalData()[metric+"_365"];
+                        value2 = ds.getGlobalData()[metric+"_730"];
+                        old_value = value2 - value;
+                        inc = parseInt(((value-old_value)/old_value)*100,null);
+                        if (inc > 0) inc = '+' + inc;
+                        if (value === old_value) {
+                            html += '';
+                        }
+                        else if (value > old_value) {
+                            html += '<i class="icon-circle-arrow-up"></i>&nbsp;';
+                            html += old_value + '<span class="fppercent">&nbsp;('+inc+'%)</span>&nbsp;';
+                        } else if (value < old_value) {
+                            html += '<i class="icon-circle-arrow-down"></i>&nbsp;';
+                            html += old_value + '<span class="fppercent">&nbsp;('+inc+'%)</span>&nbsp;';
+                        }
+                        html += '<br><span class="dayschange">365 Days Change</span>';
+                        html += '</div><!--span3-->';   
+
+                        html += '</div><!--row-fluid-->';
+                        $(div).append(html);
+                    });
+                }
+            }
+        },
+        "microdash2_bis": {
+            //WARNING: TO BE REMOVED; COPIED FROM ABOVE
+            convert: function() {
+                var divs = $(".microdash2_bis");
+                if (divs.length > 0) {
+                    $.each(divs, function(id, div) {
+                        var metric = $(this).data('metric');
+                        var ds = getMetricDS(metric)[0];
+                        var total = ds.getGlobalData()[metric];
+                        var colname = ds.getMetrics()[metric].column;
+                        //var change7 = ds.getGlobalData()[metric+"_7"];
+                        //initial square: total
+                        var html = '<div class="row-fluid"><div class="span3">';
+                        html += '<h4>'+total+'</h4> '+ds.getMetrics()[metric].name;
+                        html += '</div><!--span3-->';
+                         
+                        //second square: arrow + % for last 7 days
+                        html += '<div class="span3">';
+                        var netvalue = ds.getGlobalData()["diff_net"+colname+"_7"];
+                        var percentagevalue = ds.getGlobalData()["percentage_"+colname+"_7"];
+                        if (netvalue > 0){
+                            html += '<i class="icon-circle-arrow-up"></i>&nbsp;';
+                            html += netvalue + '<span class="fppercent">&nbsp;('+percentagevalue+'%)</span>&nbsp;';
+                        } else if (netvalue < 0) {
+                            html += '<i class="icon-circle-arrow-down"></i>&nbsp;';
+                            html += netvalue + '<span class="fppercent">&nbsp;('+percentagevalue+'%)</span>&nbsp;';
+                        } else if (netvalue === 0){
+                            html += '<i class="icon-circle-arrow-right"></i>&nbsp;';
+                            html += netvalue + '<span class="fppercent">&nbsp;(0%)</span>&nbsp;';
+                        }
+
+                        /*var value = ds.getGlobalData()[metric+"_7"];
+                        var value2 = ds.getGlobalData()[metric+"_14"];
+                        var old_value = value2 - value;
+                        var inc = parseInt(((value-old_value)/old_value)*100,null);
+                        if (inc > 0) inc = '+' + inc;
+                        if (value === old_value) {
+                            html += '';
+                        }
+                        else if (value > old_value) {
+                            html += '<i class="icon-circle-arrow-up"></i>&nbsp;';
+                            html += old_value + '<span class="fppercent">&nbsp;('+inc+'%)</span>&nbsp;';
+                        } else if (value < old_value) {
+                            html += '<i class="icon-circle-arrow-down"></i>&nbsp;';
+                            html += old_value + '<span class="fppercent">&nbsp;('+inc+'%)</span>&nbsp;';
+                        }*/
+                        html += '<br><span class="dayschange">7 Days Change</span>';
+                        html += '</div><!--span3-->';
+
+                        //third square: arrow + % for last 30 days
+                        html += '<div class="span3">';
+                        netvalue = ds.getGlobalData()["diff_net"+colname+"_30"];
+                        percentagevalue = ds.getGlobalData()["percentage_"+colname+"_30"];
+                        if (netvalue > 0){
+                            html += '<i class="icon-circle-arrow-up"></i>&nbsp;';
+                            html += netvalue + '<span class="fppercent">&nbsp;('+percentagevalue+'%)</span>&nbsp;';
+                        } else if (netvalue < 0) {
+                            html += '<i class="icon-circle-arrow-down"></i>&nbsp;';
+                            html += netvalue + '<span class="fppercent">&nbsp;('+percentagevalue+'%)</span>&nbsp;';
+                        } else if (netvalue === 0){
+                            html += '<i class="icon-circle-arrow-right"></i>&nbsp;';
+                            html += netvalue + '<span class="fppercent">&nbsp;(0%)</span>&nbsp;';
+                        }
+                        html += '<br><span class="dayschange">30 Days Change</span>';
+                        html += '</div><!--span3-->';
+                        
+                        //fourth square: arrow + % for last 365 days
+                        html += '<div class="span3">';
+                        netvalue = ds.getGlobalData()["diff_net"+colname+"_365"];
+                        percentagevalue = ds.getGlobalData()["percentage_"+colname+"_365"];
+                        if (netvalue > 0){
+                            html += '<i class="icon-circle-arrow-up"></i>&nbsp;';
+                            html += netvalue + '<span class="fppercent">&nbsp;('+percentagevalue+'%)</span>&nbsp;';
+                        } else if (netvalue < 0) {
+                            html += '<i class="icon-circle-arrow-down"></i>&nbsp;';
+                            html += netvalue + '<span class="fppercent">&nbsp;('+percentagevalue+'%)</span>&nbsp;';
+                        } else if (netvalue === 0){
+                            html += '<i class="icon-circle-arrow-right"></i>&nbsp;';
+                            html += netvalue + '<span class="fppercent">&nbsp;(0%)</span>&nbsp;';
+                        }
+                        html += '<br><span class="dayschange">365 Days Change</span>';
+                        html += '</div><!--span3-->';   
+
+                        html += '</div><!--row-fluid-->';
                         $(div).append(html);
                     });
                 }
@@ -13519,12 +13778,7 @@ var Report = {};
             DS.displayCompaniesLinks(div_companies_links, limit, order_by);
         }
         
-        var company = null;
-        var querystr = window.location.search.substr(1);
-        if (querystr  &&
-                querystr.split("&")[0].split("=")[0] === "company")
-            company = querystr.split("&")[0].split("=")[1];
-        company = decodeURIComponent(company);
+        var company = getParameterByName("company");
 
         $.each(Report.getDataSources(), function(index, DS) {            
             var divid = DS.getName()+"-companies-summary";
@@ -13598,9 +13852,12 @@ var Report = {};
                 $.each(divs, function(id, div) {
                     var metrics = $(this).data('metrics');
                     var sort_metric = $(this).data('order-by');
+                    var show_links = true; 
+                    if ($(this).data('show_links') !== undefined) 
+                        show_links = $(this).data('show_links');
                     div.id = metrics.replace(/,/g,"-")+"-flotr2-companies-list";
                     DS.displayCompaniesList(metrics.split(","),div.id,
-                            config_metric, sort_metric);
+                            config_metric, sort_metric, show_links);
                 });
             }
 
@@ -13625,11 +13882,7 @@ var Report = {};
         config_metric.show_title = false;
         config_metric.show_labels = true;
         
-        var country = null;
-        var querystr = window.location.search.substr(1);
-        if (querystr  &&
-                querystr.split("&")[0].split("=")[0] === "country")
-            country = decodeURIComponent(querystr.split("&")[0].split("=")[1]);
+        var country = getParameterByName("country");
 
         $.each(Report.getDataSources(), function(index, DS) {
             var divid = DS.getName()+"-countries-summary";
@@ -13664,9 +13917,12 @@ var Report = {};
                 $.each(divs, function(id, div) {
                     var metrics = $(this).data('metrics');
                     var order_by = $(this).data('order-by');
+                    var show_links = true; 
+                    if ($(this).data('show_links') !== undefined) 
+                        show_links = $(this).data('show_links');
                     div.id = metrics.replace(/,/g,"-")+"-flotr2-countries-list";
                     DS.displayCountriesList(metrics.split(","),div.id, 
-                            config_metric, order_by);
+                            config_metric, order_by, show_links);
                 });
             }
             
@@ -13691,19 +13947,16 @@ var Report = {};
             }            
         });        
     }
-    
+        
     function convertRepos() {
         var config_metric = {};                
         config_metric.show_desc = false;
         config_metric.show_title = false;
         config_metric.show_labels = true;
         
-        var repo = null, repo_valid = null;
-        var querystr = window.location.search.substr(1);
-        if (querystr  &&
-                querystr.split("&")[0].split("=")[0] === "repository") {
-            repo = decodeURIComponent(querystr.split("&")[0].split("=")[1]);
-        }
+        var repo_valid = null;
+        var repo = getParameterByName("repository");
+        var page = getParameterByName("page");
         
         $.each(Report.getDataSources(), function(index, DS) {            
             var divid = DS.getName()+"-repos-summary";
@@ -13729,7 +13982,7 @@ var Report = {};
             if ($("#"+div_nav).length > 0) {
                 var order_by = $("#"+div_nav).data('order-by');
                 var scm_and_its = $("#"+div_nav).data('scm-and-its');
-                DS.displayReposNav(div_nav, order_by, scm_and_its);
+                DS.displayReposNav(div_nav, order_by, page, scm_and_its);
             }            
             
             var divs_repos_list = DS.getName()+"-flotr2-repos-list";
@@ -13739,9 +13992,12 @@ var Report = {};
                     var metrics = $(this).data('metrics');
                     var order_by = $(this).data('order-by');
                     var scm_and_its = $(this).data('scm-and-its');
+                    var show_links = true; 
+                    if ($(this).data('show_links') !== undefined) 
+                        show_links = $(this).data('show_links');
                     div.id = metrics.replace(/,/g,"-")+"-flotr2-repos-list";
                     DS.displayReposList(metrics.split(","),div.id, 
-                            config_metric, order_by, scm_and_its);
+                            config_metric, order_by, page, scm_and_its, show_links);
                 });
             }
             
@@ -13758,9 +14014,13 @@ var Report = {};
                 divs = $("."+div_repo);
                 if (divs.length) {
                     $.each(divs, function(id, div) {
-                        var metrics = $(this).data('metrics');
+                        var metrics = $(this).data('metrics');                        
                         config.show_legend = false;
-                        if ($(this).data('legend')) config_metric.show_legend = true;
+                        config.frame_time = false;
+                        if ($(this).data('legend')) 
+                            config_metric.show_legend = true;
+                        if ($(this).data('frame-time')) 
+                            config_metric.frame_time = true;
                         div.id = metrics.replace(/,/g,"-")+"-flotr2-metrics-repo";
                         DS.displayBasicMetricsRepo(repo_valid, metrics.split(","),
                                 div.id, config_metric);
@@ -13880,6 +14140,8 @@ var Report = {};
                     config_metric.show_legend = false;
                     if ($(this).data('legend'))
                         config_metric.show_legend = true;
+                    if ($(this).data('frame-time'))
+                        config_metric.frame_time = true;
                     div.id = metrics.replace(/,/g,"-")+"-flotr2-metrics-"+this.id;
                     DS.displayBasicMetrics(metrics.split(","),div.id,
                             config_metric, $(this).data('convert'));
@@ -13895,7 +14157,7 @@ var Report = {};
                     config_metric.show_legend = false;
                     config_metric.show_labels = false;
                     config_metric.show_grid = false;
-                    config_metric.show_mouse = false;
+                    // config_metric.show_mouse = false;
                     config_metric.help = false;
                     div.id = metrics.replace(/,/g,"-")+"-flotr2-metrics-"+this.id;
                     DS.displayBasicMetrics(metrics.split(","),div.id,
@@ -13988,8 +14250,11 @@ var Report = {};
                 var div_id_top = DS.getName()+"-top-"+chart;
                 if ($("#"+div_id_top).length > 0) {
                     if ($("#"+div_id_top).data('show_all')) show_all = true;
+                    var people_links = $("#"+div_id_top).data('people_links');
                     var show_metric = $("#"+div_id_top).data('metric');
-                    DS.displayTop(div_id_top, show_all, show_metric, chart);
+                    var limit = $("#"+div_id_top).data('limit');
+                    DS.displayTop(div_id_top, show_all, show_metric, 
+                            chart, limit, people_links);
                 }
                 div_id_top = DS.getName()+"-top-basic-"+chart;
                 if ($("#"+div_id_top).length > 0) {
@@ -14103,6 +14368,19 @@ var Report = {};
         });
     }
     
+    function convertGlobalNumbers(){
+        $.each(Report.getDataSources(), function(index, DS) {
+           var data = DS.getGlobalData();
+           var divs = $(".global-data");
+           if (divs.length > 0) {
+               $.each(divs, function(id, div) {
+                   var key = $(this).data('field');
+                   $(this).text(data[key]);
+                });
+             }
+       });
+    }
+    
     function configDataSources() {
         var prjs_dss = Report.getProjectsDataSources();
         $.each(Report.getDataSources(), function (index, ds) {
@@ -14149,6 +14427,7 @@ var Report = {};
         convertSummary();
         convertActivity();
         convertPeople(); // using on demand file loading
+        convertGlobalNumbers(); // from Liferay
     }
     
     function convertStudies() {
@@ -14169,11 +14448,21 @@ var Report = {};
 Loader.data_ready_global(function() {
     Report.convertGlobal();    
 });
-    
+
 Loader.data_ready(function() {
     Report.convertStudies();
     $("body").css("cursor", "auto");
-    $('.help').popover();
+    // Popover helps systema
+    $('.help').popover({
+        html: true,
+        trigger: 'manual'
+    }).click(function(e) {
+        $(this).popover('toggle');
+        e.stopPropagation();
+    });
+    $('html').click(function(e) {
+        $('.help').popover('hide');
+    });
 });
 
 $(document).ready(function() {
@@ -14190,7 +14479,7 @@ $(document).ready(function() {
 function resizedw(){
     /* Report.convertGlobal();
     Report.convertStudies(); */
-    location.reload();
+    // location.reload();
 }
 var resized;
 $(window).resize(function () {
@@ -14593,14 +14882,22 @@ function DataSource(name, basic_metrics) {
                 div_target, config, limit);
     };
     
+    // Includes repos mapping for actionable dashboard comparison
     this.displayBasicMetricMyRepos = function(repos, metric_id,
             div_target, config, start, end) {
         var repos_data = {};
+        var reposMap = Report.getReposMap();
         var self = this;
         $.each(repos, function(i,name) {
             var metrics = self.getReposMetricsData()[name];
             if (!metrics) {
-                name = Report.getReposMap()[name];
+                if (reposMap[name] instanceof Object) {
+                    // New format: name: {scm:name, its:name ...}
+                    name = reposMap[name][self.getName()];
+                } else {
+                    //  Old format: scm:its
+                    name = reposMap[name];
+                }
                 metrics = self.getReposMetricsData()[name];
             }
             repos_data[name] = metrics;
@@ -14720,7 +15017,10 @@ function DataSource(name, basic_metrics) {
                 metric_ids = ['substract'];
                 data = DataProcess.aggregate(data, metric_ids);
             }
-
+            if (convert === "divide") {
+                data = DataProcess.divide(data, metric_ids[0], metric_ids[1]);
+                metric_ids = ['divide'];
+            }
         }
         Viz.displayBasicMetricsHTML(metric_ids, data, div_target, config);
     };
@@ -14777,15 +15077,25 @@ function DataSource(name, basic_metrics) {
         $("#"+div_nav).append(nav);
     };
     
-    this.displayReposNav = function (div_nav, sort_metric, scm_and_its) {
-        var nav = "<span id='nav'></span>";
+    this.displayReposNav = function (div_nav, sort_metric, page_str, scm_and_its) {
+        var page = parseInt(page_str, null);
+        if (isNaN(page)) page = 1;
+        var nav = '<h4 style="font-weight: bold;display:inline;">List of repositories</h4> (';
+        if (page) {
+            nav += (page-1)*Report.getPageSize()+1 + "<>";
+            nav += (page*Report.getPageSize()) + ")<br>";
+        }
+        nav += "<span id='nav'></span>";
         var sorted_repos = DataProcess.sortRepos(this, sort_metric);
+        sorted_repos_pag = DataProcess.paginate(sorted_repos, page);
         var self = this;
-        $.each(sorted_repos, function(id, repo) {
+        if (page && page>1)
+            nav += "<a href='?page="+(page-1)+"'>&lt;</a> ";
+        $.each(sorted_repos_pag, function(id, repo) {
             if (scm_and_its && (!(Report.getReposMap()[repo]))) return;
             nav += "<a href='#" + repo + "-nav'>";
             var label = repo;
-            if (repo.lastIndexOf("http") === 0) {
+            if (repo.lastIndexOf("http") === 0 || repo.split("_").length > 3) {
                 var aux = repo.split("_");
                 label = aux.pop();
                 if (label === '') label = aux.pop();
@@ -14799,33 +15109,40 @@ function DataSource(name, basic_metrics) {
             nav += label;
             nav += "</a> ";
         });
+        if (page && page*Report.getPageSize()<sorted_repos.length)
+            nav += " <a href='?page="+(parseInt(page,null)+1)+"'>&gt;</a>";
         $("#" + div_nav).append(nav);
     };
 
 
     this.displayCompaniesList = function (metrics,div_id, 
-            config_metric, sort_metric) {
+            config_metric, sort_metric, show_links) {
         this.displaySubReportList("companies",metrics,div_id, 
-                config_metric, sort_metric);
+                config_metric, sort_metric, undefined, undefined, show_links);
     };
     
     this.displayReposList = function (metrics,div_id, 
-            config_metric, sort_metric, scm_and_its) {
+            config_metric, sort_metric, page, scm_and_its, show_links) {
         this.displaySubReportList("repos",metrics,div_id, 
-                config_metric, sort_metric, scm_and_its);
+                config_metric, sort_metric, page, scm_and_its, show_links);
     };
     
     this.displayCountriesList = function (metrics,div_id, 
-            config_metric, sort_metric) {
+            config_metric, sort_metric, show_links) {
         this.displaySubReportList("countries",metrics,div_id, 
-                config_metric, sort_metric);
+                config_metric, sort_metric, undefined, undefined, show_links);
     };
     
     this.displaySubReportList = function (report, metrics,div_id, 
-            config_metric, sort_metric, scm_and_its) {
+            config_metric, sort_metric, page_str, scm_and_its, show_links) {
+
+        var page = parseInt(page_str, null);
+        if (isNaN(page)) page = 1;
+
         var list = "";
         var ds = this;
         var data = null, sorted = null;
+        if (show_links === undefined) show_links = true;
         if (report === "companies") {
             data = this.getCompaniesMetricsData();
             sorted = DataProcess.sortCompanies(this, sort_metric);
@@ -14833,6 +15150,7 @@ function DataSource(name, basic_metrics) {
         else if (report === "repos") {
             data = this.getReposMetricsData();
             sorted = DataProcess.sortRepos(this, sort_metric);
+            sorted = DataProcess.paginate(sorted, page);
         }
         else if (report === "countries") {
             data = this.getCountriesMetricsData();
@@ -14848,32 +15166,34 @@ function DataSource(name, basic_metrics) {
             list += "<div class='subreport-list' id='"+item+"-nav'>";
             list += "<div style='float:left;'>";
             var addURL = Report.addDataDir();
-            if (report === "companies") { 
-                list += "<a href='company.html?company="+item;
-                if (addURL) list += "&"+addURL;
-                list += "'>";
-            }
-            else if (report === "repos") {
-                list += "<a href='";
-                // Show together SCM and ITS
-                if ((ds.getName() === "scm" || ds.getName() === "its")
-                        && (Report.getReposMap().length === undefined));
-                else
-                    list += ds.getName() + "-";
-                list += "repository.html";
-                list += "?repository=" + encodeURIComponent(item);
-                if (addURL) list += "&"+addURL;
-                list += "'>";
-            }
-            else if (report === "countries") {
-                list += "<a href='"+ds.getName();
-                list += "-country.html?country="+item;
-                if (addURL) list += "&"+addURL;
-                list += "'>";
+            if (show_links) {
+                if (report === "companies") { 
+                    list += "<a href='company.html?company="+item;
+                    if (addURL) list += "&"+addURL;
+                    list += "'>";
+                }
+                else if (report === "repos") {
+                    list += "<a href='";
+                    // Show together SCM and ITS
+                    if ((ds.getName() === "scm" || ds.getName() === "its")
+                            && (Report.getReposMap().length === undefined));
+                    else
+                        list += ds.getName() + "-";
+                    list += "repository.html";
+                    list += "?repository=" + encodeURIComponent(item);
+                    if (addURL) list += "&"+addURL;
+                    list += "'>";
+                }
+                else if (report === "countries") {
+                    list += "<a href='"+ds.getName();
+                    list += "-country.html?country="+item;
+                    if (addURL) list += "&"+addURL;
+                    list += "'>";
+                }
             }
             list += "<strong>";
             var label = item;
-            if (item.lastIndexOf("http") === 0) {
+            if (item.lastIndexOf("http") === 0 || item.split("_").length > 3) {
                 var aux = item.split("_");
                 label = aux.pop();
                 if (label === '') label = aux.pop();
@@ -14885,7 +15205,8 @@ function DataSource(name, basic_metrics) {
             else if (item.lastIndexOf("<") === 0)
                 label = MLS.displayMLSListName(item);
             list += label;
-            list += "</strong> +info</a>";
+            list += "</strong>";
+            if (show_links) list += "+info</a>";
             list += "<br><a href='#nav'>^</a>";
             list += "</div>";
             $.each(metrics, function(id, metric) {
@@ -14912,7 +15233,9 @@ function DataSource(name, basic_metrics) {
                 var div_id = item+"-"+metric;
                 var items = {};
                 items[item] = item_data;
-                var title = ds.getMetrics()[metric].name;
+                var title = metric;
+                if (ds.getMetrics()[metric])
+                    title = ds.getMetrics()[metric].name;
                 Viz.displayMetricSubReportLines(div_id, metric, items, title);
             });
         });
@@ -14941,9 +15264,12 @@ function DataSource(name, basic_metrics) {
         $.getJSON(this.getDataDir()+"/"+json_file, null, function(history) {
             html = "<h4>"+upeople_identifier+"</h4>";
             html += "Start: "+history.first_date+" End: "+ history.last_date;
+            html += "<br>";
             if (ds.getName() == "scm") html += " Commits:" + history.commits;
             else if (ds.getName() == "its") html += " Closed:" + history.closed;
             else if (ds.getName() == "mls") html += " Sent:" + history.sent;
+            else if (ds.getName() == "irc") html += " Sent:" + history.sent;
+            else if (ds.getName() == "scr") html += " Closed:" + history.closed;
             $("#"+divid).append(html);
         });
     };
@@ -14995,10 +15321,10 @@ function DataSource(name, basic_metrics) {
         Viz.displayTimeToFix(div_id, this.getTimeToFixData(), column, labels, title);
     };
     
-    this.displayTop = function(div, all, show_metric, graph, limit) {
+    this.displayTop = function(div, all, show_metric, graph, limit, people_links) {
         if (all === undefined) all = true;
         var titles = null;
-        Viz.displayTop(div, this, all, show_metric, graph, titles, limit);
+        Viz.displayTop(div, this, all, show_metric, graph, titles, limit, people_links);
     };
     
     this.displayTopBasic = function(div, action, doer, graph) {
@@ -15043,7 +15369,7 @@ function DataSource(name, basic_metrics) {
     };    
 }
 /* 
- * Copyright (C) 2012 Bitergia
+ * Copyright (C) 2012-2013 Bitergia
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -15077,6 +15403,7 @@ var Viz = {};
     Viz.displayTopCompany = displayTopCompany;
     Viz.displayTopGlobal = displayTopGlobal;
     Viz.displayBasicHTML = displayBasicHTML;
+    Viz.displayBasicChart = displayBasicChart;
     Viz.displayBasicMetricHTML = displayBasicMetricHTML;
     Viz.displayBasicMetricCompaniesHTML = displayBasicMetricCompaniesHTML;
     Viz.displayBasicMetricSubReportStatic = displayBasicMetricSubReportStatic;
@@ -15117,6 +15444,20 @@ var Viz = {};
         return doer;
     }
 
+    function filterLabel(item) {
+        var label = item;
+        if (item.lastIndexOf("http") === 0 || item.split("_").length > 3) {
+            var aux = item.split("_");
+            label = aux.pop();
+            if (label === '') label = aux.pop();
+            // item = item.substr(item.lastIndexOf("_") + 1);
+            label = label.replace('buglist.cgi?product=','');
+        }
+        else if (item.lastIndexOf("<") === 0)
+            label = MLS.displayMLSListName(item);
+        return label;
+    }
+
     function drawMetric(metric_id, divid) {
         var config_metric = {};
         config_metric.show_desc = false;
@@ -15138,9 +15479,10 @@ var Viz = {};
         });
     }
 
-    function displayTopMetricTable(history, metric_id, doer, limit) {
+    function displayTopMetricTable(history, metric_id, doer, limit, people_links) {
         var table = "<table><tbody>";
         table += "<tr><th></th><th>" + metric_id + "</th></tr>";
+        if (people_links === undefined) people_links = true;
         if (history[metric_id] === undefined) return;
         if (!(history[metric_id] instanceof Array)) {
             history[metric_id] = [history[metric_id]];
@@ -15152,10 +15494,10 @@ var Viz = {};
             var doer_id = null;
             if (history.id) doer_id = history.id[i];
             table += "<tr><td>";
-            if (doer_id)
+            if (doer_id && people_links)
                 table += "<a href='people.html?id="+doer_id+"&name="+doer_value+"'>";
             table += DataProcess.hideEmail(doer_value);
-            if (doer_id) table += "</a>";
+            if (doer_id && people_links) table += "</a>";
             table += "</td><td>";
             table += metric_value + "</td></tr>";
             if (limit && limit <= i) break;
@@ -15166,13 +15508,17 @@ var Viz = {};
     }
 
     function displayTopMetric
-        (div_id, project, metric, metric_period, history, graph, titles, limit) {
+        (div_id, project, metric, metric_period, history, graph, titles, limit, people_links) {
 
-        if (!history) return;
+        if (!history) return;  
         var metric_id = metric.action;
+        if (limit && history[metric_id].length<limit) { 
+            limit = history[metric_id].length;
+            graph = false; // Not enough height next to the item list
+        }
         var doer = metric.column;
         if (doer === undefined) doer = findMetricDoer(history, metric_id);
-        var table = displayTopMetricTable(history, metric_id, doer, limit);
+        var table = displayTopMetricTable(history, metric_id, doer, limit, people_links);
         // var doer = findMetricDoer(history, metric_id);
         var div = null;
 
@@ -15202,9 +15548,19 @@ var Viz = {};
 
         div = $("#" + div_id);
         div.append(new_div);
-        if (graph)
-            displayBasicChart(div_graph, history[doer], history[metric_id],
-                    graph);
+        if (graph) {
+            var labels = history[doer];
+            var data = history[metric_id];
+            if (limit) {
+                labels = [];
+                data = [];
+                for (var i=0; i<limit;i++) {
+                    labels.push(history[doer][i]);
+                    data.push(history[metric_id][i]);
+                }
+            }
+            displayBasicChart(div_graph, labels, data, graph);
+        }
     }
 
     function displayBasicLinesFile(div_id, json_file, column, labels, title, projects) {
@@ -15303,7 +15659,7 @@ var Viz = {};
         var content = "";
         var addContent = function (id, value) {
             if (metrics[i] === id) {
-                content += id +":"+ value.desc + "<br>";
+                content += "<strong>"+value.name +"</strong>: "+ value.desc + "<br>";
                 return false;
             }            
         };
@@ -15320,6 +15676,7 @@ var Viz = {};
         var lines_data = [];
         $.each(metrics, function(id, metric) {
             if (!history[metric]) return;
+            if (config.frame_time) history = DataProcess.frameTime(history, metrics);
             var mdata = [[],[]];
             $.each(history[metric], function (i, value) {
                 mdata[i] = [history.id[i], history[metric][i]];
@@ -15348,6 +15705,8 @@ var Viz = {};
             for (var i=0; i<data.id.length; i++ ) {
                 cdata[i] = [data.id[i], data[metric][i]];
             }
+
+            item = filterLabel(item);
             lines_data.push({label:item, data:cdata});
             history = data;
         });
@@ -15438,18 +15797,21 @@ var Viz = {};
             legend_div = $('#'+config_metric.legend.container);
         var chart_data = [], i;
 
+        var label = '';
         if (!horizontal) {
-            for (i = 0; i < labels.length; i++) {
+            for (i = 0; i < data.length; i++) {
+                if (labels) label = DataProcess.hideEmail(labels[i]);
                 chart_data.push({
                     data : [ [ i, data[i] ] ],
-                    label : DataProcess.hideEmail(labels[i])
+                    label : label
                 });
             }
         } else {
-            for (i = 0; i < labels.length; i++) {
+            for (i = 0; i < data.length; i++) {
+                if (labels) label = DataProcess.hideEmail(labels[i]);
                 chart_data.push({
                     data : [ [ data[i], i ] ],
-                    label : DataProcess.hideEmail(labels[i])
+                    label : label
                 });
             }
         }
@@ -15475,10 +15837,11 @@ var Viz = {};
                 track : true,
                 trackFormatter : function(o) {
                     var i = 'x';
-                    if (horizontal)
-                        i = 'y';
-                    return DataProcess.hideEmail(labels[parseInt(o[i], 10)]) + ": "
-                            + data[parseInt(o[i], 10)];
+                    if (horizontal) i = 'y';
+                    var label = '';
+                    if (labels)
+                        label = DataProcess.hideEmail(labels[parseInt(o[i], 10)]) + ": ";
+                    return label + data[parseInt(o[i], 10)];
                 }
             },
             legend : {
@@ -15516,9 +15879,10 @@ var Viz = {};
             config.yaxis = {
                 showLabels : true, min:0
             };
-//            config.xaxis = {
-//                    showLabels : true, min:0
-//            };
+            if (config_metric && config_metric.xaxis)
+                config.xaxis = {
+                        showLabels : config_metric.xaxis, min:0
+                };
         }
         if (graph === "pie") {
             config.pie = {show : true};
@@ -15625,8 +15989,7 @@ var Viz = {};
 
     function displayDemographicsChart(divid, ds, data, period_year) {
         if (!data) return;
-        
-        if (!period_year) period = 365/4;
+        if (!period_year) period_year = 0.25;
         else period = 365*period_year;
 
         // var data = ds.getDemographicsData();
@@ -15643,7 +16006,8 @@ var Viz = {};
         }
 
         for (i = 0; i < period_data.length; i++) {
-            labels[i] = "" + parseInt(i, 10);
+            var label_months = "" + parseInt(i * (period/30), 10) +" months";
+            labels[i] = label_months;
         }
 
         if (data)
@@ -15762,7 +16126,8 @@ var Viz = {};
             if ($.inArray(name, metrics) === -1) return;
             new_history[name] = [];
             for (var i=0; i<data.length; i++) {
-                new_history[name].push((parseInt(data[i],null)/24).toFixed(2));
+                var hours = parseFloat((parseInt(data[i],null)/24).toFixed(2),null);
+                new_history[name].push(hours);
             }            
         });
         //  We need and id column
@@ -15779,7 +16144,7 @@ var Viz = {};
     // For example: "committers.all":{"commits":[5310, ...],"name":["Brion
     // Vibber",..]}
     // TODO: Data load should be done in Loader
-    function displayTop(div, ds, all, show_metric, graph, titles, limit) {
+    function displayTop(div, ds, all, show_metric, graph, titles, limit, people_links) {
         var top_file = ds.getTopDataFile();
         var basic_metrics = ds.getMetrics();
         var project = ds.getProject();
@@ -15797,7 +16162,7 @@ var Viz = {};
                     var metric = basic_metrics[id];
                     if (metric.column == top_metric) {
                         displayTopMetric(div, project, metric, 
-                                top_period, history[key], graph, titles, limit);
+                                top_period, history[key], graph, titles, limit, people_links);
                         if (!all) return false;
                         break;
                     }
@@ -16195,17 +16560,7 @@ var Viz = {};
         if (config.graph) graph = config.graph;
 
         $.each(data, function(item, data) {
-            // TODO: find a generic way to filter labels
-            var label = item;
-            if (item.lastIndexOf("http") === 0) {
-                var aux = item.split("_");
-                label = aux.pop();
-                if (label === '') label = aux.pop();
-                // item = item.substr(item.lastIndexOf("_") + 1);
-                label = label.replace('buglist.cgi?product=','');
-            }
-            else if (item.lastIndexOf("<") === 0)
-                label = MLS.displayMLSListName(item);
+            var label = filterLabel(item);
             labels.push(label);
             metric_data.push(data[metric]);
         });
@@ -16351,6 +16706,136 @@ var Viz = {};
     }
 })();
 /* 
+ * Copyright (C) 2013 Bitergia
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+ *
+ * This file is a part of the VizGrimoireJS package
+ *
+ * Authors:
+ *   Alvaro del Castillo San Felix <acs@bitergia.com>
+ */
+
+function IRC() {
+    
+    var self = this;
+    
+    this.basic_metrics = {
+        'irc_sent' : {
+            'divid' : "irc_sent",
+            'column' : "sent",
+            'name' : "Sent",
+            'desc' : "Messages sent"
+        },
+        'irc_senders' : {
+            'divid' : "irc_senders",
+            'column' : "senders",
+            'name' : "Senders",
+            'desc' : "Messages senders",
+            'action' : 'sent'
+        }
+    };
+        
+    this.getMainMetric = function() {
+        return "irc_sent";
+    };
+    
+    // TODO: Move to generic DataSource?
+    this.displaySummary = function(report, divid, item, ds) {
+        if (!item) item = "";
+        var label = item;
+        if (item.lastIndexOf("http") === 0) {
+            var aux = item.split("_");
+            label = aux.pop();
+            if (label === '') label = aux.pop();
+        }
+        var html = "<h4>" + label + "</h4>";
+        var global_data = null;
+        if (report === "companies")
+            global_data = ds.getCompaniesGlobalData()[item];
+        if (report === "countries")
+            global_data = ds.getCountriesGlobalData()[item];
+        else if (report === "repositories")
+            global_data = ds.getReposGlobalData()[item];
+        else global_data = ds.getGlobalData();        
+        if (!global_data) return;
+
+        var id_label = {
+                first_date : "Start",
+                last_date : "End"
+        };
+
+        var self = this;
+        $.each(global_data,function(id,value) {
+            if (self.getMetrics()[id])
+                html += self.getMetrics()[id].name + ": " + value + "<br>";
+            else if (id_label[id]) 
+                html += id_label[id] + ": " + value + "<br>";
+            else
+                if (report) html += id + ": " + value + "<br>";
+        });
+        $("#"+divid).append(html);
+    };
+
+
+    this.displayData = function(divid) {
+        var div_id = "#" + divid;
+
+        var str = this.global_data.url;
+        if (!str || str.length === 0) {
+            $(div_id + ' .irc_info').hide();
+            return;
+        }
+        
+        var url = '';
+        if (this.global_data.repositories === 1) {
+            url = this.global_data.url;
+        } else {
+            url = Report.getProjectData().mls_url;
+        }
+
+        if (this.global_data.type)
+            $(div_id + ' #irc_type').text(this.global_data.type);
+        if (this.global_data.url && this.global_data.url !== "." && this.global_data.type !== undefined)  {
+            $(div_id + ' #irc_url').attr("href", url);
+            $(div_id + ' #irc_name').text("IRC " + this.global_data.type);
+        } else {
+            $(div_id + ' #irc_url').attr("href", Report.getProjectData().irc_url);
+            $(div_id + ' #irc_name').text(Report.getProjectData().irc_name);            
+            $(div_id + ' #irc_type').text(Report.getProjectData().irc_type);
+        }
+
+        var company = this.getCompanyQuery();
+        var data = this.getGlobalData();
+        if (company) {
+            data = this.getCompaniesGlobalData()[company];
+        }
+
+        $(div_id + ' #ircFirst').text(data.first_date);
+        $(div_id + ' #ircLast').text(data.last_date);
+        $(div_id + ' #ircSent').text(data.irc_sent);
+    };
+    
+    this.displayBubbles = function(divid, radius) {
+        if (false)    
+            Viz.displayBubbles(divid, "irc_sent", "irc_senders", radius);
+    };
+
+    this.getTitle = function() {return "IRC Messages";};    
+}
+IRC.prototype = new DataSource("irc");/* 
  * Copyright (C) 2012 Bitergia
  *
  * This program is free software; you can redistribute it and/or modify
@@ -17464,7 +17949,7 @@ function SCR() {
     this.displaySummary = function(report, divid, item, ds) {
         if (!item) item = "";
         var label = item;
-        if (item.lastIndexOf("http") === 0) {
+        if (item.lastIndexOf("http") === 0 || item.split("_").length > 3) {
             var aux = item.split("_");
             label = aux.pop();
             if (label === '') label = aux.pop();
@@ -17674,5 +18159,5 @@ var Identity = {};
     };
 })();
 
-vizjslib_git_revision='e604b542613b8e40c31b79a1bd1d48bb69198a45';
-vizjslib_git_tag='0.7-22-ge604b54';
+vizjslib_git_revision='ad13f8314b7001b0ea6947e5de2cb86f9fb00b97';
+vizjslib_git_tag='1.0-43-gad13f83';

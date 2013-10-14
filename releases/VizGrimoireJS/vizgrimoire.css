@@ -333,7 +333,7 @@ h3 {
 
 .subreport-list {height:120px;}
 
-.subreport-list-item {float:right;height:100px;width:60%;}/* Shared CSS Style in all Envision Bitergia Reports */
+.subreport-list-item {float:right;height:100px;width:40%;}/* Shared CSS Style in all Envision Bitergia Reports */
 
 .envision-component-container {
     width: 325px;
