@@ -1,57 +1,33 @@
+<div class="row-fluid">
 <div id="new_card">
-	<div class="project_info">
-        Project name: <a id="project_url" href=""><span id='project_name'></span></a>
-    </div><br>
-	<div class="scm-info">
-		Changes to source code: <a id="scm_url" href=""><span id="scm_name"></span></a>
-		<ul>
-			<li>
-				Time period: <span id="scmFirst"></span>&nbsp;<span id="scmLast"></span>
-			</li>
-			<li>
-				Commits: <span id="scmCommits"></span>
-			</li>
-			<li>
-				Authors: <span id="scmAuthors"></span>
-			</li>
-	         <li>
-                Repositories: <span id="scmRepositories"></span>
-            </li>
-			
-		</ul>
-	</div>
-	<div class="its-info">
-		<a id="its_url" href=""><span id="its_name"></span></a>
-		<ul>
-			<li>
-				Time period: <span id="itsFirst"></span>&nbsp;<span id="itsLast"></span>
-			</li>
-			<li>
-				Issues: <span id="itsTickets"></span>
-			</li>
-			<li>
-				Openers: <span id="itsOpeners"></span>
-			</li>
-			<li>
-                Repositories: <span id="itsRepositories"></span>
-            </li>
-		</ul>
-	</div>
-	<div class="mls-info">
-		Messages (<span id="mls_type"></span>): <a id="mls_url" href=""><span id="mls_name"></span></a>
-		<ul>
-			<li>
-				Time period: <span id="mlsFirst"></span>&nbsp;<span id="mlsLast"></span>
-			</li>
-			<li>
-				Total messages: <span id="mlsMessages"></span>
-			</li>
-			<li>
-				Senders: <span id="mlsSenders"></span>
-			</li>
-	         <li>
-                Mailing lists: <span id="mlsRepositories"></span>
-            </li>		
-		</ul>
-	</div>
+  
+  <div class="span3">
+    <div class="line-right">
+  <div class="project-info">
+    Project name: <a id="project_url" href=""> <span id='project_name'></span></a>
+    <br>
+  </div>
+  </div>
+  </div> <!--span3-->
+  <div class="span5">
+    <div class="line-right">
+    Time period for the different data sources:
+    <ul>
+      <li><a id="scm_url" href=""><span id="scm_name"></span></a>: <span id="scmFirst"></span>&nbsp;to&nbsp;<span id="scmLast"></span>
+      </li>
+      <li><a id="its_url" href=""><span id="its_name"></span></a>: <span id="itsFirst"></span>&nbsp;to&nbsp;<span id="itsLast"></span>
+      </li>
+      <li><a id="mls_url" href=""><span id="mls_name"></span></a>: <span id="mlsFirst"></span>&nbsp;to&nbsp;<span id="mlsLast"></span>
+      </li>
+    </ul>
+    </div>
+  </div><!--span3-->
+
+  <div class="span4">
+    <a href="data/db">MySQL database dumps</a> with the complete retrieved
+    datasets <br> <a href="data/json">JSON files</a> serving the data shown
+    in the plots <span id="blogEntry"></span>
+  </div><!--span3-->  
+
+  </div>
 </div>
