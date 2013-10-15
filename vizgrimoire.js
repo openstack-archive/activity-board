@@ -17151,7 +17151,7 @@ function MLS() {
         var global_data = null;
         if (report === "companies")
             global_data = ds.getCompaniesGlobalData()[item];
-        if (report === "countries")
+        else if (report === "countries")
             global_data = ds.getCountriesGlobalData()[item];
         else if (report === "repositories")
             global_data = ds.getReposGlobalData()[item];
