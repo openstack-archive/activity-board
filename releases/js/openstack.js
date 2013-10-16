@@ -14,6 +14,7 @@ var Openstack = {};
     }
     
     function displayCompaniesSummary(divid, ds, file, metric, config, show_others, evol) {
+        config.show_title = false;
         if (data_loaded === true && false) {
             createViz(divid, file, metric, config, show_others, evol);
         }
