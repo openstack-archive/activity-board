@@ -14243,8 +14243,9 @@ var Report = {};
                 if ($("#"+div_id_top).data('show_all')) show_all = true;
                 var top_metric = $("#"+div_id_top).data('metric');
                 var limit = $("#"+div_id_top).data('limit');
+                var people_links = $("#"+div_id_top).data('people_links');
                 var graph = null;
-                DS.displayTop(div_id_top, show_all, top_metric, graph, limit);
+                DS.displayTop(div_id_top, show_all, top_metric, graph, limit, people_links);
             }           
             $.each(['pie','bars'], function (index, chart) {
                 var div_id_top = DS.getName()+"-top-"+chart;
@@ -18159,5 +18160,5 @@ var Identity = {};
     };
 })();
 
-vizjslib_git_revision='ad13f8314b7001b0ea6947e5de2cb86f9fb00b97';
-vizjslib_git_tag='1.0-43-gad13f83';
+vizjslib_git_revision='9a08ff54d629f135c009c35366bfea7e55eb791b';
+vizjslib_git_tag='1.0-44-g9a08ff5';
