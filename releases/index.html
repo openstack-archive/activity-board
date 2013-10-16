@@ -1,116 +1,145 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <meta charset="utf-8">
-        <title>OpenStack Grizzly Release Report, by Bitergia</title>
-			<meta name="viewport" content="width=device-width, initial-scale=1.0">
-			<link rel="stylesheet" type="text/css" id="theme"
-		      href="VizGrimoireJS/vizgrimoire.css" />
-			<link href="VizGrimoireJS/bootstrap/css/bootstrap.css" rel="stylesheet">
-			<link rel="stylesheet" type="text/css" href="custom.css" />
-			<link href="VizGrimoireJS/bootstrap/css/bootstrap-responsive.css"
-	      rel="stylesheet">
-			<link rel="shortcut icon" href="favicon.png">
-  	</head>
-    
-    <body>
-    
-   	<div class="container-narrow">
-   		<div id="navbar"></div>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<title>OpenStack Grizzly Release Report, by Bitergia</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" type="text/css" id="theme"
+  href="VizGrimoireJS/vizgrimoire.css" />
+<link href="VizGrimoireJS/bootstrap/css/bootstrap.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="custom.css" />
+<link href="VizGrimoireJS/bootstrap/css/bootstrap-responsive.css"
+  rel="stylesheet">
+<link rel="shortcut icon" href="favicon.png">
+</head>
 
-	    	    
-	    <div class="row-fluid">
-	    	<div class="span2"></div>
-	    	<div class="span8 capped-box overall-summary" style="margin-bottom:0px;">   	    	   	
-			Report produced by <span id="producer"></span>. 
-			The dataset presented is based on
-			the information publicly available
-			in the development repositories of the <a id="project_url" href=""><span class='project_name'></span></a>.			
-			</div>
-			<div class="span2"></div>		
-		</div>
-		
-	    <div id="header"></div>
-       
-       <div class="row-fluid invisible-box">
-       <div class="span12"><h4>Overall View of the Changes to the Source Code (Git)</h4></div>
-       <div class="span12">
-       <div class="span3">
-            <i>Commits per company (aggregated)</i>
-				<div class="scm-flotr2-companies-static" 
-                 data-metric="scm_commits" data-limit="10" data-legend="false" style="height:270px;"></div>
-       </div>		   
-		 <div class="span9">
-        <!--<b>Commits</b>
+<body>
+
+  <div class="container-narrow">
+    <div id="navbar"></div>
+
+
+    <div class="row-fluid">
+      <div class="span2"></div>
+      <div class="span8 capped-box overall-summary" style="margin-bottom: 0px;">
+        Report produced by <span id="producer"></span>. The dataset presented is
+        based on the information publicly available in the development
+        repositories of the <a id="project_url" href=""><span
+          class='project_name'></span></a>.
+      </div>
+      <div class="span2"></div>
+    </div>
+
+    <div id="header"></div>
+
+    <div class="row-fluid invisible-box">
+      <div class="span12">
+        <h4>Overall View of the Changes to the Source Code (Git)</h4>
+      </div>
+      <div class="span12">
+        <div class="span3">
+          <i>Commits per company (aggregated)</i>
+          <div class="scm-flotr2-companies-static" data-metric="scm_commits"
+            data-limit="10" data-legend="false" style="height: 270px;"></div>
+        </div>
+        <div class="span9">
+          <!--<b>Commits</b>
         <div style="height: 200px" class="CompaniesSummary" data-evol="true"
           data-metric="scm_commits"
           data-file="scm-companies-commits-summary.json" data-stacked="true"></div> -->
           <i>Commits per company (weekly)</i>
-	         <div class="scm-flotr2-companies" 
-                  data-metric="scm_commits" data-limit="10" data-stacked="true" style="height:270px;"></div>            
-			</div>
-			</div>
-</div>			
-			       <div class="row-fluid invisible-box">
-			<div class="span12"><h4>Overall View of the Closing Ticketing Activity (Launchpad) </h4></div>
-			<div class="span12">
-						<div class="span3">
-						<i>Closed tickets per company (aggregated)</i>
-						<div class="its-flotr2-companies-static" 
-                                 data-metric="its_closed" data-limit="10" data-order-by="its_closed" data-legend="false" style="height:270px;"></div>                                 
-                   </div>
-						<div class="span9">
-						<i>Closed tickets per company (weekly)</i>
-						<div class="its-flotr2-companies" 
-                        data-metric="its_closed" data-limit="10" data-stacked="true"  style="height:270px;"></div>						
-						</div>
-			</div>
-			</div>
-					       <div class="row-fluid invisible-box">
-			<div class="span12"><h4>Overall View of the Mailing Lists Activity</h4></div>
-			<div class="span12">
-						<div class="span3">
-						<i>Sent messages per company (aggregated)</i>
-						<div class="mls-flotr2-companies-static" 
-                                 data-metric="mls_sent" data-limit="10" data-order-by="mls_sent" data-legend="false" style="height:270px;"></div>                                 
-                   </div>
-						<div class="span9">
-						<i>Sent messages per company (weekly)</i>
-						<div class="mls-flotr2-companies" 
-                        data-metric="mls_sent" data-limit="10" data-stacked="true"  style="height:270px;"></div>						
-						</div>
-			</div>
-</div>
-		   <div class="row-fluid invisible-box">
-		   <div class="span12"><h4>Top Contributors per Data Source (Source code, Tickets and Mailing Lists)</h4></div>
-         <div class="span12">
-           <div class="span2"></div>
-           <div class="span8">
-            <div id="scm-top" data-limit="10" style="float:left;margin-left:30px;margin-right:60px;"></div>
-            <div id="its-top" data-limit="10" style="float:left;margin-right:60px;"></div>
-            <div id="mls-top" data-limit="10" style="float:left;"></div>
-            </div>
-            <div class="span2"></div>    	
-      	</div></div>
-                              
-        <!--    <div id="info-column1"  style="width:180px">
+          <div class="scm-flotr2-companies" data-metric="scm_commits"
+            data-limit="10" data-stacked="true" style="height: 270px;"></div>
+        </div>
+      </div>
+    </div>
+    <div class="row-fluid invisible-box">
+      <div class="span3">
+        <div style="height: 200px" class="CompaniesSummary"
+          data-metric="scm_commits" data-evol="false"
+          data-file="scm-companies-commits-summary.json" data-show-others="true"
+          data-graph="bars" data-legend="false"></div>
+      </div>
+      <div class="span9">
+        <div style="height: 200px" class="CompaniesSummary" data-evol="true"
+          data-metric="scm_commits"
+          data-file="scm-companies-commits-summary.json" data-stacked="true"></div>
+      </div>
+
+    </div>
+    <div class="row-fluid invisible-box">
+      <div class="span12">
+        <h4>Overall View of the Closing Ticketing Activity (Launchpad)</h4>
+      </div>
+      <div class="span12">
+        <div class="span3">
+          <i>Closed tickets per company (aggregated)</i>
+          <div class="its-flotr2-companies-static" data-metric="its_closed"
+            data-limit="10" data-order-by="its_closed" data-legend="false"
+            style="height: 270px;"></div>
+        </div>
+        <div class="span9">
+          <i>Closed tickets per company (weekly)</i>
+          <div class="its-flotr2-companies" data-metric="its_closed"
+            data-limit="10" data-stacked="true" style="height: 270px;"></div>
+        </div>
+      </div>
+    </div>
+    <div class="row-fluid invisible-box">
+      <div class="span12">
+        <h4>Overall View of the Mailing Lists Activity</h4>
+      </div>
+      <div class="span12">
+        <div class="span3">
+          <i>Sent messages per company (aggregated)</i>
+          <div class="mls-flotr2-companies-static" data-metric="mls_sent"
+            data-limit="10" data-order-by="mls_sent" data-legend="false"
+            style="height: 270px;"></div>
+        </div>
+        <div class="span9">
+          <i>Sent messages per company (weekly)</i>
+          <div class="mls-flotr2-companies" data-metric="mls_sent"
+            data-limit="10" data-stacked="true" style="height: 270px;"></div>
+        </div>
+      </div>
+    </div>
+    <div class="row-fluid invisible-box">
+      <div class="span12">
+        <h4>Top Contributors per Data Source (Source code, Tickets and
+          Mailing Lists)</h4>
+      </div>
+      <div class="span12">
+        <div class="span2"></div>
+        <div class="span8">
+          <div id="scm-top" data-limit="10"
+            style="float: left; margin-left: 30px; margin-right: 60px;"></div>
+          <div id="its-top" data-limit="10"
+            style="float: left; margin-right: 60px;"></div>
+          <div id="mls-top" data-limit="10" style="float: left;"></div>
+        </div>
+        <div class="span2"></div>
+      </div>
+    </div>
+
+    <!--    <div id="info-column1"  style="width:180px">
             	<div id="navbar"></div>
             	<div id="refcard"></div>
             </div>-->
-	    <div class="row-fluid" style="margin-top:10px;margin-bottom:30px;">
-		<div class="span12">
-		    <div id="refcard"></div>
-		</div>
-	    </div>
-            
-  	    <footer>
-		<div id="footer"></div>
-	    </footer>
-
+    <div class="row-fluid" style="margin-top: 10px; margin-bottom: 30px;">
+      <div class="span12">
+        <div id="refcard"></div>
       </div>
-      <script type="text/javascript" src="VizGrimoireJS/lib/jquery-1.7.1.min.js"></script>
-		<script type="text/javascript" src="VizGrimoireJS/bootstrap/js/bootstrap.js"></script>
-		<script type="text/javascript" src="VizGrimoireJS/vizgrimoire.min.js"></script>        
-    </body>
+    </div>
+
+    <footer>
+      <div id="footer"></div>
+    </footer>
+
+  </div>
+  <script type="text/javascript" src="VizGrimoireJS/lib/jquery-1.7.1.min.js"></script>
+  <script type="text/javascript" src="VizGrimoireJS/bootstrap/js/bootstrap.js"></script>
+  <script type="text/javascript" src="VizGrimoireJS/vizgrimoire.min.js"></script>
+  <script type="text/javascript" src="js/openstack.js"></script>
+</body>
 </html>
