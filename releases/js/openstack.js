@@ -3,18 +3,18 @@ var Openstack = {};
 (function() {
     var data_loaded = false;
     
-    function createViz(divid, file, metric, config, show_others, evol) {
+    function createViz(divid, ds, file, metric, config, show_others, evol) {
         if (evol)
             Viz.displayBasicMetricCompaniesHTML(metric, 
-                    Openstack.companies.evol, divid, config);
+                    Openstack.companies.evol[ds], divid, config);
         else
             Viz.displayBasicMetricSubReportStatic(metric, 
-                    Openstack.companies.global, divid, config, 
+                    Openstack.companies.global[ds], divid, config, 
                     null, null, show_others);    
     }
     
-    function displayCompaniesSummary(divid, file, metric, config, show_others, evol) {
-        if (data_loaded === true) {
+    function displayCompaniesSummary(divid, ds, file, metric, config, show_others, evol) {
+        if (data_loaded === true && false) {
             createViz(divid, file, metric, config, show_others, evol);
         }
         var data_dir = Report.getDataDir();
@@ -24,15 +24,15 @@ var Openstack = {};
         $.getJSON(json_file, null, function(data) {
             $.each(data, function(field, values) {
                 if ($.inArray(field, marks) == -1) {
-                    Openstack.addCompanyEvol(field, metric, values);   
+                    Openstack.addCompanyEvol(ds, field, metric, values);   
                 } 
                 else {
-                    Openstack.addDatesField(field, values);
+                    Openstack.addDatesField(ds, field, values);
                 }
             });
-            Openstack.addDatesCompanies();
-            Openstack.buildCompaniesGlobal(metric);
-            createViz(divid, file, metric, config, show_others, evol);
+            Openstack.addDatesCompanies(ds);
+            Openstack.buildCompaniesGlobal(ds, metric);
+            createViz(divid, ds, file, metric, config, show_others, evol);
             data_loaded = true;
         });
     }
@@ -41,7 +41,9 @@ var Openstack = {};
         var div_summary = "CompaniesSummary";
         divs = $("."+div_summary);
         if (divs.length > 0) {
-            $.each(divs, function(id, div) {                
+            $.each(divs, function(id, div) {
+                ds = $(this).data('data-source');
+                if (ds === null) return;
                 var evol = $(this).data('evol');
                 var metric = $(this).data('metric');
                 var config = {};
@@ -58,37 +60,42 @@ var Openstack = {};
                     config.legend = {
                     container: $(this).data('legend-div')};
                 } else config.legend = {container: null};
-
-                displayCompaniesSummary(div.id, file, metric, config, show_others, evol);
+                displayCompaniesSummary(div.id, ds, file, metric, config, show_others, evol);
             });
         }
     }
     
     // Sum evolution date to compute total (global) data
-    Openstack.buildCompaniesGlobal = function(metric) {
-        $.each(Openstack.companies.evol, function(company, values) {
+    Openstack.buildCompaniesGlobal = function(ds, metric) {
+        $.each(Openstack.companies.evol[ds], function(company, values) {
             var total = 0;
             for (var i=0; i<values[metric].length; i++) {
                 total += values[metric][i];
             }
-            Openstack.companies.global[company] = {};
-            Openstack.companies.global[company][metric] = total;
+            if (!Openstack.companies.global[ds])
+                Openstack.companies.global[ds] = {};
+            Openstack.companies.global[ds][company] = {};
+            Openstack.companies.global[ds][company][metric] = total;
         });    
     };
     
-    Openstack.addDatesField = function(field, values) {
-        Openstack.dates[field] = values;   
+    Openstack.addDatesField = function(ds, field, values) {
+        if (!Openstack.dates[ds])
+            Openstack.dates[ds] = {};
+        Openstack.dates[ds][field] = values;   
     };
     
-    Openstack.addCompanyEvol = function(name, field, values) {
-        Openstack.companies.evol[name] = {};
-        Openstack.companies.evol[name][field] = values;
+    Openstack.addCompanyEvol = function(ds, name, field, values) {
+        if (!Openstack.companies.evol[ds])
+            Openstack.companies.evol[ds] = {};
+        Openstack.companies.evol[ds][name] = {};
+        Openstack.companies.evol[ds][name][field] = values;
     };
     
-    Openstack.addDatesCompanies = function() {
-        $.each(Openstack.companies.evol, function(company, values) {
-            $.each(Openstack.dates, function(mark, stamps) {
-                Openstack.companies.evol[company][mark] = stamps;
+    Openstack.addDatesCompanies = function(ds) {
+        $.each(Openstack.companies.evol[ds], function(company, values) {
+            $.each(Openstack.dates[ds], function(mark, stamps) {
+                Openstack.companies.evol[ds][company][mark] = stamps;
             });
         });
     };
