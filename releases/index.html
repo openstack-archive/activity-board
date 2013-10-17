@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<title>OpenStack Grizzly Release Report, by Bitergia</title>
+<title>OpenStack Releases Report</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" type="text/css" id="theme"
   href="VizGrimoireJS/vizgrimoire.css" />
@@ -19,17 +19,32 @@
   <div class="container-narrow">
     <div id="navbar"></div>
 
+    <div class="capped-box overall-summary ">
+                <div class="stats-switcher-viewport js-stats-switcher-viewport">
 
-    <div class="row-fluid">
-      <div class="span2"></div>
-      <div class="span8 capped-box overall-summary" style="margin-bottom: 0px;">
-        Report produced by <span id="producer"></span>. The dataset presented is
-        based on the information publicly available in the development
-        repositories of the <a id="project_url" href=""><span
-          class='project_name'></span></a>.
-      </div>
-      <div class="span2"></div>
-    </div>
+                    <ul class="numbers-summary">
+                        <li>
+                            <a href="scm.html">
+                                    <span class="global-data" data-field="scm_commits"></span></a> commits
+                        </li>
+                        <li>
+                            <a href="scm.html">
+                              <span class="global-data" data-field="scm_authors"></span></a> developers
+                        </li>
+
+                        <li>
+                            <a href="its.html">
+                               <span class="global-data" data-field="tickets"></span></a> tickets
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="mls.html">
+                              <span class="global-data" data-field="mls_sent"></span></a> mail messages
+                        </li>
+                    </ul>
+            </div></div>
+
 
     <div id="header"></div>
 
