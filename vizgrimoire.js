@@ -13868,9 +13868,10 @@ var Report = {};
                     var metric = $(this).data('metric');
                     var period = $(this).data('period');
                     var titles = $(this).data('titles');
+                    var people_links = $(this).data('people_links');
                     div.id = metric+"-"+period+"-flotr2-top-company";
                     div.className = "";
-                    DS.displayTopCompany(company,div.id,metric,period,titles);
+                    DS.displayTopCompany(company,div.id,metric,period,titles,people_links);
                 });
             }            
         });
@@ -15332,8 +15333,8 @@ function DataSource(name, basic_metrics) {
         Viz.displayTopBasic(div, this, action, doer, graph);
     };
 
-    this.displayTopCompany = function(company, div, metric, period, titles) {
-        Viz.displayTopCompany(company, div, this, metric, period, titles);
+    this.displayTopCompany = function(company, div, metric, period, titles, people_links) {
+        Viz.displayTopCompany(company, div, this, metric, period, titles, people_links);
     };
 
     this.displayTopGlobal = function(div, metric, period, titles) {
@@ -16183,14 +16184,14 @@ var Viz = {};
         });
     }
 
-    function displayTopCompany(company, div, ds, metric_id, period, titles) {
+    function displayTopCompany(company, div, ds, metric_id, period, titles, people_links) {
         var project = ds.getProject();
         var metric = ds.getMetrics()[metric_id];
         var graph = null;
         var data = ds.getCompaniesTopData()[company];
         if (data === undefined) return;
         data = ds.getCompaniesTopData()[company][period];
-        displayTopMetric(div, project, metric, period, data, graph, titles);
+        displayTopMetric(div, project, metric, period, data, graph, titles, undefined, people_links);
     }
 
     function displayTopGlobal(div, data_source, metric_id, period, titles) {
@@ -18160,5 +18161,5 @@ var Identity = {};
     };
 })();
 
-vizjslib_git_revision='9a08ff54d629f135c009c35366bfea7e55eb791b';
-vizjslib_git_tag='1.0-44-g9a08ff5';
+vizjslib_git_revision='5ba3831026a9aaf99296158764ef1eb7f03a4bf8';
+vizjslib_git_tag='1.0-45-g5ba3831';
