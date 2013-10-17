@@ -374,7 +374,7 @@ Ghe Rivero;HP;1900-01-01;2100-01-01;67
 gholt;Rackspace;1900-01-01;2100-01-01;392
 Giampaolo Lauria;IBM;1900-01-01;2100-01-01;49
 Giulio Fidente;Red Hat;1900-01-01;2100-01-01;31
-gongysh;IBM;1900-01-01;2100-01-01;127
+gongysh;UnitedStack;1900-01-01;2100-01-01;127
 Gordon Chung;IBM;1900-01-01;2100-01-01;46
 Graham Binns;Canonical;1900-01-01;2100-01-01;1
 Greg Althaus;NetApp;1900-01-01;2100-01-01;3
@@ -386,13 +386,13 @@ Guan Qiang;NetEase;2012-12-11;2100-01-01;1
 Guang Chun Wu;IBM;1900-01-01;2100-01-01;1
 guang-yee;HP;1900-01-01;2100-01-01;28
 Guangya Liu;IBM;2013-07-05;2100-01-01;1
-Guangyu Suo;Cloudbase Solutions;1900-01-01;2100-01-01;8
+Guangyu Suo;UnitedStack;1900-01-01;2100-01-01;8
 guohliu;IBM;2013-04-19;2100-01-01;14
 guoqingzhang;-Individual;1900-01-01;2100-01-01;1
 Haiwei Xu;NEC;1900-01-01;2100-01-01;9
 Haneef Ali;HP;1900-01-01;2100-01-01;2
 Hans Lindgren;KTH Institute of Tech.;1900-01-01;2100-01-01;60
-Haomai Wang;Cloudbase Solutions;1900-01-01;2100-01-01;16
+Haomai Wang;UnitedStack;1900-01-01;2100-01-01;16
 Haomeng, Wang;IBM;2013-09-03;2100-01-01;4
 Harri Hämäläinen;CSC;1900-01-01;2100-01-01;2
 Hart Hoover;Rackspace;1900-01-01;2100-01-01;1
@@ -494,13 +494,13 @@ Jesse Andrews;Nebula;2012-07-20;2100-01-01;2
 Jesse Andrews;Rackspace;1900-01-01;2012-07-20;217
 Jesse Keating;Rackspace;2013-05-06;2100-01-01;1
 Jessica Lucci;Rackspace;1900-01-01;2100-01-01;1
-Jiajun Liu;Sina;1900-01-01;2013-09-20;19
+Jiajun Liu;UnitedStack;1900-01-01;2013-09-20;19
 Jian Wen;Canonical;2012-12-01;2100-01-01;12
 Jian Wen;Sina;1900-01-01;2012-12-01;16
 Jian Zhang;Intel;1900-01-01;2100-01-01;2
 Jiang Yong;North China Univ.;1900-01-01;2100-01-01;2
-jiangwt100;Sina;1900-01-01;2013-09-12;14
-Jianing YANG;Cloudbase Solutions;1900-01-01;2100-01-01;11
+jiangwt100;UnitedStack;1900-01-01;2013-09-12;14
+Jianing YANG;UnitedStack;1900-01-01;2100-01-01;11
 jiataotj;IBM;2013-06-14;2100-01-01;3
 Jim Branen;HP;1900-01-01;2100-01-01;11
 Jim Fehlig;SUSE;1900-01-01;2100-01-01;13
@@ -621,7 +621,7 @@ Kota Tsuyuzaki;NTT;1900-01-01;2100-01-01;3
 Kravchenko Pavel;IBM;1900-01-01;2100-01-01;16
 Krishna Raman;Red Hat;1900-01-01;2100-01-01;1
 Kui Shi;Polycom;1900-01-01;2100-01-01;34
-Kun Huang;Cloudbase Solutions;1900-01-01;2100-01-01;59
+Kun Huang;UnitedStack;1900-01-01;2100-01-01;59
 Kurt Griffiths;Rackspace;2013-02-26;2100-01-01;76
 Kurt Martin;HP;1900-01-01;2100-01-01;38
 Kurt Taylor;IBM;1900-01-01;2100-01-01;14
@@ -793,7 +793,7 @@ Nikolay Sokolov;Grid Dynamics;1900-01-01;2100-01-01;23
 ning;-Individual;1900-01-01;2100-01-01;3
 Nirmal Ranganathan;Rackspace;1900-01-01;2100-01-01;40
 nithya-ganesan;HP;1900-01-01;2100-01-01;2
-niu-zglinux;Centrin;1900-01-01;2100-01-01;34
+niu-zglinux;UnitedStacUnitedStackk;1900-01-01;2100-01-01;34
 Noboru Arai;NEC;1900-01-01;2100-01-01;3
 Noorul Islam K M;-Individual;1900-01-01;2100-01-01;5
 Oleg Bondarev;Mirantis;1900-01-01;2100-01-01;42
@@ -889,7 +889,7 @@ Roman Revyakin;-Individual;1900-01-01;2100-01-01;1
 Roman Sokolkov;Mirantis;1900-01-01;2100-01-01;1
 ronak-c;Nuage & Co;1900-01-01;2100-01-01;1
 Ronen Kat;IBM;1900-01-01;2100-01-01;6
-Rongze Zhu;Cloudbase Solutions;1900-01-01;2100-01-01;4
+Rongze Zhu;UnitedStack;1900-01-01;2100-01-01;4
 Rosario Di Somma;DreamHost;1900-01-01;2100-01-01;5
 Rossella Sblendido;Midokura;2013-09-03;2100-01-01;6
 rpedde;Rackspace;1900-01-01;2100-01-01;1
@@ -969,6 +969,7 @@ Shuangtai Tian;Intel;2013-08-21;2100-01-01;6
 shuklash;Rackspace;0000-00-00;2100-01-01;1
 Shweta P;Cisco Systems;1900-01-01;2100-01-01;21
 Simo Sorce;Red Hat;1900-01-01;2100-01-01;4
+Simon Luo;UnitedStack;1900-01-01;2100-01-01;12
 Simon Pasquier;-Individual;1900-01-01;2100-01-01;12
 Sirisha Devineni;Persistent;1900-01-01;2100-01-01;10
 Sirushti Murugesan;-Individual;1900-01-01;2100-01-01;2
@@ -1140,7 +1141,7 @@ Your Name;Sina;1900-01-01;2012-12-01;43
 Yuan Zhou;Intel;1900-01-01;2100-01-01;7
 yuanke wei;Comcast;1900-01-01;2100-01-01;2
 Yufang Zhang;Qihoo 360 Tech.;1900-01-01;2100-01-01;20
-yugsuo;Sina;1900-01-01;2013-08-15;4
+yugsuo;UnitedStack;1900-01-01;2013-08-15;4
 Yuiko Takada;NEC;1900-01-01;2100-01-01;1
 Yulia Portnova;Mirantis;2013-07-12;2100-01-01;3
 Yun Mao;AT&T;1900-01-01;2100-01-01;84
@@ -1149,7 +1150,7 @@ Yunhong, Jiang;Intel;1900-01-01;2100-01-01;23
 Yuriy Taraday;Mirantis;1900-01-01;2100-01-01;106
 Yuriy Zveryanskyy;Mirantis;1900-01-01;2100-01-01;52
 Yusuke Muraoka;NTT;1900-01-01;2100-01-01;1
-yuxcer;Sina;1900-01-01;2100-01-01;1
+yuxcer;UnitedStack;1900-01-01;2100-01-01;1
 YUZAWA Takahiko;NTT;1900-01-01;2100-01-01;1
 Yuzlikeev Eduard;Mirantis;1900-01-01;2100-01-01;6
 Yves-Gwenael Bourhis;Cloudwatt;1900-01-01;2100-01-01;2
@@ -1174,6 +1175,6 @@ Zhiteng Huang;Intel;1900-01-01;2100-01-01;52
 zhiyanliu;IBM;1900-01-01;2100-01-01;36
 Zhou ShaoYu;NetEase;2013-01-29;2100-01-01;2
 Zhu Zhu;IBM;2013-09-19;2100-01-01;4
-ZhuRongze;Sina;1900-01-01;2100-01-01;51
+ZhuRongze;UnitedStack;1900-01-01;2100-01-01;51
 ziadsawalha;Rackspace;1900-01-01;2100-01-01;257
 Łukasz Jernaś;Allegro Group;1900-01-01;2100-01-01;2
