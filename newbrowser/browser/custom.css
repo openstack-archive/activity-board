@@ -126,6 +126,14 @@ body {
      margin-right: auto;
 }
 
+/* VizGrimoire 2.0 */
+
+#scm-companies-summary .FilterItemsMetricsEvol {
+    height: 275px
+}
+
+/* end VizGrimoireJS 2.0 */
+
 /* by Luis */
 
 .date {
