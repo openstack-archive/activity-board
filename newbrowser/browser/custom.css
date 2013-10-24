@@ -64,7 +64,6 @@ body {
 .mls-flotr2-countries-static,
 .mls-flotr2-companies-static,
 .mls-flotr2-repos-static,
-.its-time-to-fix,
 .mls-time-to-attention,
 .irc-flotr2-repos-static,
 .scr-flotr2-repos-static
@@ -129,7 +128,11 @@ body {
 /* VizGrimoire 2.0 */
 
 #scm-companies-summary .FilterItemsMetricsEvol {
-    height: 275px
+    height: 275px;
+}
+
+#its-time-to-fix .TimeTo {
+    height: 200px;
 }
 
 /* end VizGrimoireJS 2.0 */
