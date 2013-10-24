@@ -64,7 +64,6 @@ body {
 .mls-flotr2-countries-static,
 .mls-flotr2-companies-static,
 .mls-flotr2-repos-static,
-.mls-time-to-attention,
 .irc-flotr2-repos-static,
 .scr-flotr2-repos-static
 {
@@ -132,6 +131,10 @@ body {
 }
 
 #its-time-to-fix .TimeTo {
+    height: 200px;
+}
+
+#mls-time-to-attention .TimeTo {
     height: 200px;
 }
 
