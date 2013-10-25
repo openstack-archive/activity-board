@@ -1,88 +1,103 @@
 <!DOCTYPE html>
 
-<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta charset="utf-8">
-    <title></title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
+<html lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <meta charset="utf-8"/>
+        <title></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" type="text/css" id="theme"
+              href="VizGrimoireJS/vizgrimoire2.css"/>
+        <link href="VizGrimoireJS/bootstrap/css/bootstrap.css" rel="stylesheet"/>
+        <link rel="stylesheet" type="text/css" href="custom.css"/>
+        <link href="VizGrimoireJS/bootstrap/css/bootstrap-responsive.css"
+              rel="stylesheet"/>
+        <link rel="shortcut icon" href="favicon.png"/>
+    </head>
 
-    <link rel="stylesheet" type="text/css" id="theme" href="VizGrimoireJS/vizgrimoire.css" />
-    <link href="VizGrimoireJS/bootstrap/css/bootstrap.css" rel="stylesheet">
-    <style type="text/css">
-      body {
-        padding-top: 60px;
-        padding-bottom: 40px;
-      }
-      .sidebar-nav {
-        padding: 9px 0;
-      }
-    </style>
-    <link href="VizGrimoireJS/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="custom.css" />    
-    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
-      <script src="../assets/js/html5shiv.js"></script>
-    <![endif]-->
+    <body>
+        <div class="container-narrow">
+            <div id="Navbar"></div>
 
-    <!-- Fav and touch icons -->
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://twitter.github.io/bootstrap/assets/ico/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://twitter.github.io/bootstrap/assets/ico/apple-touch-icon-114-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://twitter.github.io/bootstrap/assets/ico/apple-touch-icon-72-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" href="http://twitter.github.io/bootstrap/assets/ico/apple-touch-icon-57-precomposed.png">
-    <link rel="shortcut icon" href="favicon.png">
-  </head>
+            <div id="info" class="row-fluid">
+              <h4>Information about demography</h4>
+            </div>
+            
+            <div class="well">
+                <div class="row-fluid">
+                    <div class="span3">
+                    <p><i><b>Aging</b> charts show the age of the contributors 
+	                   still active using the date of their first contribution
+	                   in the different data sources.
+	                   </i></p>
 
-  <body>
-    <div class="container-narrow">
-    <div id="navbar"></div>
-      <div id="info" class="row-fluid">
-        <h4>Information about demographics</h4>
-      </div><!--/row-->
-      <div class="row-fluid">
-        <div class="span6">
-            <h4>MLS AGING</h4>
-            <div id="mls-demographics-allura-aging" data-period='0.25' class="demographic-bars"  
-            data-file="data/json/mls-demographics-aging.json" ></div>
+	                <p><i>Horizontal bars represent periods of six months where the 0 bar
+	                   shows information of the last six months.</i></P>
+
+	                <p><i>Big bars on top would mean that old contributors are still active. Big
+                        bars at the bottom would mean that new contributors are being retained.</i></p>
+                    </div>
+                    <div class="span3">
+                        <h6>Source code developers</h6>
+                        <div class="Demographics" data-data-source="scm"
+                         data-period="0.25" data-file="data/json/scm-demographics-aging.json"
+                         style="width:250px;height:225px;"></div>
+                    </div>
+                    <div class="span3">
+                        <h6>Ticket participants</h6>
+                        <div class="Demographics" data-data-source="its"
+                         data-period="0.25" data-file="data/json/its-demographics-aging.json"
+                         style="width:250px;height:225px;"></div>
+                    </div>
+                    <div class="span3">
+                        <h6>Discussion participants</h6>
+                        <div class="Demographics" data-data-source="mls"
+                         data-period="0.25" data-file="data/json/mls-demographics-aging.json"
+                         style="width:250px;height:225px;"></div>
+                    </div>
+                </div>            
+            </div>
+            
+            <div class="well">
+                <div class="row-fluid">
+                    <div class="span3">
+                    <p><i><b>Birth</b> charts show the number of contributors joining
+	                   the community each six months.</i></p>
+	                <p><i>Horizontal bars represent periods of six months where the 0 bar
+	                   shows information of the last six months.</i></P>
+	                <p><i>Biggers bars on top would mean that your community attracted more
+	                    people. Bigger bars at the bottom would mean that your community is 
+	                    attracting more people lately.</i></p>
+                    </div>
+                    <div class="span3">
+                        <h6>Source code developers</h6>
+                        <div class="Demographics" data-data-source="scm"
+                         data-period="0.25" data-file="data/json/scm-demographics-birth.json"
+                         style="width:250px;height:225px;"></div>
+                         </div>
+                    <div class="span3">
+                        <h6>Ticket participants</h6>
+                        <div class="Demographics" data-data-source="its"
+                         data-period="0.25" data-file="data/json/its-demographics-birth.json"
+                         style="width:250px;height:225px;"></div>
+                         </div>
+                    <div class="span3">
+                        <h6>Discussion participants</h6>
+                        <div class="Demographics" data-data-source="mls"
+                         data-period="0.25" data-file="data/json/mls-demographics-birth.json"
+                         style="width:250px;height:225px;"></div>
+                         </div>
+                    </div>
+            </div>
+           
+
+             <footer>
+                <div id="Footer"></div>
+            </footer>
         </div>
-		<div class="span6">
-            <h4>MLS BIRTH</h4>
-            <div id="mls-demographics-allura-birth" data-period='0.25' class="demographic-bars" 
-            data-file="data/json/mls-demographics-birth.json" ></div>
-		</div>    
-      </div><!--/row-->
-      <div class="row-fluid">
-        <div class="span6">
-            <h4>ITS AGING</h4>
-            <div id="its-demographics-allura-aging" data-period='0.25' class="demographic-bars" 
-            data-file="data/json/its-demographics-aging.json" ></div>
-        </div>
-        <div class="span6">
-            <h4>ITS BIRTH</h4>
-            <div id="its-demographics-allura-birth" data-period='0.25' class="demographic-bars" 
-            data-file="data/json/its-demographics-birth.json" ></div>
-        </div>            
-      </div><!--/row-->
-      <div class="row-fluid">
-        <div class="span6">
-            <h4>SCM AGING</h4>
-            <div id="scm-demographics-allura-aging" data-period='0.25' class="demographic-bars" 
-            data-file="data/json/scm-demographics-aging.json" ></div>
-        </div>
-        <div class="span6">
-            <h4>SCM BIRTH</h4>
-            <div id="scm-demographics-allura-birth" data-period='0.25' class="demographic-bars" 
-            data-file="data/json/scm-demographics-birth.json" ></div>
-        </div>            
-      </div><!--/row-->
 
-
-      <footer>
-        <div id="footer"></div>
-      </footer>
-    </div><!--/.fluid-container-->
-
-    <script type="text/javascript" src="VizGrimoireJS/lib/jquery-1.7.1.min.js"></script>
-    <script type="text/javascript" src="VizGrimoireJS/bootstrap/js/bootstrap.js"></script>
-   <script type="text/javascript" src="VizGrimoireJS/vizgrimoire.min.js"></script>                    
-</body></html>
+        <script type="text/javascript" src="VizGrimoireJS/lib/jquery-1.7.1.min.js"></script>
+        <script type="text/javascript" src="VizGrimoireJS/bootstrap/js/bootstrap.js"></script>
+        <script type="text/javascript" src="VizGrimoireJS/vizgrimoire2.min.js"></script>
+    </body>
+</html>
