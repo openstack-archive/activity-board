@@ -1,44 +1,24 @@
 <!DOCTYPE html>
 
 <html>
-  <head>
-      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-      <meta charset="utf-8">
-      <title></title>
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="description" content="">
-      <meta name="author" content="Luis" >
-  
-      <link rel="stylesheet" type="text/css" id="theme" href="VizGrimoireJS/vizgrimoire.css" />
-      <link href="VizGrimoireJS/bootstrap/css/bootstrap.css" rel="stylesheet">
-      <style type="text/css">
-        body {
-          padding-top: 60px;
-          padding-bottom: 40px;
-        }
-        .sidebar-nav {
-          padding: 9px 0;
-        }
-      </style>
-      <link href="VizGrimoireJS/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
-      <link rel="stylesheet" type="text/css" href="custom.css" />    
-      <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-      <!--[if lt IE 9]>
-        <script src="../assets/js/html5shiv.js"></script>
-      <![endif]-->
-  
-      <!-- Fav and touch icons -->
-      <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://twitter.github.io/bootstrap/assets/ico/apple-touch-icon-144-precomposed.png">
-      <link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://twitter.github.io/bootstrap/assets/ico/apple-touch-icon-114-precomposed.png">
-      <link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://twitter.github.io/bootstrap/assets/ico/apple-touch-icon-72-precomposed.png">
-      <link rel="apple-touch-icon-precomposed" href="http://twitter.github.io/bootstrap/assets/ico/apple-touch-icon-57-precomposed.png">
-      <link rel="shortcut icon" href="favicon.png">
-  </head>
+   <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <meta charset="utf-8"/>
+        <title></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" type="text/css" id="theme"
+              href="VizGrimoireJS/vizgrimoire2.css"/>
+        <link href="VizGrimoireJS/bootstrap/css/bootstrap.css" rel="stylesheet"/>
+        <link rel="stylesheet" type="text/css" href="custom.css"/>
+        <link href="VizGrimoireJS/bootstrap/css/bootstrap-responsive.css"
+              rel="stylesheet"/>
+        <link rel="shortcut icon" href="favicon.png"/>
+    </head>
 
 
     <body>
         <div class="container-narrow">
-        <div id="navbar"></div>
+        <div id="Navbar"></div>
             <div class="row-fluid">
                 <div style="float:left">
     		      <h4>Information about main projects</h4>
@@ -48,14 +28,14 @@
              </div>
              <div class="row-fluid">
              <div class="span1"></div>             	
-                 <div class="span5">                    
-                     <div style="height:150px" 
-                          class="scm-flotr2-metrics" data-metrics="scm_repositories" data-legend="false"></div>
+                 <div class="span5">                 
+                     <div class="MetricsEvol" data-data-source="scm" data-metrics="scm_repositories"
+                                 style="height:150px;" data-legend="false" data-help="false"></div>
                      <i><b>Active Source repositories per month</b></i>                     
 				</div>
 				<div class="span5">                    
-                     <div style="height:150px;margin-left:20px" 
-                          class="its-flotr2-metrics" data-metrics="its_repositories" data-legend="false"></div>
+                     <div class="MetricsEvol" data-data-source="its" data-metrics="its_repositories"
+                                 style="height:150px;" data-legend="false" data-help="false"></div>
                      <i><b>Active Tickets repositories per month</b></i>                               
                 </div>
                 <div class="span1"></div>
@@ -162,6 +142,6 @@
         <div id="footer"></div>
         <script type="text/javascript" src="VizGrimoireJS/lib/jquery-1.7.1.min.js"></script>
         <script type="text/javascript" src="VizGrimoireJS/bootstrap/js/bootstrap.js"></script>
-        <script type="text/javascript" src="VizGrimoireJS/vizgrimoire.min.js"></script>   
+        <script type="text/javascript" src="VizGrimoireJS/vizgrimoire2.min.js"></script>   
     </body>
 </html>
