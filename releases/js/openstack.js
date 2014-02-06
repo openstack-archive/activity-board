@@ -5,12 +5,21 @@ var Openstack = {};
     
     function createViz(divid, ds, file, metric, config, show_others, evol) {
         if (evol)
-            Viz.displayBasicMetricCompaniesHTML(metric, 
-                    Openstack.companies.evol[ds], divid, config);
+            Viz.displayMetricCompanies(metric, Openstack.companies.evol[ds], divid, config, null, null);
         else
-            Viz.displayBasicMetricSubReportStatic(metric, 
-                    Openstack.companies.global[ds], divid, config, 
-                    null, null, show_others);    
+            Viz.displayMetricSubReportStatic(metric, Openstack.companies.global[ds], divid, config);    
+
+//        var div_companies_links = "companies_links";
+//        if ($("#"+div_companies_links).length > 0) {
+//            var limit = $("#"+div_companies_links).data('limit');
+//            var order_by = $("#"+div_companies_links).data('order-by');
+//            var DS = null;
+//            // scm support only
+//            $.each(data_sources, function(i, ds) {
+//                if (ds.getName() === "scm") {DS = ds; return false;}
+//            });
+//            DS.displayCompaniesLinks(div_companies_links, limit, order_by);
+//        }
     }
     
     function displayCompaniesSummary(divid, ds, file, metric, config, show_others, evol) {
