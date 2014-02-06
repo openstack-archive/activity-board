@@ -62,6 +62,32 @@
 /*.gridster .player {
   opacity:0;
 }*/
+/*
+ * NEW CSS STYLES for VizJS-lib 2.x components
+ */
+
+.MetricsEvol,
+.PersonMetrics,
+.TimeTo {
+	   height:150px;
+}
+
+.FilterItemsMetricsEvol,
+.FilterItemsGlobal,
+.FilterItemMetricsEvol
+{
+    height:200px;
+}
+
+.Bubbles,
+.Radar {
+    height:200px;
+}
+/*
+ * GENERAL CSS STYLES for VizJS-lib components
+ */
+
+
 /* Auto resize the image to fit with no scrolls */
 img {
 	max-width: 100%;
@@ -76,9 +102,7 @@ body {
 	font: normal 0.75em georgia, sans-serif;
 }
 
-/* 
-        LAYOUT: We need to simplify it 
-*/
+/* GLOBAL PAGE LAYOUT */
 
 #wrapper {
 	margin: 0% 2%;
@@ -95,58 +119,9 @@ body {
 	width: 100%;
 }
 
-.column-right {
-    width: 450px;
-    margin: 8px auto;
-    float: right;
-}
-
 .left {
     float: left;
 }
-
-.column {
-    margin-left: 8px;
-    margin-right: 8px;
-}
-
-#info-column1{
-	float: left;
-	width: 250px;
-	margin-bottom: 40px;
-	margin-right: 20px;
-}
-
-
-#info-column2{
-	float: left;
-	width: 325px;
-	margin-bottom: 40px;
-	margin-right: 20px;
-}
-
-#info-column3{
-	float: left;
-	width: 325px;
-	margin-bottom: 40px;
-	margin-right: 20px;
-}
-
-#info-column4{
-	float: left;
-	width: 325px;
-	margin-bottom: 40px;
-}
-
-
-.info-pill {
-	-moz-box-shadow: 0 0 8px hsla(0,0%,0%,.1);
-	-webkit-box-shadow: 0 0 8px hsla(0,0%,0%,.1);
-	box-shadow: 0 0 8px hsla(0,0%,0%,.1);
-	-moz-border-radius: 10px;
-	-webkit-border-radius: 10px;
-}
-
 
 #footer {
 	overflow: hidden;
@@ -155,44 +130,23 @@ body {
 	border-top: 1px dashed #000;
 }
 
-
-#companies-column1 {
-	float: left;
-	width: 250px;
-	margin-bottom: 40px;
-	margin-right: 40px;
+.container-fluid {
+    padding-left: 20px;
+    padding-right: 20px;
+    /* max-width: 1280px; */
+    margin-left: auto;
+    margin-right: auto;
 }
 
-
-#companies-column2 {
-	float: right;
-	width: 650px;
-	margin-bottom: 40px;
-	margin-right: 40px;
+.container-narrow {
+   max-width: 1280px;
+   margin-left: auto;
+   margin-right: auto;
 }
 
-#company-column1 {
-	float: left;
-	width: 150px;
-	margin-bottom: 40px;
-	margin-right: 40px;
+.bottom-padding {
+    padding: 0 0 10px 0;
 }
-
-#company-column2 {
-	float: right;
-	width: 360px;
-	margin-bottom: 40px;
-	margin-right: 40px;
-}
-
-#company-column3 {
-	float: right;
-	width: 360px;
-	margin-bottom: 40px;
-	margin-right: 40px;	
-}
-
-
 
 
 /* 
@@ -206,7 +160,7 @@ body {
 }
 
 
-/*      
+/*
         TEXT 
 */
 
@@ -218,6 +172,7 @@ h1 {
 	letter-spacing: -1px; */
 	color: #ffa500;
 }
+
 h1, h2, h3 {
 	font-weight: bold;
 	line-height: 1.2;
@@ -239,52 +194,121 @@ h3 {
 	letter-spacing: 1px;
 }
 
-/* Boxes for flotr2 */
 
-.m0-box-div {
+
+/* BOOTSTRAP */
+body {
+  padding-bottom: 40px;
+}
+.sidebar-nav {
+  padding: 9px 0;
+}
+
+.hero-unit {
+    padding: 30px;
+}
+
+.center {
+     float: none;
+     margin-left: auto;
+     margin-right: auto;
+}
+
+/*.icon-circle-arrow-up{
+   height: 28px;
+   width: 28px;
+}this does not work... this takes a bigger area in the png...*/
+.icon-circle-arrow-up{
+    background-color:#9FF781;
+}
+
+.icon-circle-arrow-down{
+    background-color:#F78181;
+}
+
+/* General viz sizes */
+
+.envision-component-container {
+    width: 400px;
+    height : 80px;
+}
+
+.envision-component-container.envision-first {
+    width: 400px;
+    height : 80px;
+}
+
+.basic-metric-html {
+    width: 150px;
+}
+
+.scm-flotr2-metrics,
+.its-flotr2-metrics,
+.mls-flotr2-metrics,
+.scr-flotr2-metrics,
+.irc-flotr2-metrics
+{
     height: 130px;
 }
 
-.m0-box {
-    width:  180px;
-    height: 100px;
-    float:  right;
-    margin-right: 5px;
-    margin-left: 5px;
+.scm-flotr2-countries-static,
+.scm-flotr2-companies-static,
+.scm-flotr2-repos-static,
+.its-flotr2-countries-static,
+.its-flotr2-companies-static,
+.its-flotr2-repos-static,
+.mls-flotr2-countries-static,
+.mls-flotr2-companies-static,
+.mls-flotr2-repos-static,
+.its-time-to-fix,
+.mls-time-to-attention,
+.irc-flotr2-repos-static,
+.scr-flotr2-repos-static
+{
+    height: 200px;
 }
 
-/* Specific layout for some vizs */
-
-/* 
-	MLS 
-*/
-
-.mls-dyn-list {
-    float: left;
-    margin-left: 8px;
-    margin-right: 8px;
-    width: 380px;
+.scm-flotr2-metrics-country,
+.its-flotr2-metrics-country,
+.mls-flotr2-metrics-country,
+.scm-flotr2-metrics-repo,
+.its-flotr2-metrics-repo,
+.mls-flotr2-metrics-repo,
+.irc-flotr2-metrics-repo,
+.scr-flotr2-metrics-repo,
+.scm-flotr2-metrics-company,
+.its-flotr2-metrics-company,
+.mls-flotr2-metrics-company,
+.scm-flotr2-metrics-people,
+.its-flotr2-metrics-people,
+.irc-flotr2-metrics-people,
+.scr-flotr2-metrics-people,
+.mls-flotr2-metrics-people
+{
+    height: 200px;
 }
 
-#mls-envision .envision-component-container.envision-first {
-    width: 500px;
+#its-envision {
+    height: 450px;
 }
 
-#mls-envision .envision-component-container {
-    width: 500px;
+#mls-envision {
+    height: 250px;
 }
 
-#mls-envision-lists .envision-component-container.envision-first {
-    width: 325px;
-    height : 150px;			
+.scm-flotr2-companies
+ {
+    height: 300px;
 }
 
-#mls-envision-lists .report-summary .envision-component {
-  cursor: all-scroll;
-  height : 30px;
-  margin-top: -2px;
-  /* align envision and flotr2 graphs*/
-  margin-bottom: 200px;
+.demographic-bars,
+.Demographics {
+    width:250px;
+    height:200px;
+}
+
+.subreport-list-item {
+    margin: 5px;
 }
 
 /*
@@ -333,7 +357,177 @@ h3 {
 
 .subreport-list {height:120px;}
 
-.subreport-list-item {float:right;height:100px;width:40%;}/* Shared CSS Style in all Envision Bitergia Reports */
+.subreport-list-item {float:right;height:80px;width:100%;}
+
+.table td.respository-name{ 
+  padding: 30px 0 0 10px;
+}
+
+.table-repositories{ 
+  margin-top: 30px;
+}
+
+.pagination{ 
+  margin-top: 10px;
+  float: left;
+}
+.pagination-text{ 
+  padding: 25px 0 0 20px; 
+  float: left;
+}
+
+.date {
+    color: #8F8F8F;
+    font: 12px Helvetica,arial,freesans,clean,sans-serif;
+}
+
+.num {
+    color: #333333;
+    display: block;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.num2 {
+    color: #333333;
+    display: block;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* l.com */
+.stats{
+    padding: 0 11px 0 0;
+    display: table;
+    line-height: none !important;
+}
+
+.stats em {
+    display: table-cell;
+    padding-bottom: 10px;
+    vertical-align: middle;
+    font-size: 0.9em;
+}
+
+.stats .count {
+    font-size: 200%;
+    padding-right: 10px;
+    text-align: right;
+    line-height: 40px;
+    float: right;
+}
+
+.stats strong {
+    color: #555555;
+}
+
+.fppercent{ 
+    font-size: 1.1em;
+}
+
+.dayschange{ font-size: 0.85em; }
+
+.wellmin { ;modify .well from Bootstrap
+  min-height: 20px;
+  padding: 8px;
+  margin-bottom: 20px;
+  background-color: #f5f5f5;
+  border: 1px solid #e3e3e3;
+  -webkit-border-radius: 4px;
+     -moz-border-radius: 4px;
+          border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+     -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+}
+
+.line-right {
+  margin-right: -1px;
+  border-right: 1px solid black;
+}
+
+.count {
+    font-size: 200%;
+    line-height: 40px;
+    text-align: right;
+color: #555555;
+         }
+.stats {
+    display: table;
+    padding: 0 11px 0 0;
+width: 100%;
+         }
+
+.invisible-box{
+     border-radius: 3px 3px 0 0;
+     box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+     margin-bottom: 20px;
+}
+.thin-border{
+     border-bottom: 1px solid;
+     text-align:left;
+}
+
+.grey-border{
+     border-bottom: 3px solid #E3E3E3;
+     text-align:center;
+     padding:12px 0px 0px 0px;
+}
+
+.big-fp-number{
+     font-size:3em;
+     text-align:center;
+}
+
+.medium-fp-number{
+     font-size:1.5em;
+     padding:5px 0px 0px 0px;
+}
+
+/* from gb*/
+
+
+
+.overall-summary {
+    border-bottom: medium none;
+    border-radius: 3px 3px 0 0;
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+    margin-bottom: 0;
+    position: relative;
+                   }
+.capped-box {
+    -moz-box-sizing: border-box;
+    background-color: #FFFFFF;
+    border: 1px solid #DDDDDD;
+    border-radius: 3px 3px 3px 3px;
+    margin-bottom: 20px;
+              }
+.stats-switcher-viewport {
+    height: 25px;
+    overflow: hidden;
+                           }
+.stats-switcher-viewport .numbers-summary {
+    transition: margin 0.25s ease-in-out 0s;
+                                            }
+.overall-summary .numbers-summary li {
+    color: #999999;
+    display: table-cell;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    white-space: nowrap;
+    width: 1%;
+                                       }
+.overall-summary .numbers-summary li .num {
+    color: #000000;
+    display: inline;
+    font-size: 13px;
+    font-weight: bold;
+    padding: 0;
+                                            }
+/* end from gb*/
+/* Shared CSS Style in all Envision Bitergia Reports */
 
 .envision-component-container {
     width: 325px;

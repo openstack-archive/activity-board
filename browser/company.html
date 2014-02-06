@@ -1,90 +1,178 @@
 <!DOCTYPE html>
 
-<html>
-    <head>
-        <meta name="keywords" content="bitergia, floss, libresoft, oss, linux, research, reports, free software, software analysis" />
-        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, maximum-scale=1.0">
-        <meta name="description" content="Bitergia company website" />
-	    <link rel="stylesheet" type="text/css" id="theme" href="VizGrimoireJS/vizgrimoire.css" />
-        <script type="text/javascript" src="VizGrimoireJS/lib/jquery-1.7.1.min.js"></script>
-        <title>Report by Bitergia: Company information</title>
-        <style type="text/css">
-        </style>
-    </head>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta charset="utf-8" />
+<title></title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="stylesheet" type="text/css" id="theme"
+  href="VizGrimoireJS/vizgrimoire.css" />
+<link href="VizGrimoireJS/bootstrap/css/bootstrap.css" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="custom.css" />
+<link href="VizGrimoireJS/bootstrap/css/bootstrap-responsive.css"
+  rel="stylesheet" />
+<link rel="shortcut icon" href="favicon.png" />
+</head>
 
-    <body>
-        <div id="wrapper">
-            <div id="header"></div>
-                        
-            <div id="info-column1"  style="width:200px">
-            	<div id="navigation"></div>
-                <div class="info-pill">
-            	    <div id="scm-refcard-company"></div>            	
-                </div>
-            </div>
-            <div style="float:left">
-                <div style="float:left">
-                    <div style="margin-bottom:15px;">
-                        <div class="scm-flotr2-metrics-company"
-                             style="width:350px;height:250px;margin-bottom:5px;"
-                             data-metrics="commits" data-legend="false"></div> 
-                        <i><b>Reviewed commits per month</b></i>
-                        <a href="notes.html#note:charts:company:commits"><img src="qm_15.png"></a>
-                    </div>
+<body>
+  <div class="container-narrow">
+    <div id="Navbar"></div>
 
-                    <div style="margin-bottom:15px;">
-                        <div class="scm-flotr2-metrics-company"
-                             style="width:350px;height:250px;margin-bottom:5px;"
-                             data-metrics="authors" data-legend="false"></div>                        
-                        <i><b>Authors per month</b></i>
-                        <a href="notes.html#note:charts:company:authors"><img src="qm_15.png"></a>
-                    </div>                 
-                     
-                    <div> 
-                        <div class="scm-flotr2-metrics-company"
-                             style="width:350px;height:250px;margin-bottom:5px;"
-                             data-metrics="added_lines,removed_lines" data-legend="true"></div>                 
-                        <i><b>Lines added/removed per month</b></i>
-                        <a href="notes.html#note:charts:company:lines"><img src="qm_15.png"></a>
-                    </div>
-              </div>            
-    			<div style="float:left; margin-left:10px;">
-                    <div class="info-pill">
-                        <h1>Top authors (total)<a href="notes.html#note:tables:company:authors"><img src="qm_15.png"></a></h1>
-                        <div class="scm-flotr2-top-company" 
-                            data-metric="authors" data-period="all" data-titles="false"></div>                           
-                        </div>
-                    <div class="info-pill">
-                        <h1>Top authors (2006)<a href="notes.html#note:tables:company:authors"><img src="qm_15.png"></a></h1>
-                        <div class="scm-flotr2-top-company" 
-                            data-metric="authors" data-period="2006" data-titles="false"></div>                            
-                    </div>
-                    <div class="info-pill">
-                        <h1>Top authors (2009)<a href="notes.html#note:tables:company:authors"><img src="qm_15.png"></a></h1>
-                        <div class="scm-flotr2-top-company" 
-                            data-metric="authors" data-period="2009" data-titles="false"></div>
-                    </div>                   
-                    <div class="info-pill">
-                        <h1>Top authors (2012)<a href="notes.html#note:tables:company:authors"><img src="qm_15.png"></a></h1>
-                        <div class="scm-flotr2-top-company" 
-                            data-metric="authors" data-period="2012" data-titles="false"></div>
-                    </div> 
-                </div>
-            </div>
-		<div id="footer"></div>
+    <div class="row-fluid">
 
-		</div>
-<!--         <script type="text/javascript" src="VizGrimoireJS/vizgrimoire.min.js"></script> -->
-        <script type="text/javascript" src="VizGrimoireJS/src/envision.js"></script>
-        <script type="text/javascript" src="VizGrimoireJS/src/DataSource.js"></script>
-        <script type="text/javascript" src="VizGrimoireJS/src/Loader.js"></script>
-        <script type="text/javascript" src="VizGrimoireJS/src/Report.js"></script>
-        <script type="text/javascript" src="VizGrimoireJS/src/ITS.js"></script>
-        <script type="text/javascript" src="VizGrimoireJS/src/MLS.js"></script>
-        <script type="text/javascript" src="VizGrimoireJS/src/SCM.js"></script>
-        <script type="text/javascript" src="VizGrimoireJS/src/Envision_Report.js"></script>
-        <script type="text/javascript" src="VizGrimoireJS/src/Viz.js"></script>
-    </body>
+      <div class="span12">
+
+        <div class="row-fluid">
+          <div class="span12">
+            <div class="FilterItemData"></div>
+          </div>
+        </div>
+
+        <!-- scm charts -->
+        <div class="row-fluid">
+          <div class="span2">
+            <div class="FilterItemSummary" data-data-source="scm"
+              data-filter="companies"></div>
+          </div>
+
+          <!-- commits -->
+          <div class="span4">
+            <div class="FilterItemMetricsEvol" data-data-source="scm"
+              data-metrics="scm_commits" data-legend="true"
+              data-filter="companies"></div>
+          </div>
+          <!-- end commits -->
+
+          <!-- authors -->
+          <div class="span4">
+            <div class="FilterItemMetricsEvol" data-data-source="scm"
+              data-metrics="scm_authors" data-legend="true"
+              data-filter="companies"></div>
+          </div>
+          <!-- end authors -->
+
+          <!-- end added, removed lines -->
+          <!--           <div class="span3">
+            <div class="FilterItemMetricsEvol" data-data-source="scm"
+              data-metrics="scm_added_lines,scm_removed_lines"
+              data-legend="true" data-filter="companies"></div>
+          </div>
+ -->
+          <!-- end added,removed lines -->
+
+          <div class="span2">
+            <div class="FilterItemTop" data-data-source="scm"
+              data-metric="scm_authors" data-period="all" data-titles="false"
+              data-filter="companies"></div>
+          </div>
+
+        </div>
+        <!-- end scm charts -->
+
+        <!-- its charts -->
+        <div class="row-fluid">
+          <div class="span2">
+            <div class="FilterItemSummary" data-data-source="its"
+              data-filter="companies"></div>
+          </div>
+
+          <!-- end closed, opened tickets -->
+          <div class="span4">
+            <div class="FilterItemMetricsEvol" data-data-source="its"
+              data-metrics="its_closed,its_opened" data-legend="true"
+              data-filter="companies"></div>
+          </div>
+          <!-- end closed, opened tickets -->
+
+          <!-- closers, openers -->
+          <div class="span4">
+            <div class="FilterItemMetricsEvol" data-data-source="its"
+              data-metrics="its_closers,its_openers" data-legend="true"
+              data-filter="companies"></div>
+          </div>
+
+          <div class="span2">
+            <div class="FilterItemTop" data-data-source="its"
+              data-metric="its_closers" data-period="all" data-titles="false"
+              data-filter="companies"></div>
+
+            <!-- end closers, openers -->
+          </div>
+        </div>
+        <!-- end its charts -->
+
+        <!-- mls charts -->
+        <div class="row-fluid">
+          <div class="span2">
+            <div class="FilterItemSummary" data-data-source="mls"
+              data-filter="companies"></div>
+          </div>
+
+          <!-- sent msgs -->
+          <div class="span4">
+            <div class="FilterItemMetricsEvol" data-data-source="mls"
+              data-metrics="mls_sent" data-legend="true" data-filter="companies"></div>
+          </div>
+
+          <!-- senders -->
+          <div class="span4">
+            <div class="FilterItemMetricsEvol" data-data-source="mls"
+              data-metrics="mls_senders" data-legend="true"
+              data-filter="companies"></div>
+          </div>
+          <!-- end senders -->
+
+          <div class="span2">
+            <div class="FilterItemTop" data-data-source="mls"
+              data-metric="mls_senders" data-period="all" data-titles="false"
+              data-filter="companies"></div>
+          </div>
+
+        </div>
+        <!-- end mls charts -->
+
+        <div class="row-fluid">
+          <div class="span2">
+            <div class="FilterItemSummary" data-data-source="scr"
+              data-filter="companies"></div>
+          </div>
+
+          <div class="span4">
+            <div class="FilterItemMetricsEvol" data-data-source="scr"
+              data-metrics="scr_submitted,scr_merged" data-legend="true"
+              data-filter="companies"></div>
+          </div>
+
+          <!--           <div class="span4">
+            <div class="FilterItemMetricsEvol" data-data-source="scr"
+              data-metrics="scr_mergers" data-legend="true"
+              data-filter="companies"></div>
+          </div>
+ -->
+
+          <!--           <div class="span2">
+            <div class="FilterItemTop" data-data-source="scr"
+              data-metric="scr_senders" data-period="all" data-titles="false"
+              data-filter="companies"></div>
+          </div>
+ -->
+        </div>
+        <!-- end mls charts -->
+
+
+
+      </div>
+      <!-- end charts -->
+
+    </div>
+  </div>
+  <footer>
+    <div id="Footer"></div>
+  </footer>
+
+  <script type="text/javascript" src="VizGrimoireJS/lib/jquery-1.7.1.min.js"></script>
+  <script type="text/javascript" src="VizGrimoireJS/bootstrap/js/bootstrap.js"></script>
+  <script type="text/javascript" src="VizGrimoireJS/vizgrimoire.min.js"></script>
+</body>
 </html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+
+<html>
+   <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <meta charset="utf-8"/>
+        <title></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" type="text/css" id="theme"
+              href="VizGrimoireJS/vizgrimoire.css"/>
+        <link href="VizGrimoireJS/bootstrap/css/bootstrap.css" rel="stylesheet"/>
+        <link rel="stylesheet" type="text/css" href="custom.css"/>
+        <link href="VizGrimoireJS/bootstrap/css/bootstrap-responsive.css"
+              rel="stylesheet"/>
+        <link rel="shortcut icon" href="favicon.png"/>
+    </head>
+
+
+    <body>
+        <div class="container-narrow">
+        <div id="Navbar"></div>
+            <div class="row-fluid">
+                <div style="float:left">
+    		      <h4>Information about main projects</h4>
+		          <p>Some charts and tables for all projects in the report, and a summary of the evolution of 
+                    their participation with links to more detailed information per project.</p>
+    		     </div>
+             </div>
+             <div class="row-fluid">
+             <div class="span1"></div>             	
+                 <div class="span5">                 
+                     <div class="MetricsEvol" data-data-source="scm" data-metrics="scm_repositories"
+                                 style="height:150px;" data-legend="false" data-help="false"></div>
+                     <i><b>Active Source repositories per month</b></i>                     
+				</div>
+				<div class="span5">                    
+                     <div class="MetricsEvol" data-data-source="its" data-metrics="trackers"
+                                 style="height:150px;" data-legend="false" data-help="false"></div>
+                     <i><b>Active Tickets repositories per month</b></i>                               
+                </div>
+                <div class="span1"></div>
+              </div>
+             <div class="row-fluid">
+					<div class="span1"></div>             
+                <!--<div style="width=360px;padding:20px;float:left;">-->
+                <div class="span5">
+                    <div id="info-pill">
+                        <h1 style="font-size:1.5em;font-weight: bold;">OpenStack Official Programs</h1>
+                        <ul>
+                         <li><a href="repository.html?repository=nova.git">Compute (Nova)</a></li>
+                         <li><a href="repository.html?repository=swift.git">Object Storage (Swift) </a></li>
+                         <li><a href="repository.html?repository=glance.git">Image Service (Glance) </a></li>
+                         <li><a href="repository.html?repository=keystone.git">Identity (Keystone) </a></li>
+                         <li><a href="repository.html?repository=horizon.git">Dashboard (Horizon) </a></li>
+                         <li><a href="repository.html?repository=quantum.git">Networking (Neutron)</a></li>
+                         <li><a href="repository.html?repository=cinder.git">Block Storage Service (Cinder)</a></li>
+                         <li><a href="repository.html?repository=ceilometer.git">Metering/Monitoring (Ceilometer)</a> </li>
+                         <li><a href="repository.html?repository=heat.git">Orchestration (Heat) </a></li>
+                         <li><a href="repository.html?repository=trove.git">Database Service (Trove) </a></li>
+                         <li><a href="repository.html?repository=ironic.git">Bare Metal (Ironic) </a></li>
+                         <li><a href="repository.html?repository=marconi.git">Queue Service (Marconi) </a></li>
+                        </ul>
+                    </div>
+                    <div id="info-pill">
+                        <h1 style="font-size:1.5em;font-weight: bold;">Gating Projects</h1>
+                        <ul>
+                         <li><a href="repository.html?repository=https:__bugs.launchpad.net_devstack">Devstack</a></li>
+                         <li><a href="repository.html?repository=https:__bugs.launchpad.net_tempest">Tempest</a></li>
+                        </ul>
+                    </div>
+                    <div id="info-pill">
+                        <h1 style="font-size:1.5em;font-weight: bold;">Supporting Projects</h1>
+                        <ul>
+                         <li><a href="repository.html?repository=compute-api.git">compute-api</a></li>
+                         <li><a href="repository.html?repository=identity-api.git">identity-api</a></li>
+                         <li><a href="repository.html?repository=image-api.git">image-api</a></li>
+                         <li><a href="repository.html?repository=netconn-api.git">netconn-api</a></li>
+                         <li><a href="repository.html?repository=object-api.git">object-api</a></li>
+                         <li><a href="repository.html?repository=volume-api.git">volume-api</a></li>
+                         <li><a href="repository.html?repository=api-site.git">api-site</a></li>
+                        </ul>
+
+                    </div>
+                    <div id="info-pill">
+                        <h1 style="font-size:1.5em;font-weight: bold;">Deprecated Projects</h1>
+                        <ul>
+                         <li><a href="repository.html?repository=melange.git">Melange</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!--<div style="width=360px;padding:20px;float:left;">-->                                
+                <div class="span5">
+                    <div id="info-pill">
+                        <h1 style="font-size:1.5em;font-weight: bold;">Library Projects</h1>
+                        <ul>
+                         <li><a href="repository.html?repository=oslo.git">OpenStack Common Library</a></li>
+                         <li><a href="repository.html?repository=python-novaclient.git">Python nova client library</a></li>
+                         <li><a href="repository.html?repository=python-swiftclient.git">Python swift client library</a></li>
+                         <li><a href="repository.html?repository=python-glanceclient.git">Python glance client library</a></li>
+                         <li><a href="repository.html?repository=python-keystoneclient.git">Python keystone client library</a></li>
+                         <li><a href="repository.html?repository=python-neutronclient.git">Python neutron client library</a></li>
+                         <li><a href="repository.html?repository=python-cinderclient.git">Python cinder client library</a></li>
+                         <li><a href="repository.html?repository=python-ceilometerclient.git">Python ceilometer client library</a></li>
+                         <li><a href="repository.html?repository=python-heatclient.git">Python heat client library</a></li>
+                         <li><a href="repository.html?repository=python-troveclient.git">Python trove client library</a></li>
+                         <li><a href="repository.html?repository=python-ironicclient.git">Python ironic client library</a></li>
+                         <li><a href="repository.html?repository=python-marconiclient.git">Python marconi client library</a></li>
+                        </ul>
+                    </div>
+                    <div id="info-pill">
+                        <h1 style="font-size:1.5em;font-weight: bold;">Documentation Projects</h1>
+                        <ul>
+                         <li><a href="repository.html?repository=openstack-manuals.git">OpenStack Manuals</a></li>
+                         <li><a href="repository.html?repository=operations-guide">Operations Guide</a></li>
+                        </ul>
+                    </div>
+                    <div id="info-pill">
+                        <h1 style="font-size:1.5em;font-weight: bold;">Infrastructure Projects</h1>
+                        <ul>
+                         <li><a href="repository.html?repository=askbot-theme.git">askbot-theme</a></li>
+                         <li><a href="repository.html?repository=config.git">config</a></li>
+                         <li><a href="repository.html?repository=devstack-gate.git">devstack-gate</a></li>
+                         <li><a href="repository.html?repository=gear.git">gear</a></li>
+                         <li><a href="repository.html?repository=gearman-plugin.git">gearman-plugin</a></li>
+                         <li><a href="repository.html?repository=gerritbot.git">gerritbot</a></li>
+                         <li><a href="repository.html?repository=gerritlib.git">gerritlib</a></li>
+                         <li><a href="repository.html?repository=git-review.git">git-review</a></li>
+                         <li><a href="repository.html?repository=jeepyb.git">jeepyb</a></li>
+                         <li><a href="repository.html?repository=jenkins-job-builder.git">jenkins-job-builder</a></li>
+                         <li><a href="repository.html?repository=nose-html-output.git">nose-html-output</a></li>
+                         <li><a href="repository.html?repository=releasestatus.git">releasestatus</a></li>
+                         <li><a href="repository.html?repository=reviewday.git">reviewday</a></li>
+                         <li><a href="repository.html?repository=statusbot.git">statusbot</a></li>
+                         <li><a href="repository.html?repository=zmq-event-publisher.git">zmq-event-publisher</a></li>
+                         <li><a href="repository.html?repository=zuul.git">zuul</a></li>
+                        </ul>
+                    </div>                    
+                </div>
+                <div class="span1"></div>
+            </div>
+        </div>         
+        <div id="footer"></div>
+        <script type="text/javascript" src="VizGrimoireJS/lib/jquery-1.7.1.min.js"></script>
+        <script type="text/javascript" src="VizGrimoireJS/bootstrap/js/bootstrap.js"></script>
+        <script type="text/javascript" src="VizGrimoireJS/vizgrimoire.min.js"></script>   
+    </body>
+</html>

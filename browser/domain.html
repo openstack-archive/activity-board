@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta charset="utf-8" />
+<title></title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="stylesheet" type="text/css" id="theme"
+  href="VizGrimoireJS/vizgrimoire.css" />
+<link href="VizGrimoireJS/bootstrap/css/bootstrap.css" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="custom.css" />
+<link href="VizGrimoireJS/bootstrap/css/bootstrap-responsive.css"
+  rel="stylesheet" />
+<link rel="shortcut icon" href="favicon.png" />
+</head>
+
+<body>
+  <div class="container-narrow">
+    <div id="Navbar"></div>
+
+    <div class="row-fluid">
+      <div class="span12">
+        <div class="FilterItemData"></div>
+      </div>
+    </div>
+
+
+    <div class="row-fluid">
+
+      <!-- charts -->
+      <div class="span12">
+
+        <!-- scm charts -->
+        <div class="row-fluid">
+          <div class="span2">
+            <div class="FilterItemSummary" data-data-source="scm"
+              data-filter="domains"></div>
+          </div>
+
+          <!-- commits -->
+          <div class="span4">
+            <div class="FilterItemMetricsEvol" data-data-source="scm"
+              data-metrics="scm_commits" data-legend="true"
+              data-filter="domains"></div>
+          </div>
+          <!-- end commits -->
+
+          <!-- authors -->
+          <div class="span4">
+            <div class="FilterItemMetricsEvol" data-data-source="scm"
+              data-metrics="scm_authors" data-legend="true"
+              data-filter="domains"></div>
+          </div>
+          <!-- end authors -->
+
+          <!-- end added, removed lines -->
+          <!--           <div class="span3">
+            <div class="FilterItemMetricsEvol" data-data-source="scm"
+              data-metrics="scm_added_lines,scm_removed_lines"
+              data-legend="true" data-filter="domains"></div>
+          </div>
+ -->
+          <!-- end added,removed lines -->
+
+          <div class="span2">
+            <div class="FilterItemTop" data-data-source="scm"
+              data-metric="scm_authors" data-period="all" data-titles="false"
+              data-filter="domains"></div>
+          </div>
+
+        </div>
+        <!-- end scm charts -->
+
+        <!-- its charts -->
+        <div class="row-fluid">
+          <div class="span2">
+            <div class="FilterItemSummary" data-data-source="its"
+              data-filter="domains"></div>
+          </div>
+
+          <!-- end closed, opened tickets -->
+          <div class="span4">
+            <div class="FilterItemMetricsEvol" data-data-source="its"
+              data-metrics="its_closed,its_opened" data-legend="true"
+              data-filter="domains"></div>
+          </div>
+          <!-- end closed, opened tickets -->
+
+          <!-- closers, openers -->
+          <div class="span4">
+            <div class="FilterItemMetricsEvol" data-data-source="its"
+              data-metrics="its_closers,its_openers" data-legend="true"
+              data-filter="domains"></div>
+          </div>
+
+          <div class="span2">
+            <div class="FilterItemTop" data-data-source="its"
+              data-metric="its_closers" data-period="all" data-titles="false"
+              data-filter="domains"></div>
+
+            <!-- end closers, openers -->
+          </div>
+        </div>
+        <!-- end its charts -->
+
+        <!-- mls charts -->
+        <div class="row-fluid">
+          <div class="span2">
+            <div class="FilterItemSummary" data-data-source="mls"
+              data-filter="domains"></div>
+          </div>
+
+          <!-- sent msgs -->
+          <div class="span4">
+            <div class="FilterItemMetricsEvol" data-data-source="mls"
+              data-metrics="mls_sent" data-legend="true" data-filter="domains"></div>
+          </div>
+
+          <!-- senders -->
+          <div class="span4">
+            <div class="FilterItemMetricsEvol" data-data-source="mls"
+              data-metrics="mls_senders" data-legend="true"
+              data-filter="domains"></div>
+          </div>
+          <!-- end senders -->
+
+          <div class="span2">
+            <div class="FilterItemTop" data-data-source="mls"
+              data-metric="mls_senders" data-period="all" data-titles="false"
+              data-filter="domains"></div>
+          </div>
+
+        </div>
+        <!-- end mls charts -->
+
+        <div class="row-fluid">
+          <div class="span2">
+            <div class="FilterItemSummary" data-data-source="scr"
+              data-filter="domains"></div>
+          </div>
+
+          <div class="span4">
+            <div class="FilterItemMetricsEvol" data-data-source="scr"
+              data-metrics="scr_submitted,scr_merged" data-legend="true"
+              data-filter="domains"></div>
+          </div>
+
+          <!--           <div class="span4">
+            <div class="FilterItemMetricsEvol" data-data-source="scr"
+              data-metrics="scr_mergers" data-legend="true"
+              data-filter="domains"></div>
+          </div>
+ -->
+
+          <!--           <div class="span2">
+            <div class="FilterItemTop" data-data-source="scr"
+              data-metric="scr_senders" data-period="all" data-titles="false"
+              data-filter="domains"></div>
+          </div>
+ -->
+        </div>
+        <!-- end mls charts -->
+
+
+
+      </div>
+      <!-- end charts -->
+
+    </div>
+  </div>
+  <footer>
+    <div id="Footer"></div>
+  </footer>
+
+  <script type="text/javascript" src="VizGrimoireJS/lib/jquery-1.7.1.min.js"></script>
+  <script type="text/javascript" src="VizGrimoireJS/bootstrap/js/bootstrap.js"></script>
+  <script type="text/javascript" src="VizGrimoireJS/vizgrimoire.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <meta charset="utf-8"/>
+        <title></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" type="text/css" id="theme"
+              href="VizGrimoireJS/vizgrimoire.css"/>
+        <link href="VizGrimoireJS/bootstrap/css/bootstrap.css" rel="stylesheet"/>
+        <link rel="stylesheet" type="text/css" href="custom.css"/>
+        <link href="VizGrimoireJS/bootstrap/css/bootstrap-responsive.css"
+              rel="stylesheet"/>
+        <link rel="shortcut icon" href="favicon.png"/>
+    </head>
+
+    <body>
+        <div class="container-narrow">
+            <div id="Navbar"></div>
+
+            <div class="row-fluid"><h4>Information about all domains</h4></div>
+            <!-- info text -->
+            <div id="info" class="row-fluid">
+                <div class="span5">
+                    Some charts and tables for top domains in the project, and a summary
+                    of the evolution of their participation with links to more detailed
+                    information per domain.
+                </div>
+                <div class="span7">
+                    <!-- evolution #domains -->
+                    <i>
+                        <b>Active Domains per month</b>
+                    </i>
+                    <div class="MetricsEvol" data-data-source="mls"
+                         data-metrics="mls_domains" data-legend="false" style="height: 80px;"></div>
+                </div>
+            </div>
+            <!-- end info text -->
+
+
+            <!-- list of domains -->
+            <div id="nav" class="row-fluid">
+                <div class="FilterItemsNav" data-data-source="mls"
+                     data-order-by="mls_domains" data-filter="domains" style="align: center"></div>
+            </div>
+            <!-- end list of domains -->
+
+
+            <!-- sent msgs, senders per domain -->
+            <div class="well">
+                <div id="summary-static" class="row-fluid">
+                    <!-- sent -->
+                    <div class="span1"></div>
+                    <div class="span4">
+                        <i>
+                            <b>Sent per domain (aggregated)</b>
+                        </i>
+                        <div class="FilterItemsGlobal" data-data-source="mls"
+                             data-metric="mls_sent" data-filter="domains"
+                             data-legend-div="domains_legend" data-limit="10"
+                             data-order-by="mls_sent">
+                        </div>
+                    </div>
+                    <!-- end sent -->
+
+                    <div class="span2" id="domains_legend"></div>
+
+                    <!-- senders -->
+                    <div class="span4">
+                        <i>
+                            <b>Senders per domain (aggregated)</b>
+                        </i>
+                        <div class="FilterItemsGlobal" data-data-source="mls"
+                             data-metric="mls_senders" data-filter="domains"
+                             data-legend="false" data-limit="10"
+                             data-order-by="mls_senders"></div>
+                    </div>
+                    <!-- end senders -->
+                    <div class="span1"></div>
+                </div>
+            </div>
+            <!-- sent msgs, senders per domain -->
+
+            <div id="summary-static" class="row-fluid"></div>
+
+            <!-- domains list -->
+            <div id="list" class="row-fluid">
+                <div class="FilterItemsMiniCharts" data-data-source="mls"
+                     data-metrics="mls_sent,mls_senders" data-filter="domains"
+                     data-order-by="mls_sent">
+                </div>
+            </div>
+            <!-- end domains list -->
+
+            <footer>
+                <div id="Footer"></div>
+            </footer>
+        </div>
+
+        <script type="text/javascript" src="VizGrimoireJS/lib/jquery-1.7.1.min.js"></script>
+        <script type="text/javascript" src="VizGrimoireJS/bootstrap/js/bootstrap.js"></script>
+        <script type="text/javascript" src="VizGrimoireJS/vizgrimoire.min.js"></script>
+    </body>
+</html>

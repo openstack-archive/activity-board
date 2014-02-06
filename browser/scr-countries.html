@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta charset="utf-8" />
+<title></title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="stylesheet" type="text/css" id="theme"
+  href="VizGrimoireJS/vizgrimoire.css" />
+<link href="VizGrimoireJS/bootstrap/css/bootstrap.css" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="custom.css" />
+<link href="VizGrimoireJS/bootstrap/css/bootstrap-responsive.css"
+  rel="stylesheet" />
+<link rel="shortcut icon" href="favicon.png" />
+</head>
+
+<body>
+  <div class="container-narrow">
+    <div id="Navbar"></div>
+
+    <div class="row-fluid">
+      <h4>Information about all countries</h4>
+    </div>
+    <!-- info text -->
+    <div id="info" class="row-fluid">
+      <div class="span5">Some charts and tables for top countries in the
+        project, and a summary of the evolution of their participation with
+        links to more detailed information per country.</div>
+      <div class="span7">
+        <!-- evolution #countries -->
+        <i> <b>Active Countries per month</b>
+        </i>
+        <div class="MetricsEvol" data-data-source="scr"
+          data-metrics="scr_countries" data-legend="false" style="height: 80px;"></div>
+      </div>
+    </div>
+    <!-- end info text -->
+
+
+    <!-- list of countries -->
+    <div id="nav" class="row-fluid">
+      <div class="FilterItemsNav" data-data-source="scr"
+        data-order-by="scr_submitted" data-filter="countries"
+        style="align: center"></div>
+    </div>
+    <!-- end list of countries -->
+
+
+    <!-- submitted, merged country -->
+    <div class="well">
+      <div id="summary-static" class="row-fluid">
+        <!-- submitted -->
+        <div class="span1"></div>
+        <div class="span4">
+          <i> <b>Submitted per country (aggregated)</b>
+          </i>
+          <div class="FilterItemsGlobal" data-data-source="scr"
+            data-metric="scr_submitted" data-filter="countries"
+            data-legend-div="countries_legend" data-limit="10"
+            data-order-by="scr_submitted"></div>
+        </div>
+        <!-- end submitted -->
+
+        <div class="span2" id="countries_legend"></div>
+
+        <!-- merged -->
+        <div class="span4">
+          <i> <b>Merged per country (aggregated)</b>
+          </i>
+          <div class="FilterItemsGlobal" data-data-source="scr"
+            data-metric="scr_merged" data-filter="countries" data-legend="false"
+            data-limit="10" data-order-by="scr_submitted"></div>
+        </div>
+        <!-- end merged -->
+        <div class="span1"></div>
+      </div>
+    </div>
+    <!-- end submitted, merged country -->
+
+    <div id="summary-static" class="row-fluid"></div>
+
+    <!-- submitted per country -->
+    <div id="list" class="row-fluid">
+      <div class="FilterItemsMiniCharts" data-data-source="scr"
+        data-metrics="scr_submitted,scr_merged" data-filter="countries"
+        data-order-by="scr_submitted"></div>
+    </div>
+    <!-- end submitted per country -->
+
+    <div class="row-fluid" style="margin-top: 10px;">
+      <div class="span12">
+        <div id="Refcard"></div>
+      </div>
+    </div>
+
+    <footer>
+      <div id="Footer"></div>
+    </footer>
+  </div>
+
+  <script type="text/javascript" src="VizGrimoireJS/lib/jquery-1.7.1.min.js"></script>
+  <script type="text/javascript" src="VizGrimoireJS/bootstrap/js/bootstrap.js"></script>
+  <script type="text/javascript" src="VizGrimoireJS/vizgrimoire.min.js"></script>
+</body>
+</html>

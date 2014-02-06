@@ -1,14 +1,17 @@
-.subreport-list-item {float:right;height:100px;width:50%;margin-right:15px;}/* For lists with graphs */
-
-.container-fluid {
-    padding-left: 20px;
-    padding-right: 20px;
-    max-width: 1280px;
-    margin-left: auto;
-    margin-right: auto;
+.FilterItemSummary,
+.PersonSummary
+ {
+    font-size:0.875em;
 }
 
-.row-fluid{
-    padding-top: 20px;
+/* Sometimes the dates in x need more space*/
+.FilterItemMetricsEvol
+{
+	margin-bottom:15px;
 }
 
+.Demographics
+{
+	width: 100%;
+	height: 300px;
+}

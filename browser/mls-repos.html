@@ -1,96 +1,111 @@
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
     <head>
-      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-      <meta charset="utf-8">
-      <title></title>
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="description" content="">
-      <meta name="author" content="">
-  
-      <link rel="stylesheet" type="text/css" id="theme" href="VizGrimoireJS/vizgrimoire.css" />
-      <link href="VizGrimoireJS/bootstrap/css/bootstrap.css" rel="stylesheet">
-      <style type="text/css">
-        body {
-          padding-top: 60px;
-          padding-bottom: 40px;
-        }
-        .sidebar-nav {
-          padding: 9px 0;
-        }
-      </style>
-      <link href="VizGrimoireJS/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
-      <link rel="stylesheet" type="text/css" href="custom.css" />    
-      <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-      <!--[if lt IE 9]>
-        <script src="../assets/js/html5shiv.js"></script>
-      <![endif]-->
-  
-      <!-- Fav and touch icons -->
-      <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://twitter.github.io/bootstrap/assets/ico/apple-touch-icon-144-precomposed.png">
-      <link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://twitter.github.io/bootstrap/assets/ico/apple-touch-icon-114-precomposed.png">
-      <link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://twitter.github.io/bootstrap/assets/ico/apple-touch-icon-72-precomposed.png">
-      <link rel="apple-touch-icon-precomposed" href="http://twitter.github.io/bootstrap/assets/ico/apple-touch-icon-57-precomposed.png">
-      <link rel="shortcut icon" href="favicon.png">
-  </head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <meta charset="utf-8"/>
+        <title></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" type="text/css" id="theme"
+              href="VizGrimoireJS/vizgrimoire.css"/>
+        <link href="VizGrimoireJS/bootstrap/css/bootstrap.css" rel="stylesheet"/>
+        <link rel="stylesheet" type="text/css" href="custom.css"/>
+        <link href="VizGrimoireJS/bootstrap/css/bootstrap-responsive.css"
+              rel="stylesheet"/>
+        <link rel="shortcut icon" href="favicon.png"/>
+    </head>
 
     <body>
-        <div id="navbar"></div>
-        <div class="container-fluid">
-            <div class="row-fluid">
-    				<div id="info-pill">
-    					<h1 style="font-size:1.5em;font-weight: bold;">Information about all mailing lists</h1>
-					<p>Some charts and tables for all mailing lists in the project, and a summary of their evolution with links to more detailed information per mailing list.</p>
-    				</div>
-            </div>
-            <div class="row-fluid">            
-                <div>
-                    <div id="info-pill" style="width:360px;height:170px;float:left;margin-bottom:15px;margin-righ:15px">
-                         <div style="float:left;width:350px;height:150px" 
-                              class="mls-flotr2-metrics" data-metrics="mls_repositories" data-legend="false"></div>
-                         <i><b>Active Mailing repositories per month</b></i>
-                    </div>       
+        <div class="container-narrow">
+            <div id="Navbar"></div>
 
-                     <div class="info-pill" style="width:360px;height:170px;float:left;margin-bottom:15px;">
-                         <div style="float:left;margin:10px;width:350px;height:150px" id="mls-repos-summary">
-                         </div>
-                    </div>
+            <div class="row-fluid"><h4>Information about all repositories</h4></div>
+            <!-- info text -->
+            <div id="info" class="row-fluid">
+                <div class="span5">
+                    Some charts and tables for top repositories in the project, and a summary
+                    of the evolution of their participation with links to more detailed
+                    information per repository.
+                </div>
+                <div class="span7">
+                    <!-- evolution #repositories -->
+                    <i>
+                        <b>Active Repositories per month</b>
+                    </i>
+                    <div class="MetricsEvol" data-data-source="mls"
+                         data-metrics="mls_repositories" data-legend="false" style="height: 80px;"></div>
                 </div>
             </div>
-            <div class="row-fluid">                                    
-                     <div>
-                        <div id="info-pill" style="width:370px;height:270px;float:left;margin-bottom:25px;margin-righ:25px">
-                            <div class="mls-flotr2-repos-static" 
-                                 data-metric="mls_sent" data-limit="10" data-order-by="mls_sent"
-                                 style="width:350px;height:250px;margin-right:10px;float:left;margin-bottom:10px"></div>
-                            <i><b>Sent per repository (aggregated)</b></i>
-                        </div>
+            <!-- end info text -->           
 
-                        <div id="info-pill" style="width:370px;height:270px;float:left;margin-bottom:25px;margin-righ:25px">
-                            <div class="mls-flotr2-repos-static"
-                                 data-metric="mls_senders" data-limit="10" data-order-by="mls_sent"
-                                 style="width:350px;height:250px;margin-right:10px;float:left;margin-bottom:10px"></div>
-                            <i><b>Senders per repository (aggregated)</b></i>
+
+            <!-- list of repositories -->
+            <div id="nav" class="row-fluid">
+                <div class="FilterItemsNav" data-data-source="mls"
+                     data-order-by="mls_sent" data-filter="repos" style="align: center"></div>                  
+            </div>
+            <!-- end list of repositories -->
+
+
+            <!-- sent, senders repository -->
+            <div class="well">
+                <div id="summary-static" class="row-fluid">
+                    <!-- sent -->
+                    <div class="span1"></div>
+                    <div class="span4">
+                        <i>
+                            <b>Messages per repository (aggregated)</b>
+                        </i>
+                        <div class="FilterItemsGlobal" data-data-source="mls"
+                             data-metric="mls_sent" data-filter="repos"
+                             data-legend-div="repos_legend" data-limit="10"
+                             data-order-by="mls_sent">
                         </div>
                     </div>
-            </div>
-            <div class="row-fluid">
-                <div style="width=715px;padding:20px;">
-                    <h4>List of repositories</h4>
-                    <div id="mls-flotr2-repos-nav" data-order-by="mls_sent" style="width:700px;"></div>
+                    <!-- end sent -->
+
+                    <div class="span2" id="repos_legend"></div>
+
+                    <!-- senders -->
+                    <div class="span4">
+                        <i>
+                            <b>Senders per repository (aggregated)</b>
+                        </i>
+                        <div class="FilterItemsGlobal" data-data-source="mls"
+                             data-metric="mls_senders" data-filter="repos"
+                             data-legend="false" data-limit="10"
+                             data-order-by="mls_sent"></div>
+                    </div>
+                    <!-- end senders -->
+                    <div class="span1"></div>
                 </div>
-                
-                <div>
-                    <div class="mls-flotr2-repos-list" 
-                        data-metrics="mls_sent" data-order-by="mls_sent"
-                        style="width:700px; margin-right:10px;"></div>
+            </div>
+            <!-- end sent, senders repository -->
+            
+            <div id="summary-static" class="row-fluid"></div>
+
+            <!-- sent per repository -->
+            <div id="list" class="row-fluid">
+                <div class="FilterItemsMiniCharts" data-data-source="mls"
+                     data-metrics="mls_sent,mls_senders" data-filter="repos"
+                     data-order-by="mls_sent">
                 </div>
             </div>
+            <!-- end sent per repository -->
+
+            <div class="row-fluid" style="margin-top:10px;">
+                <div class="span12">
+                    <div id="Refcard"></div>
+                </div>
+            </div>
+
+            <footer>
+                <div id="Footer"></div>
+            </footer>
         </div>
-		<div id="footer"></div>
-          <script type="text/javascript" src="VizGrimoireJS/lib/jquery-1.7.1.min.js"></script>
-          <script type="text/javascript" src="VizGrimoireJS/bootstrap/js/bootstrap.js"></script>
-          <script type="text/javascript" src="VizGrimoireJS/vizgrimoire.min.js"></script>             
+
+        <script type="text/javascript" src="VizGrimoireJS/lib/jquery-1.7.1.min.js"></script>
+        <script type="text/javascript" src="VizGrimoireJS/bootstrap/js/bootstrap.js"></script>
+        <script type="text/javascript" src="VizGrimoireJS/vizgrimoire.min.js"></script>
     </body>
 </html>
