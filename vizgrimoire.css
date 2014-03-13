@@ -421,11 +421,42 @@ body {
     color: #555555;
 }
 
+/* trends/momentos */
 .fppercent{ 
     font-size: 1.1em;
 }
+.zeropercent{ 
+    font-size: 1.1em;
+}
+.pospercent{ 
+    font-size: 1.1em;
+    color: green;
+}
+.negpercent{ 
+    font-size: 1.1em;
+    color: red;
+}
+.fa-arrow-circle-down{
+     color: red;}
+.fa-arrow-circle-up{
+     color:green;  }
 
-.dayschange{ font-size: 0.85em; }
+.MicrodashText {
+  text-align: center;}
+
+/* end trends */
+
+.dayschange{ font-size: 0.75em; }
+
+.wellmin2 { 
+    background-color: #F5F5F5;
+    border: 1px solid #E3E3E3;
+    border-radius: 4px 4px 4px 4px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05) inset;
+    margin-bottom: 15px;
+    min-height: 15px;
+    padding: 15px;
+}
 
 .wellmin { ;modify .well from Bootstrap
   min-height: 20px;
@@ -465,24 +496,31 @@ width: 100%;
 }
 .thin-border{
      border-bottom: 1px solid;
-     text-align:left;
+     text-align: center;
 }
 
 .grey-border{
      border-bottom: 3px solid #E3E3E3;
      text-align:center;
-     padding:12px 0px 0px 0px;
+     padding:6px 0px 0px 0px;
 }
 
 .big-fp-number{
      font-size:3em;
      text-align:center;
+     padding:10px 0px 10px 0px;
 }
 
 .medium-fp-number{
      font-size:1.5em;
+     text-align:center;
      padding:5px 0px 0px 0px;
 }
+
+.medium-text{ 
+     font-size: 0.8em;
+}
+
 
 /* from gb*/
 
@@ -527,6 +565,18 @@ width: 100%;
     padding: 0;
                                             }
 /* end from gb*/
+
+.flotr-title{ 
+  float: left;
+ }
+
+.text-center{ 
+  text-align: center;
+ }
+
+.text-big{ 
+  font-size: 1.1em;
+ }
 /* Shared CSS Style in all Envision Bitergia Reports */
 
 .envision-component-container {

@@ -21,7 +21,7 @@
 
     <!-- summary bar -->
     <div class="capped-box overall-summary ">
-      <div class="stats-switcher-viewport js-stats-switcher-viewport" >
+      <div class="stats-switcher-viewport js-stats-switcher-viewport">
         <ul class="numbers-summary">
           <li><a href="scm.html"><span class="GlobalData"
               data-data-source="scm" data-field="scm_commits"></span></a> commits</li>
@@ -40,9 +40,9 @@
 
     <div class="capped-box overall-summary ">
       <div class="stats-switcher-viewport js-stats-switcher-viewport">
-        <div id="companies_links">Top 10 Companies by Git Activity: </div>
+        <div id="companies_links">Top 10 Companies by Git Activity:</div>
       </div>
-    </div>  
+    </div>
 
     <h4>Overall View of the Changes to the Source Code (Git)</h4>
     <div class="row-fluid invisible-box">
@@ -53,10 +53,14 @@
           data-file="scm-companies-commits-summary.json" data-show-others="true"
           data-graph="bars" data-legend="false"></div>
       </div>
-      <div class="span9">
+      <div class="span2">
+        <div id="legend_scm"></div>
+      </div>
+      <div class="span7">
         <i>Commits per company (weekly)</i>
         <div style="height: 270px" class="CompaniesSummary" data-evol="true"
           data-metric="scm_commits" data-data-source="scm"
+          data-legend-div="legend_scm"
           data-file="scm-companies-commits-summary.json" data-stacked="true"></div>
       </div>
     </div>
@@ -69,10 +73,14 @@
           data-file="its-closed-companies-summary.json" data-show-others="true"
           data-graph="bars" data-legend="false"></div>
       </div>
-      <div class="span9">
+      <div class="span2">
+        <div id="legend_its"></div>
+      </div>
+      <div class="span7">
         <i>Closed tickets per company (weekly)</i>
         <div style="height: 270px" class="CompaniesSummary" data-evol="true"
           data-data-source="its" data-metric="its_closed"
+          data-legend-div="legend_its"
           data-file="its-closed-companies-summary.json" data-stacked="true"></div>
       </div>
     </div>
@@ -85,11 +93,15 @@
           data-file="mls-sent-companies-summary.json" data-show-others="true"
           data-graph="bars" data-legend="false"></div>
       </div>
-      <div class="span9">
-         <i>Sent messages per company (weekly)</i>
+      <div class="span2">
+        <div id="legend_mls"></div>
+      </div>
+      <div class="span7">
+        <i>Sent messages per company (weekly)</i>
         <div style="height: 270px" class="CompaniesSummary" data-evol="true"
-          data-metric="mls_sent" data-file="mls-sent-companies-summary.json"
-          data-data-source="mls" data-stacked="true"></div>
+          data-legend-div="legend_mls" data-metric="mls_sent"
+          data-file="mls-sent-companies-summary.json" data-data-source="mls"
+          data-stacked="true"></div>
       </div>
     </div>
     <div class="row-fluid invisible-box">
@@ -101,11 +113,11 @@
         <div class="span2"></div>
         <div class="span8">
           <div class="Top" data-data-source="scm" data-period="last month"
-          data-metric="authors" data-limit="10" data-people_links="true"></div>
+            data-metric="authors" data-limit="10" data-people_links="true"></div>
           <div class="Top" data-data-source="its" data-period="last month"
-          data-metric="authors" data-limit="10" data-people_links="true"></div>
+            data-metric="authors" data-limit="10" data-people_links="true"></div>
           <div class="Top" data-data-source="mls" data-period="last month"
-          data-metric="authors" data-limit="10" data-people_links="true"></div>
+            data-metric="authors" data-limit="10" data-people_links="true"></div>
         </div>
         <div class="span2"></div>
       </div>
