@@ -50,6 +50,20 @@
                         </div>
                     </div>
                     <!-- end senders -->
+
+                                <!-- time to attention -->
+            <div class="row-fluid">
+                <div class="span12">
+                    <div class="well">
+                        <h4>Time to Attention of Messages</h4>
+                        * (in hours)
+                        <div class="TimeTo" data-data-source="mls" data-type="attention"
+                             data-quantil="X0.95,X0.5"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- end time to attention -->
+
                 </div>
                 <!-- end left column -->
 
@@ -108,8 +122,8 @@
                     <!-- end stats -->
 
                     <!-- top senders -->
-                    <div class="Top" data-data-source="mls" data-period="last month"
-                         data-metric="senders" data-limit="9"
+                    <div class="Top" data-data-source="mls" data-period_all="true"
+                         data-metric="senders" data-limit="10"
                          data-people_links="true" ></div>
                     <!-- end senders-->
 
@@ -119,19 +133,6 @@
             </div>
             <!-- end msgs sent, senders, stats, top closers -->
 
-            <!-- time to attention -->
-            <div class="row-fluid">
-                <div class="span6">
-                    <div class="well">
-                        <h4>Time to Attention of Messages</h4>
-                        * (in hours)
-                        <div class="TimeTo" data-data-source="mls" data-type="attention"
-                             data-quantil="X0.95,X0.5"></div>
-                    </div>
-                </div>
-                <div class="span6"></div>
-            </div>
-            <!-- end time to attention -->
 
             <div class="row-fluid" style="margin-top:10px;">
                 <div class="span12">

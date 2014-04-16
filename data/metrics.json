@@ -162,7 +162,7 @@
         "divid" : "scm_authors",
         "column" : "authors",
         "name" : "Authors",
-        "desc" : "Number of persons authoring commits (changes to source code)",
+        "desc" : "Number of persons authoring commits",
         "action" : "commits",
         "envision" : {
             "gtype" : "whiskers"
