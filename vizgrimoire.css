@@ -577,7 +577,25 @@ width: 100%;
 .text-big{ 
   font-size: 1.1em;
  }
-/* Shared CSS Style in all Envision Bitergia Reports */
+
+/* Bootstrap tabs */
+
+.nav{ 
+  margin-bottom: 2px !important;
+}
+
+/* Footer */
+
+#Footer{ 
+         border-top: 1px solid #EEEEEE;
+         color: #777777;
+         font-size: 12px;
+         line-height: 2;
+         margin-top: 20px;
+         padding-bottom: 10px;
+         padding-top: 15px;
+         position: relative;
+}/* Shared CSS Style in all Envision Bitergia Reports */
 
 .envision-component-container {
     width: 325px;
