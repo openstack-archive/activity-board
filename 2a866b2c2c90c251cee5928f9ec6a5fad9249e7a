@@ -1,0 +1,8 @@
+Verified+2: Jenkins
+Approved+1: Stefano Maffulli <stefano@openstack.org>
+Code-Review+2: Stefano Maffulli <stefano@openstack.org>
+Submitted-by: Jenkins
+Submitted-at: Thu, 17 Apr 2014 07:23:18 +0000
+Reviewed-on: https://review.openstack.org/88116
+Project: openstack-infra/activity-board
+Branch: refs/heads/master
