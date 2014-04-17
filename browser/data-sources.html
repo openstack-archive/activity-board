@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta charset="utf-8" />
+        <title></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" type="text/css" id="theme"
+              href="VizGrimoireJS/vizgrimoire.css" />
+        <link href="VizGrimoireJS/bootstrap/css/bootstrap.css" rel="stylesheet" />
+        <link rel="stylesheet" type="text/css" href="custom.css" />
+        <link href="VizGrimoireJS/bootstrap/css/bootstrap-responsive.css"
+              rel="stylesheet" />
+        <link rel="shortcut icon" href="favicon.png" />
+        <link rel="stylesheet" href="VizGrimoireJS/awesome/css/font-awesome.min.css">
+    </head>
+
+    <body>
+        <div class="container-narrow">
+            <div id="Navbar"></div>
+
+            <!-- summary bar -->
+            <div class="capped-box overall-summary ">
+                <div class="stats-switcher-viewport js-stats-switcher-viewport">
+                    <ul class="numbers-summary">
+                        <li><a href="scm.html"><span class="GlobalData"
+                                                     data-data-source="scm" data-field="scm_commits"></span></a> commits</li>
+                        <li><a href="scm.html"><span class="GlobalData"
+                                                     data-data-source="scm" data-field="scm_authors"></span></a> developers
+                        </li>
+                        <li><a href="its.html"><span class="GlobalData"
+                                                     data-data-source="its" data-field="its_opened"></span></a> tickets</li>
+                        <li><a href="mls.html"><span class="GlobalData"
+                                                     data-data-source="mls" data-field="mls_sent"></span></a> mail messages
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- end of summary bar -->
+
+            <div class="row-fluid">
+
+            </div>
+            <div class="row-fluid">
+            	<div class="span6">
+							<div class="DataSourcesTable"></div>            		
+            	</div> 
+                <div class="span6">
+                    <div class="well well-lg">
+
+                        <p>Our main concern as a company is <strong>to provide products and services as transparent as possible, 
+                                generating a trustable relationship with our costumers</strong>. Therefore, if you find any 
+                            inconsistencies in the data, or have any other kind of feedback, please let us know by contacting us.</p>
+                        <p><strong>Thanks</strong> for your interest and support!</p>
+                    </div>
+                    
+                    <p>Get here the <a href="data/db">MySQL database dumps</a> with the complete datasets
+                        retrievied using the <a href="#"><i class="fa
+                        fa-external-link"></i> Metrics Grimoire Tools</a></p>
+                    
+                    <p>You can also download the <a href="data/json">JSON files</a> (<a href="data/json.tgz">archive</a>) 
+                        used to display the information shown on this dashboard</p>
+
+                </div>
+               
+            </div>
+
+            <footer>
+                <div id="Footer"></div>
+            </footer>
+        </div>
+
+        <script type="text/javascript" src="VizGrimoireJS/lib/jquery-1.7.1.min.js"></script>
+        <script type="text/javascript" src="VizGrimoireJS/bootstrap/js/bootstrap.js"></script>
+        <script type="text/javascript" src="VizGrimoireJS/vizgrimoire.min.js"></script>
+    </body>
+</html>
