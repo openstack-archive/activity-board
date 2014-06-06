@@ -1,85 +1,101 @@
 <!DOCTYPE html>
-
 <html lang="en">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<meta charset="utf-8" />
-<title></title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<link rel="stylesheet" type="text/css" id="theme"
-  href="VizGrimoireJS/vizgrimoire.css" />
-<link href="VizGrimoireJS/bootstrap/css/bootstrap.css" rel="stylesheet" />
-<link rel="stylesheet" type="text/css" href="custom.css" />
-<link href="VizGrimoireJS/bootstrap/css/bootstrap-responsive.css"
-  rel="stylesheet" />
-<link rel="shortcut icon" href="favicon.png" />
-<link rel="stylesheet" href="VizGrimoireJS/awesome/css/font-awesome.min.css">
-</head>
-
-<body>
+ <head>
+  <meta content="text/html; charset=utf8" http-equiv="Content-Type"/>
+  <meta charset="utf8"/>
+  <title>
+  </title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <link href="VizGrimoireJS/vizgrimoire.css" id="theme" rel="stylesheet" type="text/css"/>
+  <link href="VizGrimoireJS/bootstrap/css/bootstrap.css" rel="stylesheet"/>
+  <link href="custom.css" rel="stylesheet" type="text/css"/>
+  <link href="VizGrimoireJS/bootstrap/css/bootstrap-responsive.css" rel="stylesheet"/>
+  <link href="favicon.png" rel="shortcut icon"/>
+  <link href="VizGrimoireJS/awesome/css/font-awesome.min.css" rel="stylesheet"/>
+ </head>
+ <body>
   <div class="container-narrow">
-    <div id="Navbar"></div>
-
-    <div id="info" class="row-fluid">
-      <h4>Attraction / retention</h4>
-    </div>
-
-    <div class="well">
-      <div class="row-fluid">
-        <p>
-        <p>
-          <i><b>Attracted</b>: Number of contributors entering the project
+   <div id="Navbar">
+   </div>
+   <div class="row-fluid" id="info">
+    <h4>
+     Attraction / retention
+    </h4>
+   </div>
+   <div class="well">
+    <div class="row-fluid">
+     <p>
+     </p>
+     <p>
+      <i>
+       <b>
+        Attracted
+       </b>
+       : Number of contributors entering the project
 	    for each cohort. In charts, cohorts are organized by
 	    "age" (time since they entered the project), each bar
 	    representing one of these cohorts.
 	    Large bars for any age mean that the community was attracting
-	    many contributors that time ago.</i>
-        </p>
-          <i><b>Retained</b>: Number of remaining contributors (those still 
+	    many contributors that time ago.
+      </i>
+     </p>
+     <i>
+      <b>
+       Retained
+      </b>
+      : Number of remaining contributors (those still 
 	    active) for each cohort. Large top bars (corresponding to
 	    older cohorts) mean that
 	    experienced contributors are still
 	    active. Large bottom bars mean that new contributors are being
-	    retained.</i>
-        </p>
-	<p>
-	  The ratio between retained and attracted contributors for a cohort
+	    retained.
+     </i>
+     <p>
+      The ratio between retained and attracted contributors for a cohort
 	  represents the retention ratio for that cohort (fraction of
 	  contributors of that age that are still active).
-	</p>
-      </div>
+     </p>
     </div>
-    <div class="row-fluid">
-      <div class="span4">
-        <h6>Source code developers</h6>
-        <div class="Demographics" data-data-source="scm" data-period="0.5"></div>
-      </div>
-      <div class="span4">
-        <h6>Ticket participants</h6>
-        <div class="Demographics" data-data-source="its" data-period="0.5"></div>
-      </div>
-      <div class="span4">
-        <h6>Discussion participants</h6>
-        <div class="Demographics" data-data-source="mls" data-period="0.5"></div>
-      </div>
+   </div>
+   <div class="row-fluid">
+    <div class="span4">
+     <h6>
+      Source code developers
+     </h6>
+     <div class="Demographics" data-data-source="scm" data-period="0.5">
+     </div>
     </div>
-
-
-
-    <div class="row-fluid" style="margin-top: 10px;">
-      <div class="span12">
-        <div id="Refcard"></div>
-      </div>
+    <div class="span4">
+     <h6>
+      Ticket participants
+     </h6>
+     <div class="Demographics" data-data-source="its" data-period="0.5">
+     </div>
     </div>
-
-    <footer>
-      <div id="Footer"></div>
-    </footer>
-
+    <div class="span4">
+     <h6>
+      Discussion participants
+     </h6>
+     <div class="Demographics" data-data-source="mls" data-period="0.5">
+     </div>
+    </div>
+   </div>
+   <div class="row-fluid" style="margin-top: 10px;">
+    <div class="span12">
+     <div id="Refcard">
+     </div>
+    </div>
+   </div>
+   <footer>
+    <div id="Footer">
+    </div>
+   </footer>
   </div>
-
-  <script type="text/javascript" src="VizGrimoireJS/lib/jquery-1.7.1.min.js"></script>
-  <script type="text/javascript" src="VizGrimoireJS/bootstrap/js/bootstrap.js"></script>
-  <script type="text/javascript" src="VizGrimoireJS/vizgrimoire.min.js"></script>
-</body>
+  <script src="VizGrimoireJS/lib/jquery-1.7.1.min.js" type="text/javascript">
+  </script>
+  <script src="VizGrimoireJS/bootstrap/js/bootstrap.js" type="text/javascript">
+  </script>
+  <script src="VizGrimoireJS/vizgrimoire.min.js" type="text/javascript">
+  </script>
+ </body>
 </html>

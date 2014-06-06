@@ -1,175 +1,232 @@
 <!DOCTYPE html>
-
 <html lang="en">
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-        <meta charset="utf-8"/>
-        <title></title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <link rel="stylesheet" type="text/css" id="theme"
-              href="VizGrimoireJS/vizgrimoire2.css"/>
-        <link href="VizGrimoireJS/bootstrap/css/bootstrap.css" rel="stylesheet"/>
-        <link rel="stylesheet" type="text/css" href="custom.css"/>
-        <link href="VizGrimoireJS/bootstrap/css/bootstrap-responsive.css"
-              rel="stylesheet"/>
-        <link rel="shortcut icon" href="favicon.png"/>
-<link rel="stylesheet" href="VizGrimoireJS/awesome/css/font-awesome.min.css">
-    </head>
-
-    <body>
-        <div class="container-narrow">
-            <div id="Navbar"></div>
-
-            <div class="well">
-                <div class="row-fluid">
-                    <div class="span3">
-                    <p><i><b>Evolution of States</b> charts show the evolution of
+ <head>
+  <meta content="text/html; charset=utf8" http-equiv="Content-Type"/>
+  <meta charset="utf8"/>
+  <title>
+  </title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <link href="VizGrimoireJS/vizgrimoire2.css" id="theme" rel="stylesheet" type="text/css"/>
+  <link href="VizGrimoireJS/bootstrap/css/bootstrap.css" rel="stylesheet"/>
+  <link href="custom.css" rel="stylesheet" type="text/css"/>
+  <link href="VizGrimoireJS/bootstrap/css/bootstrap-responsive.css" rel="stylesheet"/>
+  <link href="favicon.png" rel="shortcut icon"/>
+  <link href="VizGrimoireJS/awesome/css/font-awesome.min.css" rel="stylesheet"/>
+ </head>
+ <body>
+  <div class="container-narrow">
+   <div id="Navbar">
+   </div>
+   <div class="well">
+    <div class="row-fluid">
+     <div class="span3">
+      <p>
+       <i>
+        <b>
+         Evolution of States
+        </b>
+        charts show the evolution of
                              the states in the analysis of the issue tracking system.
-	                   </i></p>
-
-	                <p><i>Each chart represents the number of issues in such state
-                              in each period of time.</i></P>
-
-                    </div>
-                    <div class="span9">
-                        <div class="row-fluid">
-                           <div class="span4">
-                               <h6>Status 'New'</h6>
-                               <div class="MetricsEvol" data-data-source="its" data-metrics="New"
-                                    data-min="false" help="false"  style="height:120px;"></div>
-                           </div>
-                           <div class="span4">
-                               <h6>Status 'In Progress'</h6>
-                               <div class="MetricsEvol" data-data-source="its" data-metrics="In Progress"
-                                    data-min="false" help="false" style="height:120px;"></div>
-                           </div>
-                           <div class="span4">
-                               <h6>Status 'Opinion'</h6>
-                               <div class="MetricsEvol" data-data-source="its" data-metrics="Opinion"
-                                    data-min="false" help="false" style="height:120px;"></div>
-                           </div>
-                        </div>
-                        <div class="row-fluid">
-                           <div class="span4">
-                               <h6>Status 'Confirmed'</h6>
-                               <div class="MetricsEvol" data-data-source="its" data-metrics="Confirmed"
-                                    data-min="false" help="false" style="height:120px;"></div>
-                           </div>
-                           <div class="span4">
-                               <h6>Status 'Incomplete'</h6>
-                               <div class="MetricsEvol" data-data-source="its" data-metrics="Incomplete"
-                                    data-min="false" help="false" style="height:120px;"></div>
-                           </div>
-                           <div class="span4">
-                               <h6>Status 'Unknown'</h6>
-                               <div class="MetricsEvol" data-data-source="its" data-metrics="Unknown"
-                                    data-min="false" help="false" style="height:120px;"></div>
-                           </div>
-                        </div>
-                        <div class="row-fluid">
-                           <div class="span4">
-                               <h6>Status 'Fix Committed'</h6>
-                               <div class="MetricsEvol" data-data-source="its" data-metrics="Fix Committed"
-                                    data-min="false" help="false" style="height:120px;"></div>
-                           </div>
-                           <div class="span4">
-                               <h6>Status 'Fix Released'</h6>
-                               <div class="MetricsEvol" data-data-source="its" data-metrics="Fix Released"
-                                    data-min="false" help="false" style="height:120px;"></div>
-                           </div>
-                           <div class="span4">
-                               <h6>Status 'Invalid'</h6>
-                               <div class="MetricsEvol" data-data-source="its" data-metrics="Invalid"
-                                    data-min="false" help="false" style="height:120px;"></div>
-                           </div>
-                        </div>
-                </div>            
-            </div>
-            
-            <div class="well">
-                <div class="row-fluid">
-                    <div class="span3">
-                    <p><i><b>Current Status</b> charts show the current 'photo' of each of the states.
-	            </i></p>
-	                <p><i>For each of the states shown, it is specified when the issue was born.</i></P>
-                    </div>
-                    <div class="span9">
-                        <div class="row-fluid">
-                           <div class="span4">
-                               <h6>Current status 'New'</h6>
-                               <div class="MetricsEvol" data-data-source="its" data-metrics="current_New" data-graph="bars"
-                                    data-min="false" help="false"  style="height:120px;"></div>
-                           </div>
-                           <div class="span4">
-                               <h6>Current status 'In Progress'</h6>
-                               <div class="MetricsEvol" data-data-source="its" data-metrics="current_In Progress" data-graph="bars"
-                                    style="height:120px;"></div>
-                           </div>
-                           <div class="span4">
-                               <h6>Current status 'Opinion'</h6>
-                               <div class="MetricsEvol" data-data-source="its" data-metrics="current_Opinion" data-graph="bars"
-                                     style="height:120px;"></div>
-                           </div>
-                        </div>
-                       <div class="row-fluid">
-                           <div class="span4">
-                               <h6>Current status 'Confirmed'</h6>
-                               <div class="MetricsEvol" data-data-source="its" data-metrics="current_Confirmed" data-graph="bars"
-                                    data-min="false" help="false" style="height:120px;"></div>
-                           </div>
-                           <div class="span4">
-                               <h6>Current status 'Incompleted'</h6>
-                               <div class="MetricsEvol" data-data-source="its" data-metrics="current_Incomplete" data-graph="bars"
-                                    style="height:120px;"></div>
-                           </div>
-                           <div class="span4">
-                               <h6>Current Status 'Unknown'</h6>
-                               <div class="MetricsEvol" data-data-source="its" data-metrics="current_Unknown" data-graph="bars"
-                                    data-min="false" help="false" style="height:120px;"></div>
-                           </div>
-                        </div>
-                        <div class="row-fluid">
-                           <div class="span4">
-                               <h6>Current status 'Fix Committed'</h6>
-                               <div class="MetricsEvol" data-data-source="its" data-metrics="current_Fix Committed" data-graph="bars"
-                                    data-min="false" help="false" style="height:120px;"></div>
-                           </div>
-                           <div class="span4">
-                               <h6>Current status 'Fix Released'</h6>
-                               <div class="MetricsEvol" data-data-source="its" data-metrics="current_Fix Released" data-graph="bars"
-                                    data-min="false" help="false" style="height:120px;"></div>
-                           </div>
-                           <div class="span4">
-                               <h6>Current status 'Invalid'</h6>
-                               <div class="MetricsEvol" data-data-source="its" data-metrics="current_Invalid"
-                                    data-min="false" help="false" data-graph="bars" style="height:120px;"></div>
-                           </div>
-                        </div>
-
-
-                    </div>
-                </div>
-            </div>
-          
-            <div class="well">
-                <div class="row-fluid">
-                    <div class="span3">
-                    <p><i><b>The most likely changes</b> tables show the percentages of changes among states.
-                    </i></p>
-                    </div>
-                    <div class="span9">
-                         <div class="MarkovTable" data-data-source="its" data-title="Transitions among statuses"></div>
-                    </div>
-            </div>
- 
-
-             <footer>
-                <div id="Footer"></div>
-            </footer>
+       </i>
+      </p>
+      <p>
+       <i>
+        Each chart represents the number of issues in such state
+                              in each period of time.
+       </i>
+      </p>
+     </div>
+     <div class="span9">
+      <div class="row-fluid">
+       <div class="span4">
+        <h6>
+         Status 'New'
+        </h6>
+        <div class="MetricsEvol" data-data-source="its" data-metrics="New" data-min="false" help="false" style="height:120px;">
         </div>
-
-        <script type="text/javascript" src="VizGrimoireJS/lib/jquery-1.7.1.min.js"></script>
-        <script type="text/javascript" src="VizGrimoireJS/bootstrap/js/bootstrap.js"></script>
-        <script type="text/javascript" src="VizGrimoireJS/vizgrimoire.min.js"></script>
-    </body>
+       </div>
+       <div class="span4">
+        <h6>
+         Status 'In Progress'
+        </h6>
+        <div class="MetricsEvol" data-data-source="its" data-metrics="In Progress" data-min="false" help="false" style="height:120px;">
+        </div>
+       </div>
+       <div class="span4">
+        <h6>
+         Status 'Opinion'
+        </h6>
+        <div class="MetricsEvol" data-data-source="its" data-metrics="Opinion" data-min="false" help="false" style="height:120px;">
+        </div>
+       </div>
+      </div>
+      <div class="row-fluid">
+       <div class="span4">
+        <h6>
+         Status 'Confirmed'
+        </h6>
+        <div class="MetricsEvol" data-data-source="its" data-metrics="Confirmed" data-min="false" help="false" style="height:120px;">
+        </div>
+       </div>
+       <div class="span4">
+        <h6>
+         Status 'Incomplete'
+        </h6>
+        <div class="MetricsEvol" data-data-source="its" data-metrics="Incomplete" data-min="false" help="false" style="height:120px;">
+        </div>
+       </div>
+       <div class="span4">
+        <h6>
+         Status 'Unknown'
+        </h6>
+        <div class="MetricsEvol" data-data-source="its" data-metrics="Unknown" data-min="false" help="false" style="height:120px;">
+        </div>
+       </div>
+      </div>
+      <div class="row-fluid">
+       <div class="span4">
+        <h6>
+         Status 'Fix Committed'
+        </h6>
+        <div class="MetricsEvol" data-data-source="its" data-metrics="Fix Committed" data-min="false" help="false" style="height:120px;">
+        </div>
+       </div>
+       <div class="span4">
+        <h6>
+         Status 'Fix Released'
+        </h6>
+        <div class="MetricsEvol" data-data-source="its" data-metrics="Fix Released" data-min="false" help="false" style="height:120px;">
+        </div>
+       </div>
+       <div class="span4">
+        <h6>
+         Status 'Invalid'
+        </h6>
+        <div class="MetricsEvol" data-data-source="its" data-metrics="Invalid" data-min="false" help="false" style="height:120px;">
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+    <div class="well">
+     <div class="row-fluid">
+      <div class="span3">
+       <p>
+        <i>
+         <b>
+          Current Status
+         </b>
+         charts show the current 'photo' of each of the states.
+        </i>
+       </p>
+       <p>
+        <i>
+         For each of the states shown, it is specified when the issue was born.
+        </i>
+       </p>
+      </div>
+      <div class="span9">
+       <div class="row-fluid">
+        <div class="span4">
+         <h6>
+          Current status 'New'
+         </h6>
+         <div class="MetricsEvol" data-data-source="its" data-graph="bars" data-metrics="current_New" data-min="false" help="false" style="height:120px;">
+         </div>
+        </div>
+        <div class="span4">
+         <h6>
+          Current status 'In Progress'
+         </h6>
+         <div class="MetricsEvol" data-data-source="its" data-graph="bars" data-metrics="current_In Progress" style="height:120px;">
+         </div>
+        </div>
+        <div class="span4">
+         <h6>
+          Current status 'Opinion'
+         </h6>
+         <div class="MetricsEvol" data-data-source="its" data-graph="bars" data-metrics="current_Opinion" style="height:120px;">
+         </div>
+        </div>
+       </div>
+       <div class="row-fluid">
+        <div class="span4">
+         <h6>
+          Current status 'Confirmed'
+         </h6>
+         <div class="MetricsEvol" data-data-source="its" data-graph="bars" data-metrics="current_Confirmed" data-min="false" help="false" style="height:120px;">
+         </div>
+        </div>
+        <div class="span4">
+         <h6>
+          Current status 'Incompleted'
+         </h6>
+         <div class="MetricsEvol" data-data-source="its" data-graph="bars" data-metrics="current_Incomplete" style="height:120px;">
+         </div>
+        </div>
+        <div class="span4">
+         <h6>
+          Current Status 'Unknown'
+         </h6>
+         <div class="MetricsEvol" data-data-source="its" data-graph="bars" data-metrics="current_Unknown" data-min="false" help="false" style="height:120px;">
+         </div>
+        </div>
+       </div>
+       <div class="row-fluid">
+        <div class="span4">
+         <h6>
+          Current status 'Fix Committed'
+         </h6>
+         <div class="MetricsEvol" data-data-source="its" data-graph="bars" data-metrics="current_Fix Committed" data-min="false" help="false" style="height:120px;">
+         </div>
+        </div>
+        <div class="span4">
+         <h6>
+          Current status 'Fix Released'
+         </h6>
+         <div class="MetricsEvol" data-data-source="its" data-graph="bars" data-metrics="current_Fix Released" data-min="false" help="false" style="height:120px;">
+         </div>
+        </div>
+        <div class="span4">
+         <h6>
+          Current status 'Invalid'
+         </h6>
+         <div class="MetricsEvol" data-data-source="its" data-graph="bars" data-metrics="current_Invalid" data-min="false" help="false" style="height:120px;">
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+    <div class="well">
+     <div class="row-fluid">
+      <div class="span3">
+       <p>
+        <i>
+         <b>
+          The most likely changes
+         </b>
+         tables show the percentages of changes among states.
+        </i>
+       </p>
+      </div>
+      <div class="span9">
+       <div class="MarkovTable" data-data-source="its" data-title="Transitions among statuses">
+       </div>
+      </div>
+     </div>
+     <footer>
+      <div id="Footer">
+      </div>
+     </footer>
+    </div>
+    <script src="VizGrimoireJS/lib/jquery-1.7.1.min.js" type="text/javascript">
+    </script>
+    <script src="VizGrimoireJS/bootstrap/js/bootstrap.js" type="text/javascript">
+    </script>
+    <script src="VizGrimoireJS/vizgrimoire.min.js" type="text/javascript">
+    </script>
+   </div>
+  </div>
+ </body>
 </html>

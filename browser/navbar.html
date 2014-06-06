@@ -1,75 +1,225 @@
-<div class="navbar navbar-static-top" role="navigation">
-  <div class="navbar-inner">
+<html>
+ <body>
+  <div class="navbar navbar-static-top" role="navigation">
+   <div class="navbar-inner">
     <div class="container-narrow">
-      <button type="button" class="btn btn-navbar" data-toggle="collapse"
-        data-target=".nav-collapse">
-        <span class="icon-bar"></span> <span class="icon-bar"></span> <span
-          class="icon-bar"></span>
-      </button>
-      <div class="nav-collapse collapse">
-        <ul class="nav">
-          <li><a href="http://openstack.org"><img src="open-stack-cloud-computing-logo-2.png" 
-            alt="OpenStack logo" id="logo"  width="100"  border=0></a></li>
-          <li class="summary-menu"><a href="./">Summary</a></li>
-          <li class="projects-menu"><a href="projects-list.html">List of Projects</a></li>
-          <li class="dropdown scm-menu"><a class="dropdown-toggle"
-            data-toggle="dropdown" href="">Source Code <b class="caret"></b></a>
-            <ul class="dropdown-menu">
-              <li><a href="scm.html">basic</a></li>
-              <li><a href="scm-contributors.html">contributors</a></li>
-              <li><a href="scm-companies.html">by companies</a></li>
-              <li><a href="scm-repos.html">by repositories</a></li>
-              <li><a href="scm-companies-summary.html">by companies
-                  summary</a></li>
-            </ul></li>
-          <li class="dropdown its-menu"><a class="dropdown-toggle"
-            data-toggle="dropdown" href="">Tickets <b class="caret"></b></a>
-            <ul class="dropdown-menu">
-              <li><a href="its.html">basic</a></li>
-              <li><a href="its-contributors.html">participants</a></li>
-              <li><a href="its-companies.html">by companies</a></li>
-              <li><a href="its-repos.html">by repositories</a></li>
-            </ul></li>
-          <li class="dropdown mls-menu"><a class="dropdown-toggle"
-            data-toggle="dropdown" href="">Mailing <b class="caret"></b></a>
-            <ul class="dropdown-menu">
-              <li><a href="mls.html">basic</a></li>
-              <li><a href="mls-contributors.html">participants</a></li>
-              <li><a href="mls-companies.html">by companies</a></li>
-              <li><a href="mls-repos.html">by repositories</a></li>
-            </ul></li>           
-          <li class="dropdown scr-menu"><a class="dropdown-toggle"
-            data-toggle="dropdown" href="">Code Review <b class="caret"></b></a>
-            <ul class="dropdown-menu">
-              <li><a href="scr.html">basic</a></li>
-              <li><a href="scr-repos.html">by repositories</a></li>
-              <li><a href="scr-companies.html">by companies</a></li>
-              <li><a href="scr-companies-summary.html">by companies summary</a></li>
-            </ul></li>          
-            <li class="dropdown irc-menu"><a class="dropdown-toggle"
-            data-toggle="dropdown" href="">IRC <b class="caret"></b></a>
-            <ul class="dropdown-menu">
-              <li><a href="irc.html">basic</a></li>
-              <li><a href="irc-repos.html">by channel</a></li>
-              <li><a href="irc-contributors.html">participants</a></li>
-            </ul></li>
-          <li class="dropdown qaforums-menu"><a class="dropdown-toggle"
-            data-toggle="dropdown" href="">Q&A Forums <b class="caret"></b></a>
-            <ul class="dropdown-menu">
-              <li><a href="qaforums.html">basic  <em>(beta)</em></a></li>
-            </ul></li>            
-          <li class="dropdown studies-menu"><a class="dropdown-toggle"
-            data-toggle="dropdown" href="">Studies<b class="caret"></b></a>
-            <ul class="dropdown-menu">
-              <li><a href="demographics.html">Demographics</a></li>
-              <li><a href="its-states.html">Launchpad Analysis</a></li>
-            </ul></li>
-          <li><a href="http://bitergia.com"><img
-              src="bitergia-logo.png" alt="Bitergia logo" id="logo" height="45"
-              width="90" border=0></a></li>
+     <button class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse" type="button">
+      <span class="icon-bar">
+      </span>
+      <span class="icon-bar">
+      </span>
+      <span class="icon-bar">
+      </span>
+     </button>
+     <div class="nav-collapse collapse">
+      <ul class="nav">
+       <li>
+        <a href="http://openstack.org">
+         <img alt="OpenStack logo" border="0" id="logo" src="open-stack-cloud-computing-logo-2.png" width="100"/>
+        </a>
+       </li>
+       <li class="summary-menu">
+        <a href="./">
+         Summary
+        </a>
+       </li>
+       <li class="projects-menu">
+        <a href="projects-list.html">
+         List of Projects
+        </a>
+       </li>
+       <li class="dropdown scm-menu">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="">
+         Source Code
+         <b class="caret">
+         </b>
+        </a>
+        <ul class="dropdown-menu">
+         <li>
+          <a href="scm.html">
+           basic
+          </a>
+         </li>
+         <li>
+          <a href="scm-contributors.html">
+           contributors
+          </a>
+         </li>
+         <li>
+          <a href="scm-companies.html">
+           by companies
+          </a>
+         </li>
+         <li>
+          <a href="scm-repos.html">
+           by repositories
+          </a>
+         </li>
+         <li>
+          <a href="scm-companies-summary.html">
+           by companies
+                  summary
+          </a>
+         </li>
         </ul>
-      </div>
-      <!--/.nav-collapse -->
+       </li>
+       <li class="dropdown its-menu">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="">
+         Tickets
+         <b class="caret">
+         </b>
+        </a>
+        <ul class="dropdown-menu">
+         <li>
+          <a href="its.html">
+           basic
+          </a>
+         </li>
+         <li>
+          <a href="its-contributors.html">
+           participants
+          </a>
+         </li>
+         <li>
+          <a href="its-companies.html">
+           by companies
+          </a>
+         </li>
+         <li>
+          <a href="its-repos.html">
+           by repositories
+          </a>
+         </li>
+        </ul>
+       </li>
+       <li class="dropdown mls-menu">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="">
+         Mailing
+         <b class="caret">
+         </b>
+        </a>
+        <ul class="dropdown-menu">
+         <li>
+          <a href="mls.html">
+           basic
+          </a>
+         </li>
+         <li>
+          <a href="mls-contributors.html">
+           participants
+          </a>
+         </li>
+         <li>
+          <a href="mls-companies.html">
+           by companies
+          </a>
+         </li>
+         <li>
+          <a href="mls-repos.html">
+           by repositories
+          </a>
+         </li>
+        </ul>
+       </li>
+       <li class="dropdown scr-menu">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="">
+         Code Review
+         <b class="caret">
+         </b>
+        </a>
+        <ul class="dropdown-menu">
+         <li>
+          <a href="scr.html">
+           basic
+          </a>
+         </li>
+         <li>
+          <a href="scr-repos.html">
+           by repositories
+          </a>
+         </li>
+         <li>
+          <a href="scr-companies.html">
+           by companies
+          </a>
+         </li>
+         <li>
+          <a href="scr-companies-summary.html">
+           by companies summary
+          </a>
+         </li>
+        </ul>
+       </li>
+       <li class="dropdown irc-menu">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="">
+         IRC
+         <b class="caret">
+         </b>
+        </a>
+        <ul class="dropdown-menu">
+         <li>
+          <a href="irc.html">
+           basic
+          </a>
+         </li>
+         <li>
+          <a href="irc-repos.html">
+           by channel
+          </a>
+         </li>
+         <li>
+          <a href="irc-contributors.html">
+           participants
+          </a>
+         </li>
+        </ul>
+       </li>
+       <li class="dropdown qaforums-menu">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="">
+         Q&amp;A Forums
+         <b class="caret">
+         </b>
+        </a>
+        <ul class="dropdown-menu">
+         <li>
+          <a href="qaforums.html">
+           basic
+           <em>
+            (beta)
+           </em>
+          </a>
+         </li>
+        </ul>
+       </li>
+       <li class="dropdown studies-menu">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="">
+         Studies
+         <b class="caret">
+         </b>
+        </a>
+        <ul class="dropdown-menu">
+         <li>
+          <a href="demographics.html">
+           Demographics
+          </a>
+         </li>
+         <li>
+          <a href="its-states.html">
+           Launchpad Analysis
+          </a>
+         </li>
+        </ul>
+       </li>
+       <li>
+        <a href="http://bitergia.com">
+         <img alt="Bitergia logo" border="0" height="45" id="logo" src="bitergia-logo.png" width="90"/>
+        </a>
+       </li>
+      </ul>
+     </div>
+     <!--/.nav-collapse -->
     </div>
+   </div>
   </div>
-</div>
+ </body>
+</html>

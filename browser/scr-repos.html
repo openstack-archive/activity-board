@@ -1,36 +1,37 @@
 <!DOCTYPE html>
-
 <html lang="en">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<meta charset="utf-8" />
-<title></title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<link rel="stylesheet" type="text/css" id="theme"
-  href="VizGrimoireJS/vizgrimoire.css" />
-<link href="VizGrimoireJS/bootstrap/css/bootstrap.css" rel="stylesheet" />
-<link rel="stylesheet" type="text/css" href="custom.css" />
-<link href="VizGrimoireJS/bootstrap/css/bootstrap-responsive.css"
-  rel="stylesheet" />
-<link rel="shortcut icon" href="favicon.png" />
-<link rel="stylesheet" href="VizGrimoireJS/awesome/css/font-awesome.min.css">
-</head>
-
-<body>
+ <head>
+  <meta content="text/html; charset=utf8" http-equiv="Content-Type"/>
+  <meta charset="utf8"/>
+  <title>
+  </title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <link href="VizGrimoireJS/vizgrimoire.css" id="theme" rel="stylesheet" type="text/css"/>
+  <link href="VizGrimoireJS/bootstrap/css/bootstrap.css" rel="stylesheet"/>
+  <link href="custom.css" rel="stylesheet" type="text/css"/>
+  <link href="VizGrimoireJS/bootstrap/css/bootstrap-responsive.css" rel="stylesheet"/>
+  <link href="favicon.png" rel="shortcut icon"/>
+  <link href="VizGrimoireJS/awesome/css/font-awesome.min.css" rel="stylesheet"/>
+ </head>
+ <body>
   <div class="container-narrow">
-    <div id="Navbar"></div>
-
-    <div class="row-fluid">
-      <h4>Information about all repositories</h4>
-    </div>
-    <!-- info text -->
-    <div id="info" class="row-fluid">
-      <div class="span5">Some charts and tables for top repositories in
+   <div id="Navbar">
+   </div>
+   <div class="row-fluid">
+    <h4>
+     Information about all repositories
+    </h4>
+   </div>
+   <!-- info text -->
+   <div class="row-fluid" id="info">
+    <div class="span5">
+     Some charts and tables for top repositories in
         the project, and a summary of the evolution of their participation with
-        links to more detailed information per repository.</div>
-      <div class="span7">
-        <!-- evolution #repositories -->
-        <!--<i> <b>Active Repositories per month</b>
+        links to more detailed information per repository.
+    </div>
+    <div class="span7">
+     <!-- evolution #repositories -->
+     <!--<i> <b>Active Repositories per month</b>
         </i>
         <div class="MetricsEvol" data-data-source="scr"
           data-metrics="scr_repositories" data-legend="false"
@@ -38,70 +39,71 @@
       </div>-->
     </div>
     <!-- end info text -->
-
-
     <!-- list of repositories -->
-    <div id="nav" class="row-fluid">
-      <div class="FilterItemsNav" data-data-source="scr"
-        data-order-by="scr_submitted" data-filter="repos" style="align: center"></div>
+    <div class="row-fluid" id="nav">
+     <div class="FilterItemsNav" data-data-source="scr" data-filter="repos" data-order-by="scr_submitted" style="align: center">
+     </div>
     </div>
     <!-- end list of repositories -->
-
-
     <!-- submitted, merged repository -->
     <div class="well">
-      <div id="summary-static" class="row-fluid">
-        <!-- submitted -->
-        <div class="span1"></div>
-        <div class="span4">
-          <i> <b>Submitted per repository (aggregated)</b>
-          </i>
-          <div class="FilterItemsGlobal" data-data-source="scr"
-            data-metric="scr_submitted" data-filter="repos"
-            data-legend-div="repos_legend" data-limit="10"
-            data-order-by="scr_submitted"></div>
-        </div>
-        <!-- end submitted -->
-
-        <div class="span2" id="repos_legend"></div>
-
-        <!-- merged -->
-        <div class="span4">
-          <i> <b>Senders per repository (aggregated)</b>
-          </i>
-          <div class="FilterItemsGlobal" data-data-source="scr"
-            data-metric="scr_merged" data-filter="repos" data-legend="false"
-            data-limit="10" data-order-by="scr_submitted"></div>
-        </div>
-        <!-- end merged -->
-        <div class="span1"></div>
+     <div class="row-fluid" id="summary-static">
+      <!-- submitted -->
+      <div class="span1">
       </div>
+      <div class="span4">
+       <i>
+        <b>
+         Submitted per repository (aggregated)
+        </b>
+       </i>
+       <div class="FilterItemsGlobal" data-data-source="scr" data-filter="repos" data-legend-div="repos_legend" data-limit="10" data-metric="scr_submitted" data-order-by="scr_submitted">
+       </div>
+      </div>
+      <!-- end submitted -->
+      <div class="span2" id="repos_legend">
+      </div>
+      <!-- merged -->
+      <div class="span4">
+       <i>
+        <b>
+         Senders per repository (aggregated)
+        </b>
+       </i>
+       <div class="FilterItemsGlobal" data-data-source="scr" data-filter="repos" data-legend="false" data-limit="10" data-metric="scr_merged" data-order-by="scr_submitted">
+       </div>
+      </div>
+      <!-- end merged -->
+      <div class="span1">
+      </div>
+     </div>
     </div>
     <!-- end submitted, merged repository -->
-
-    <div id="summary-static" class="row-fluid"></div>
-
+    <div class="row-fluid" id="summary-static">
+    </div>
     <!-- submitted per repository -->
-    <div id="list" class="row-fluid">
-      <div class="FilterItemsMiniCharts" data-data-source="scr"
-        data-metrics="scr_submitted,scr_merged"
-        data-filter="repos"></div>
+    <div class="row-fluid" id="list">
+     <div class="FilterItemsMiniCharts" data-data-source="scr" data-filter="repos" data-metrics="scr_submitted,scr_merged">
+     </div>
     </div>
     <!-- end submitted per repository -->
-
     <div class="row-fluid" style="margin-top: 10px;">
-      <div class="span12">
-        <div id="Refcard"></div>
+     <div class="span12">
+      <div id="Refcard">
       </div>
+     </div>
     </div>
-
     <footer>
-      <div id="Footer"></div>
+     <div id="Footer">
+     </div>
     </footer>
+   </div>
+   <script src="VizGrimoireJS/lib/jquery-1.7.1.min.js" type="text/javascript">
+   </script>
+   <script src="VizGrimoireJS/bootstrap/js/bootstrap.js" type="text/javascript">
+   </script>
+   <script src="VizGrimoireJS/vizgrimoire.min.js" type="text/javascript">
+   </script>
   </div>
-
-  <script type="text/javascript" src="VizGrimoireJS/lib/jquery-1.7.1.min.js"></script>
-  <script type="text/javascript" src="VizGrimoireJS/bootstrap/js/bootstrap.js"></script>
-  <script type="text/javascript" src="VizGrimoireJS/vizgrimoire.min.js"></script>
-</body>
+ </body>
 </html>

@@ -1,26 +1,28 @@
 <!DOCTYPE html>
-
 <html>
-<head>
-<meta http-equiv="content-type" content="text/html; charset=UTF-8">
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, maximum-scale=1.0">
-<link rel="stylesheet" type="text/css" id="theme"
- href="VizGrimoireJS/vizgrimoire.css" />
-<script type="text/javascript"
- src="VizGrimoireJS/lib/jquery-1.7.1.min.js"></script>
-<script type="text/javascript" src="VizGrimoireJS/vizgrimoire.min.js"></script>
-<title>Bitergia JSON Visualization Sample</title>
-<link rel="stylesheet" href="VizGrimoireJS/awesome/css/font-awesome.min.css">
-</head>
-
-<body>
- <div id="jsonViz" style="height: 200px"></div>
- <div id="jsonViz1" style="height: 200px"></div>
- <div id="jsonViz2" style="height: 200px"></div>
-
- <script type="text/javascript">
-  // Load JSON
+ <head>
+  <meta content="text/html; charset=utf8" http-equiv="content-type"/>
+  <meta charset="utf8"/>
+  <meta content="width=device-width, maximum-scale=1.0" name="viewport"/>
+  <link href="VizGrimoireJS/vizgrimoire.css" id="theme" rel="stylesheet" type="text/css"/>
+  <script src="VizGrimoireJS/lib/jquery-1.7.1.min.js" type="text/javascript">
+  </script>
+  <script src="VizGrimoireJS/vizgrimoire.min.js" type="text/javascript">
+  </script>
+  <title>
+   Bitergia JSON Visualization Sample
+  </title>
+  <link href="VizGrimoireJS/awesome/css/font-awesome.min.css" rel="stylesheet"/>
+ </head>
+ <body>
+  <div id="jsonViz" style="height: 200px">
+  </div>
+  <div id="jsonViz1" style="height: 200px">
+  </div>
+  <div id="jsonViz2" style="height: 200px">
+  </div>
+  <script type="text/javascript">
+   // Load JSON
   var json_file = 'data/json/scm-evolutionary.json';
   $.getJSON(json_file, null, function(data) {
     // Viz
@@ -33,7 +35,6 @@
     Viz.displayBasicMetricsHTML(metric_ids, data, div_target1, config);
     Viz.displayBasicMetricsHTML(metric_ids, data, div_target2, config);
   });
-</script>
-
-</body>
+  </script>
+ </body>
 </html>
