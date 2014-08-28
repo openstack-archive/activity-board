@@ -1,0 +1,240 @@
+
+<!-- summaries and charts -->
+
+<!-- scm -->
+<div class="row">
+  <!-- scm summary box -->
+  <div class="col-md-2">
+    <div class="well well-small">
+      <div class="row thin-border">
+        <div class="col-md-12">Code Developers</div>
+      </div>
+
+      <div class="row grey-border">
+        <div class="col-md-12 big-fp-number">
+          <span class="ProjectData"
+                data-data-source="scm" data-field="scm_authors"></span>            
+        </div>
+      </div>
+
+      <div class="row" style="padding: 5px 0px 0px 0px;">
+        <div class="col-md-12">
+          <div class="row thin-border">
+            <div class="col-md-12">Commits</div>
+          </div>
+          <div class="row">
+            <div class="col-md-12 medium-fp-number">
+              <span class="ProjectData"
+                    data-data-source="scm" data-field="scm_commits"></span>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- end scm summary box -->
+
+  <div class="col-md-5">
+    <div class="well well-small">
+      <div class="FilterItemMetricsEvol" data-data-source="scm"
+           data-metrics="scm_commits" data-min="true"
+           data-filter="projects" data-frame-time="true"
+           data-light-style="true" style="height: 100px;"></div>
+      <span class="FilterItemMicrodashText" data-filter="project"
+            data-metric="scm_commits"></span>
+    </div>
+  </div>
+
+  <div class="col-md-5">
+    <div class="well well-small">
+      <div class="FilterItemMetricsEvol" data-data-source="scm"
+           data-metrics="scm_authors" data-min="true"
+           data-frame-time="true" data-legend="true" data-filter="projects"
+           style="height: 100px;"></div>
+      <span class="FilterItemMicrodashText" data-filter="project"
+            data-metric="scm_authors"></span>
+    </div>
+  </div>
+</div>
+<!-- end scm-->
+
+<!-- its -->
+<div class="row">
+  <!-- summary box -->
+  <div class="col-md-2">
+    <div class="well well-small">
+      <div class="row thin-border">
+        <div class="col-md-12">Ticket Closers</div>
+      </div>
+
+      <div class="row grey-border">
+        <div class="col-md-12 big-fp-number">
+          <span class="ProjectData"
+                data-data-source="its" data-field="its_closers"></span>
+          
+        </div>
+      </div>
+
+      <div class="row" style="padding: 5px 0px 0px 0px;">
+        <div class="col-md-12">
+          <div class="row thin-border">
+            <div class="col-md-12">Closed Tickets</div>
+          </div>
+          <div class="row">
+            <div class="col-md-12 medium-fp-number">
+              <span class="ProjectData"
+                    data-data-source="its" data-field="its_closed"></span>                
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- end of summary box -->
+
+  <div class="col-md-5">
+    <div class="well well-small">
+      <div class="FilterItemMetricsEvol" data-data-source="its"
+           data-metrics="its_closed" data-min="true" data-legend="true"
+           data-filter="projects" data-frame-time="true"
+           style="height: 100px;"></div>
+      <span class="FilterItemMicrodashText" data-filter="project"
+            data-metric="its_closed"></span>
+
+
+    </div>
+  </div>
+
+  <div class="col-md-5">
+    <div class="well well-small">
+      <div class="FilterItemMetricsEvol" data-data-source="its"
+           data-metrics="its_closers" data-min="true"
+           data-frame-time="true" data-legend="true" data-filter="projects"
+           style="height: 100px;"></div>
+      <span class="FilterItemMicrodashText" data-filter="project"
+            data-metric="its_closers"></span>
+    </div>
+  </div>
+</div>
+<!-- end its-->
+
+
+<!-- scr -->
+<div class="row">
+  <!-- summary box -->
+  <div class="col-md-2">
+    <div class="well well-small">
+      <div class="row thin-border">
+        <div class="col-md-12">Patches Submitters</div>
+      </div>
+
+      <div class="row grey-border">
+        <div class="col-md-12 big-fp-number">
+          <span class="ProjectData"
+                data-data-source="scr" data-field="scr_submitters"></span>
+        </div>
+      </div>
+
+      <div class="row" style="padding: 5px 0px 0px 0px;">
+        <div class="col-md-12">
+          <div class="row thin-border">
+            <div class="col-md-12">Submitted Patches</div>
+          </div>
+          <div class="row">
+            <div class="col-md-12 medium-fp-number">
+              <span class="ProjectData"
+                    data-data-source="scr" data-field="scr_submitted"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- end of summary box -->
+
+  <div class="col-md-5">
+    <div class="well well-small">
+      <div class="FilterItemMetricsEvol" data-data-source="scr"
+           data-metrics="scr_merged" data-legend="true"
+           data-filter="projects" data-frame-time="true" data-min="true"
+           style="height: 100px;"></div>
+      <span class="FilterItemMicrodashText" data-filter="project"
+            data-metric="scr_merged"></span>
+    </div>
+  </div>
+
+  <div class="col-md-5">
+    <div class="well well-small">
+      <div class="FilterItemMetricsEvol" data-data-source="scr"
+           data-metrics="scr_submitters" data-min="true"
+           data-frame-time="true" data-legend="true" data-filter="projects"
+           style="height: 100px;"></div>
+      <span class="FilterItemMicrodashText" data-filter="project"
+            data-metric="scr_submitters"></span>
+    </div>
+  </div>
+</div>
+<!-- end scr-->
+
+<!-- mls -->
+<!--         <div class="row">
+             summary box
+             <div class="col-md-2">
+               <div class="well well-small">
+                 <div class="row thin-border">
+                   <div class="col-md-12">Message posters</div>
+                 </div>
+
+                 <div class="row grey-border">
+                   <div class="col-md-12 big-fp-number">
+                     <span class="ProjectData"
+                           data-data-source="mls" data-field="mls_senders"></span>                      
+                   </div>
+                 </div>
+
+                 <div class="row" style="padding: 5px 0px 0px 0px;">
+                   <div class="col-md-12">
+                     <div class="row thin-border">
+                       <div class="col-md-12">Posted messages</div>
+                     </div>
+                     <div class="row">
+                       <div class="col-md-12 medium-fp-number">
+                         <span class="ProjectData"
+                               data-data-source="mls" data-field="mls_sent"></span>                           
+                       </div>
+                     </div>
+                   </div>
+                 </div>
+               </div>
+             </div>
+             end of summary box
+
+             <div class="col-md-5">
+               <div class="well well-small">
+                 <div class="FilterItemMetricsEvol" data-data-source="mls"
+                      data-metrics="mls_sent" data-legend="true"
+                      data-filter="projects" data-frame-time="true" data-min="true"
+                      style="height: 100px;"></div>
+                 <span class="FilterItemMicrodashText" data-filter="project"
+                       data-metric="mls_sent"></span>
+               </div>
+             </div>
+
+             <div class="col-md-5">
+               <div class="well well-small">
+                 <div class="FilterItemMetricsEvol" data-data-source="mls"
+                      data-metrics="mls_senders" data-frame-time="true"
+                      data-legend="true" data-filter="projects" data-min="true"
+                      style="height: 100px;"></div>
+                 <span class="FilterItemMicrodashText" data-filter="project"
+                       data-metric="mls_senders"></span>
+               </div>
+             </div>
+</div>
+end scr
+-->
+
+
+<!-- end charts -->
+
