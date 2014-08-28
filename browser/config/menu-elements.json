@@ -1,0 +1,38 @@
+{
+    "menu":{
+        "scm": [
+            "companies",
+            "companies-summary",
+            "contributors",
+            "repos"
+        ],
+        "mls": [
+            "companies",
+            "contributors",
+            "repos"
+        ],
+        "qaforums": ["tags"],
+        "irc": [
+            "contributors",
+            "repos"
+        ],
+        "studies": [
+            "demographics",
+            "release"
+        ],
+        "its": [
+            "companies",
+            "contributors",
+	    "states",
+            "repos"
+        ],
+        "scr": [
+            "companies",
+            "companies-summary",
+            "contributors"
+        ],
+        "downloads_OFF": [],
+        "wiki_OFF": []
+    },
+    "releases":["essex","folsom","havana","icehouse"]
+}
