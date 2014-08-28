@@ -1,0 +1,143 @@
+    <div class="row">
+
+      <!-- charts -->
+      <div class="col-md-12">
+
+        <!-- scm charts -->
+        <div class="row">
+          <div class="col-md-2">
+            <div class="FilterItemSummary" data-data-source="scm"
+              data-filter="domains"></div>
+          </div>
+
+          <!-- commits -->
+          <div class="col-md-4">
+            <div class="FilterItemMetricsEvol" data-data-source="scm"
+              data-metrics="scm_commits" data-min="true"
+              data-filter="domains"></div>
+          </div>
+          <!-- end commits -->
+
+          <!-- authors -->
+          <div class="col-md-4">
+            <div class="FilterItemMetricsEvol" data-data-source="scm"
+              data-metrics="scm_authors" data-min="true"
+              data-filter="domains"></div>
+          </div>
+          <!-- end authors -->
+
+          <!-- end added, removed lines -->
+          <!--           <div class="col-md-3">
+            <div class="FilterItemMetricsEvol" data-data-source="scm"
+              data-metrics="scm_added_lines,scm_removed_lines"
+              data-legend="true" data-filter="domains"></div>
+          </div>
+ -->
+          <!-- end added,removed lines -->
+
+          <div class="col-md-2">
+            <div class="FilterItemTop" data-data-source="scm"
+              data-metric="scm_authors" data-period="all" data-titles="false"
+              data-filter="domains"></div>
+          </div>
+
+        </div>
+        <!-- end scm charts -->
+
+        <!-- its charts -->
+        <div class="row">
+          <div class="col-md-2">
+            <div class="FilterItemSummary" data-data-source="its"
+              data-filter="domains"></div>
+          </div>
+
+          <!-- end closed, opened tickets -->
+          <div class="col-md-4">
+            <div class="FilterItemMetricsEvol" data-data-source="its"
+              data-metrics="its_closed,its_opened" data-min="true"
+              data-filter="domains"></div>
+          </div>
+          <!-- end closed, opened tickets -->
+
+          <!-- closers, openers -->
+          <div class="col-md-4">
+            <div class="FilterItemMetricsEvol" data-data-source="its"
+              data-metrics="its_closers,its_openers" data-min="true"
+              data-filter="domains"></div>
+          </div>
+
+          <div class="col-md-2">
+            <div class="FilterItemTop" data-data-source="its"
+              data-metric="its_closers" data-period="all" data-titles="false"
+              data-filter="domains"></div>
+
+            <!-- end closers, openers -->
+          </div>
+        </div>
+        <!-- end its charts -->
+
+        <!-- mls charts -->
+        <div class="row">
+          <div class="col-md-2">
+            <div class="FilterItemSummary" data-data-source="mls"
+              data-filter="domains"></div>
+          </div>
+
+          <!-- sent msgs -->
+          <div class="col-md-4">
+            <div class="FilterItemMetricsEvol" data-data-source="mls"
+              data-metrics="mls_sent" data-min="true" data-filter="domains"></div>
+          </div>
+
+          <!-- senders -->
+          <div class="col-md-4">
+            <div class="FilterItemMetricsEvol" data-data-source="mls"
+              data-metrics="mls_senders" data-min="true"
+              data-filter="domains"></div>
+          </div>
+          <!-- end senders -->
+
+          <div class="col-md-2">
+            <div class="FilterItemTop" data-data-source="mls"
+              data-metric="mls_senders" data-period="all" data-titles="false"
+              data-filter="domains"></div>
+          </div>
+
+        </div>
+        <!-- end mls charts -->
+
+        <div class="row">
+          <div class="col-md-2">
+            <div class="FilterItemSummary" data-data-source="scr"
+              data-filter="domains"></div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="FilterItemMetricsEvol" data-data-source="scr"
+              data-metrics="scr_submitted,scr_merged" data-min="true"
+              data-filter="domains"></div>
+          </div>
+
+          <!--           <div class="col-md-4">
+            <div class="FilterItemMetricsEvol" data-data-source="scr"
+              data-metrics="scr_mergers" data-min="true"
+              data-filter="domains"></div>
+          </div>
+ -->
+
+          <!--           <div class="col-md-2">
+            <div class="FilterItemTop" data-data-source="scr"
+              data-metric="scr_senders" data-period="all" data-titles="false"
+              data-filter="domains"></div>
+          </div>
+ -->
+        </div>
+        <!-- end mls charts -->
+
+
+
+      </div>
+      <!-- end charts -->
+
+    </div>
+  </div>
