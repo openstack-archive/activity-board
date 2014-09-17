@@ -2,7 +2,6 @@
     "menu":{
         "scm": [
             "companies",
-            "companies-summary",
             "contributors",
             "repos"
         ],
@@ -28,11 +27,10 @@
         ],
         "scr": [
             "companies",
-            "companies-summary",
             "contributors"
         ],
         "downloads_OFF": [],
         "wiki_OFF": []
     },
-    "releases":["essex","folsom","havana","icehouse"]
+    "releases":["essex","folsom","grizzly","havana","icehouse"]
 }
