@@ -181,4 +181,16 @@ ul.scroll-menu {
     max-height: 400px;
     overflow-x: hidden;
 }
-/** */
+
+/* watch out! filterbar should be part of master! */
+.filterbar {
+    background-color: #F5F5F5;
+    border-radius: 4px;
+    list-style: none outside none;
+    margin-bottom: 20px;
+    padding: 8px 15px;
+}
+.filterbar > li {
+    display: inline-block;
+}
+
