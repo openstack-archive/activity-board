@@ -1,0 +1,11 @@
+date,initiator,len,subject
+2014-06-06,Jorge Miramontes,60,[openstack-dev] [Neutron][LBaaS] Barbican Neutron LBaaS Integration  Ideas
+2014-04-30,erkan yanar,48,[Openstack-operators] A Hypervisor supporting containers
+2014-06-06,Anita Kuno,42,[openstack-dev] use of the word certified
+2014-05-14,Chris Wright,41,[openstack-dev] [Neutron][NFV] NFV BoF at design summit
+2014-05-22,Samuel Bercovici,38,[openstack-dev] [Neutron][LBaaS]TLS API support for authentication
+2014-04-14,Michael Still,36,[openstack-dev] [Nova] Thoughts from the PTL
+2014-06-03,jaypipes@gmail.com,35,[openstack-dev] [nova] Proposal: Move CPU and memory allocation 	ratio out of scheduler
+2014-06-20,Sean Dague,35,[openstack-dev] [hacking] rules for removal
+2014-04-16,Vikash Kumar,34,[Openstack] [openstack-dev][nova][Neutron] Launch VM with multiple  Ethernet interfaces with I.P. of single subnet.
+2014-06-09,Kurt Griffiths,33,[openstack-dev] [marconi] Reconsidering the unified API model

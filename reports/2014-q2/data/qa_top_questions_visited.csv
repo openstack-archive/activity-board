@@ -1,0 +1,11 @@
+qid,urls,visits,subject
+26985,https://ask.openstack.org/en/question/26985/icehouse-virtual-interface-creation-failed/,1099,icehouse virtual interface creation failed
+26938,https://ask.openstack.org/en/question/26938/virtualinterfacecreateexception-virtual-interface-creation-failed/,988,virtualinterfacecreateexception virtual interface creation failed
+28966,https://ask.openstack.org/en/question/28966/what-is-hp-helion-openstack-community/,805,what is hp helion openstack community
+29567,https://ask.openstack.org/en/question/29567/connection-to-neutron-failed-maximum-attempts-reached/,760,connection to neutron failed maximum attempts reached
+27462,https://ask.openstack.org/en/question/27462/devstack-error-neutronopenstackcommonrpccommon-amqp-server-on-ip5672-is-unreachable-errno-111-econnrefused/,538,devstack error neutronopenstackcommonrpccommon amqp server on ip5672 is unreachable errno 111 econnrefused
+27670,https://ask.openstack.org/en/question/27670/error-the-server-has-either-erred-or-is-incapable-of-performing-the-requested-operation-http-500/,469,error the server has either erred or is incapable of performing the requested operation http 500
+30232,https://ask.openstack.org/en/question/30232/keystone-an-unexpected-error-prevented-the-server-from-fulfilling-your-request-http-500/,403,keystone an unexpected error prevented the server from fulfilling your request http 500
+27960,https://ask.openstack.org/en/question/27960/error-bad-return-status-for-module-build-on-kernel-3130-24-generic-x86_64/,376,error bad return status for module build on kernel 3130 24 generic x86\_64
+28734,https://ask.openstack.org/en/question/28734/instance-failed-to-spawn-you-must-call-aug-init-first-to-initialize-augeas/,366,instance failed to spawn you must call aug init first to initialize augeas
+29932,https://ask.openstack.org/en/question/29932/hphelion-installation-failed-cannot-update-service-status-on-host-overcloud/,358,hphelion installation failed cannot update service status on host overcloud

@@ -1,0 +1,11 @@
+date,initiator,subject,people
+2014-04-14,Matt Van Winkle,[openstack-dev] [Nova] Thoughts from the PTL,23
+2014-05-15,Stephen Wong,[openstack-dev] [Neutron][NFV] NFV BoF at design summit,21
+2014-06-16,Huangtianhua,ERROR,21
+2014-05-05,Joshua Harlow,[Openstack-operators] A Hypervisor supporting containers,21
+2014-06-20,Morgan Fainberg,[openstack-dev] [hacking] rules for removal,21
+2014-06-04,ZG Niu,[openstack-dev] [nova] Proposal: Move CPU and memory allocation  ratio out of scheduler,19
+2014-06-09,Evgeny Fedoruk,[openstack-dev] [Neutron][LBaaS] Barbican Neutron LBaaS  Integration Ideas,18
+2014-05-23,Jain  Vivek,[openstack-dev] [Neutron][LBaaS]TLS API support for  authentication,16
+2014-04-16,Robert Collins,[openstack-dev] [TripleO] reviewer update march [additional 	cores],16
+2014-06-03,Sam Harwell,[openstack-dev] [Neutron] Introducing task oriented workflows,15
