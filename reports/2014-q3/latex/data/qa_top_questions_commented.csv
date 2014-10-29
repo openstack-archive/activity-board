@@ -1,0 +1,11 @@
+qid,site,comments,subject
+43067,https://ask.openstack.org/en/question/43067/dhcp-and-instances-addressing-stopped-working/,5, dhcp and instances addressing stopped working
+43578,https://ask.openstack.org/en/question/43578/vm-cant-get-dhcp-ip/,5, vm cant get dhcp ip
+47615,https://ask.openstack.org/en/question/47615/deploying-designate-on-fedora/,5, deploying designate on fedora
+46359,https://ask.openstack.org/en/question/46359/nova-instance-boot-fail-with-kernel-panic/,5, nova instance boot fail with kernel
+33971,https://ask.openstack.org/en/question/33971/ml2ovsgre-network-issues-of-vm-instance-in-a-multi-node-icehouse-enviroment/,5, ml2ovsgre network issues of vm instance
+44423,https://ask.openstack.org/en/question/44423/cannot-ping-router-tenant-gateway-by-os-nodes-and-www-by-instance/,5, cannot ping router tenant gateway by
+46807,https://ask.openstack.org/en/question/46807/vm-instance-cant-reach-external-network-nated-packet-not-return/,5, vm instance cant reach external network
+44707,https://ask.openstack.org/en/question/44707/compute-node-unrecognized/,5, compute node unrecognized
+46039,https://ask.openstack.org/en/question/46039/nova-db-sync-install-error/,5, nova db sync install error
+47324,https://ask.openstack.org/en/question/47324/cannot-ping-from-external-network-to-floating-ip-of-tenant-router-gateway/,5, cannot ping from external network to
