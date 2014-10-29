@@ -1,0 +1,157 @@
+\textbf{Activity}: Commits in Git, submitted, merged and abandoned reviews in Gerrit and opened and closed issues in Launchpad.
+
+\begin{tabular}{p{7cm} p{5cm}}
+    \vspace{0pt} 
+    \includegraphics[scale=.35]{figs/commitsothers.eps}
+    & 
+    \vspace{0pt}
+    \begin{tabular}{l|r|r|}%
+    \bfseries Period & \bfseries Commits & \bfseries Reviews % specify table head
+    \csvreader[head to column names]{data/commitsothers.csv}{}% use head of csv as column names
+    {\\\labels & \commits & \submitted}
+    \end{tabular}
+\end{tabular}
+
+\begin{tabular}{p{7cm} p{5cm}}
+    \vspace{0pt} 
+    \includegraphics[scale=.35]{figs/closedothers.eps}
+    & 
+    \vspace{0pt}
+    \begin{tabular}{l|r|r|}%
+\bfseries Period & \bfseries Closed & \bfseries Opened
+    \csvreader[head to column names]{data/closedothers.csv}{}% use head of csv as column names
+    {\\\labels & \closed & \opened}
+    \end{tabular}
+\end{tabular}
+
+\begin{tabular}{p{7cm} p{5cm}}
+    \vspace{0pt} 
+    \includegraphics[scale=.35]{figs/submitted_reviewsothers.eps}
+    & 
+    \vspace{0pt}
+    \begin{tabular}{l|r|r|}%
+    \bfseries Period & \bfseries Merged & \bfseries Abandoned % specify table head
+    \csvreader[head to column names]{data/submitted_reviewsothers.csv}{}% use head of csv as column names
+    {\\\labels & \merged & \abandoned}
+    \end{tabular}
+\end{tabular}
+
+
+\textbf{Community}: Authors per quarter and top authors and organizations in the last quarter
+
+\begin{tabular}{p{7cm} p{5cm}}
+    \vspace{0pt} 
+    \includegraphics[scale=.35]{figs/active_core_scrothers.eps}
+    & 
+    \vspace{0pt}
+    \begin{tabular}{l|l}%
+    \bfseries Period & \bfseries Active Core % specify table head
+    \csvreader[head to column names]{data/active_core_scrothers.csv}{}% use head of csv as column names
+    {\\\labels & \activecorereviewers}
+    \end{tabular}
+\end{tabular}
+
+\begin{tabular}{p{7cm} p{5cm}}
+    \vspace{0pt} 
+    \includegraphics[scale=.35]{figs/authorsothers.eps}
+    & 
+    \vspace{0pt}
+    \begin{tabular}{l|l}%
+    \bfseries Period & \bfseries Authors % specify table head
+    \csvreader[head to column names]{data/authorsothers.csv}{}% use head of csv as column names
+    {\\\labels & \authors}
+    \end{tabular}
+\end{tabular}
+
+\begin{tabular}{p{7cm} p{5cm}}
+    \vspace{0pt}
+\begin{tabular}{l|l}%
+    \bfseries Commit (s) & \bfseries Author % specify table head
+    \csvreader[head to column names]{data/scm_top_authors_project_others.csv}{}% use head of csv as column names
+    {\\\hline\csvcoli&\csvcolii}% specify your coloumns here
+\end{tabular}
+&
+\vspace{0pt}
+\begin{tabular}{l|l}%
+    \bfseries Commit (s) & \bfseries Organizations % specify table head
+    \csvreader[head to column names]{data/scm_top_companies_project_others.csv}{}% use head of csv as column names
+    {\\\hline\csvcoli&\csvcolii}% specify your coloumns here
+\end{tabular}
+\end {tabular}
+
+\textbf{Process}: Efficiency closing issues and time to review: mean and median
+
+\begin{tabular}{p{7cm} p{5cm}}
+    \vspace{0pt} 
+    \includegraphics[scale=.35]{figs/bmiothers.eps}
+    & 
+    \vspace{0pt}
+    \begin{tabular}{l|l}%
+    \bfseries Period & \bfseries Closed/Opened % specify table head
+    \csvreader[head to column names]{data/bmiothers.csv}{}% use head of csv as column names
+    {\\\labels & \bmi}
+    \end{tabular}
+\end{tabular}
+
+\begin{tabular}{p{7cm} p{5cm}}
+    \vspace{0pt} 
+    \includegraphics[scale=.35]{figs/bmiscrothers.eps}
+    & 
+    \vspace{0pt}
+    \begin{tabular}{l|l}%
+    \bfseries Period & \bfseries Closed/Opened % specify table head
+    \csvreader[head to column names]{data/submitted_reviewsothers.csv}{}% use head of csv as column names
+    {\\\labels & \bmi}
+    \end{tabular}
+\end{tabular}
+
+
+\begin{tabular}{p{7cm} p{5cm}}
+    \vspace{0pt} 
+    \includegraphics[scale=.35]{figs/timetoreview_medianothers.eps}
+    & 
+    \vspace{0pt}
+    \begin{tabular}{l|r|r|}%
+    \bfseries Period & \bfseries Median & \bfseries Mean % specify table head
+    \csvreader[head to column names]{data/timetoreview_medianothers.csv}{}% use head of csv as column names
+    {\\\labels & \mediantime & \meantime}
+    \end{tabular}
+\end{tabular}
+
+
+
+\begin{tabular}{p{7cm} p{5cm}}
+    \vspace{0pt} 
+    \includegraphics[scale=.35]{figs/patchsets_avgothers.eps}
+    & 
+    \vspace{0pt}
+    \begin{tabular}{l|r|r|}%
+    \bfseries Period & \bfseries Median & \bfseries Mean % specify table head
+    \csvreader[head to column names]{data/scr_patchsets_iterationsothers.csv}{}% use head of csv as column names
+    {\\\labels & \medianpatchsets & \meanpatchsets}
+    \end{tabular}
+\end{tabular}
+
+\begin{tabular}{p{7cm} p{5cm}}
+    \vspace{0pt} 
+    \includegraphics[scale=.35]{figs/waiting4reviewer_avgothers.eps}
+    & 
+    \vspace{0pt}
+    \begin{tabular}{l|r|r|}%
+    \bfseries Period & \bfseries Median & \bfseries Mean % specify table head
+    \csvreader[head to column names]{data/timewaiting4reviewer_medianothers.csv}{}% use head of csv as column names
+    {\\\labels & \mediantime & \meantime}
+    \end{tabular}
+\end{tabular}
+
+\begin{tabular}{p{7cm} p{5cm}}
+    \vspace{0pt} 
+    \includegraphics[scale=.35]{figs/waiting4submitter_avgothers.eps}
+    & 
+    \vspace{0pt}
+    \begin{tabular}{l|r|r|}%
+    \bfseries Period & \bfseries Median & \bfseries Mean % specify table head
+    \csvreader[head to column names]{data/timewaiting4submitter_medianothers.csv}{}% use head of csv as column names
+    {\\\labels & \mediantime & \meantime}
+    \end{tabular}
+\end{tabular}
