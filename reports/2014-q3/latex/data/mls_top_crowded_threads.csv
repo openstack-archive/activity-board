@@ -1,0 +1,11 @@
+date,initiator,subject,people
+2014-08-12,Devananda,[openstack-dev] [all] The future of the integrated release,53
+2014-09-05,Daniel P. Berrange,[openstack-dev] [nova] Averting the Nova crisis by splitting  out virt drivers,40
+2014-09-19,Anita Kuno,[openstack-dev] Thoughts on OpenStack Layers and a Big Tent 	model,29
+2014-09-25,Ken'ichi Ohmichi,[openstack-dev] [Nova] Some ideas for 	micro-version	implementation,28
+2014-08-18,Maru Newby,[openstack-dev] [nova][core] Expectations of core reviewers,28
+2014-08-04,Armando Migliaccio,[openstack-dev] [Neutron] Group Based Policy and the way forward,27
+2014-08-29,Thierry Carrez,[openstack-dev] [all] [ptls] The Czar system   or how to scale PTLs,26
+2014-09-09,alawson,[openstack-dev] Kilo Cycle Goals Exercise,26
+2014-08-03,Michael Still,[openstack-dev] [Nova] Nominating Jay Pipes for nova-core,24
+2014-09-05,rbtcollins,[openstack-dev] [Zaqar] Comments on the concerns arose during  the TC meeting,22

@@ -1,0 +1,12 @@
+commitstopone,orgstopone,commitstoptwo,projects,orgstoptwo
+72,Red Hat,64,neutron,Cisco Systems
+156,Mirantis,52,sahara,Red Hat
+45,Red Hat,34,ceilometer,Mirantis
+83,Red Hat,77,horizon,IBM
+170,Red Hat,53,heat,Mirantis
+329,IBM,198,nova,Red Hat
+43,Tesora,19,trove,HP
+34,SwiftStack,29,swift,Rackspace
+41,Red Hat,30,glance,IBM
+48,IBM,32,cinder,SolidFire
+155,IBM,60,keystone,Metacloud

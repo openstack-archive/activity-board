@@ -1,0 +1,11 @@
+date,initiator,len,subject
+2014-08-05,Thierry Carrez,185,[openstack-dev] [all] The future of the integrated release
+2014-09-04,Daniel P. Berrange,126,[openstack-dev] [nova] Averting the Nova crisis by splitting out 	virt drivers
+2014-09-04,Flavio Percoco,85,[openstack-dev] [Zaqar] Comments on the concerns arose during the 	TC meeting
+2014-08-04,Mark McClain,72,[openstack-dev] [Neutron] Group Based Policy and the way forward
+2014-09-18,Monty Taylor,70,[openstack-dev] Thoughts on OpenStack Layers and a Big Tent model
+2014-07-09,Ihar Hrachyshka,69,[openstack-dev] [neutron][all] switch from mysqldb to another  eventlet aware mysql client
+2014-07-16,Sean Dague,64,[openstack-dev] [nova] fair standards for all hypervisor drivers
+2014-08-13,Michael Still,61,[openstack-dev] [nova][core] Expectations of core reviewers
+2014-09-19,He Jie Xu,57,[openstack-dev] [Nova] Some ideas for micro-version implementation
+2014-08-22,Thierry Carrez,54,[openstack-dev] [all] [ptls] The Czar system  or how to scale PTLs
