@@ -1,0 +1,12 @@
+commits,projects
+1140,nova
+559,neutron
+448,horizon
+400,keystone
+392,heat
+311,cinder
+233,sahara
+202,ceilometer
+179,glance
+135,swift
+112,trove
