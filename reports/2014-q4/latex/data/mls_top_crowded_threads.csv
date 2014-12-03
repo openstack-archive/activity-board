@@ -1,0 +1,11 @@
+date,initiator,subject,people
+2014-12-04,Anita Kuno,[openstack-dev] [neutron] Changes to the core team,23
+2014-11-08,Craig Tracey,[Openstack-operators] Proposal for an 'Operations' project,17
+2014-10-14,Sylvain Bauza,[openstack-dev] [Nova] Automatic evacuate,17
+2014-10-17,Angus Salkeld,[openstack-dev] [all] add cyclomatic complexity check to pep8 	target,16
+2014-12-10,vishvananda,[openstack-dev] [Nova] Spring cleaning nova-core,15
+2014-12-12,Kevin Benton,[openstack-dev] [Neutron] UniqueConstraint for name and  tenant_id in security group,15
+2014-11-21,ERROR,[openstack-dev] [Fuel] fuel master monitoring,15
+2014-11-25,rbtcollins,[openstack-dev] [tc][neutron] Proposal to split Neutron into  separate repositories,15
+2014-11-28,e.aslan@logicom.com.tr,[Openstack-operators] Operations project: Packaging,14
+2014-10-14,Chris Yeoh,[openstack-dev] [api] Forming the API Working Group,14

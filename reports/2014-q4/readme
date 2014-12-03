@@ -1,0 +1,14 @@
+= OpenStack quarterly reports =
+
+== Special packages ==
+* csvsimple.sty: found at texlive-latex-extra (.deb) repository
+
+== How to compile ==
+* $ latex report.tex
+* $ dvipdf report.dvi
+
+== Directory structure ==
+* ./latex: latex source code
+* ./latex/figs: .eps figs
+* ./latex/data: .csv files
+* ./pdf: pdf version of the compiled latex
