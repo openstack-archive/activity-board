@@ -1,0 +1,11 @@
+date,initiator,len,subject
+2014-10-13,alawson,58,[openstack-dev] [Nova] Automatic evacuate
+2014-10-14,Angus Lees,49,[openstack-dev] [kolla] on Dockerfile patterns
+2014-10-02,Doug Hellmann,37,[openstack-dev] [all][tc] governance changes for "big tent" model
+2014-11-05,azemlyanov,36,[openstack-dev] [Fuel] fuel master monitoring
+2014-11-11,Richard Jones,35,[openstack-dev] [Horizon] the future of angularjs development in 	Horizon
+2014-11-05,Alexis Lee,33,[openstack-dev]  [Heat] New function: first_nonnull
+2014-10-08,Everett Toews,32,[openstack-dev] [api] Forming the API Working Group
+2014-11-06,Michael Chapman,28,[Openstack-operators] Proposal for an 'Operations' project
+2014-10-03,Salvatore Orlando,28,[openstack-dev] Quota management and enforcement across projects
+2014-11-13,Visnusaran Murugan,27,[openstack-dev] [Heat] Using Job Queues for timeout ops

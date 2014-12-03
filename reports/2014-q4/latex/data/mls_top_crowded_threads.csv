@@ -1,0 +1,11 @@
+date,initiator,subject,people
+2014-11-08,Craig Tracey,[Openstack-operators] Proposal for an 'Operations' project,17
+2014-10-14,Sylvain Bauza,[openstack-dev] [Nova] Automatic evacuate,17
+2014-10-17,Angus Salkeld,[openstack-dev] [all] add cyclomatic complexity check to pep8 	target,16
+2014-11-25,rbtcollins,[openstack-dev] [tc][neutron] Proposal to split Neutron into  separate repositories,15
+2014-10-14,Chris Yeoh,[openstack-dev] [api] Forming the API Working Group,14
+2014-11-26,Ben Nemec,[openstack-dev] [nova] Proposal new hacking rules,14
+2014-10-15,Baohua Yang,[openstack-dev] [kolla] on Dockerfile patterns,13
+2014-11-21,ERROR,[openstack-dev] [Fuel] fuel master monitoring,13
+2014-11-18,Salvatore Orlando,[openstack-dev] Quota management and enforcement across projects,13
+2014-10-23,Tim Bell,[openstack-dev] [Nova] Cells conversation starter,12
