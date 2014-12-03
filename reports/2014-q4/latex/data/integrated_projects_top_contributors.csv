@@ -1,0 +1,12 @@
+commits,contributors,projects
+95,Kevin Benton,neutron
+30,Sergey Reshetnyak,sahara
+24,Gordon Chung,ceilometer
+28,Akihiro MOTOKI,horizon
+45,Steven Hardy,heat
+62,garyk,nova
+8,Amrith Kumar,trove
+12,Samuel Merritt,swift
+15,Stuart McLaren,glance
+19,John Griffith,cinder
+33,Brant Knudson,keystone
