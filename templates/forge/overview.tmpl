@@ -1,36 +1,15 @@
-<!DOCTYPE html>
-
-<html lang="en">
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-        <meta charset="utf-8"/>
-        <title></title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <link rel="stylesheet" type="text/css" id="theme"
-              href="VizGrimoireJS/vizgrimoire.css"/>
-        <link href="VizGrimoireJS/bootstrap/css/bootstrap.css" rel="stylesheet"/>
-        <link rel="stylesheet" type="text/css" href="custom.css"/>
-        <link href="VizGrimoireJS/bootstrap/css/bootstrap-responsive.css"
-              rel="stylesheet"/>
-        <link rel="shortcut icon" href="favicon.png"/>
-        <link rel="stylesheet" href="VizGrimoireJS/awesome/css/font-awesome.min.css">
-    </head>
-
-    <body>
-        <div class="container-narrow">
-            <div id="Navbar"></div>
-
             <!-- msgs sent, senders, stats, top closers -->
-            <div class="row-fluid">
+            <div class="row">
 
                 <!-- left column -->
-                <div class="span6">
+                <div class="col-md-6">
                     <!-- msgs sent -->
-                    <div class="row-fluid">
-                        <div class="span12">
+                    <div class="row">
+                        <div class="col-md-12">
                             <div class="well">
                                 <div class="MetricsEvol" data-data-source="releases"
                                      data-metrics="releases_modules"
+                                     data-frame-time="true"
                                      data-min="true" style="height:120px;"></div>
                                      <div class="MicrodashText" data-metric="releases_modules"></div>
                                      </div>
@@ -39,11 +18,12 @@
                     <!-- end msgs sent -->
 
                     <!-- senders -->
-                    <div class="row-fluid">
-                        <div class="span12">
+                    <div class="row">
+                        <div class="col-md-12">
                             <div class="well">
                                 <div class="MetricsEvol" data-data-source="releases"
                                      data-metrics="releases_authors"
+                                     data-frame-time="true"
                                      data-min="true" style="height:120px;"></div>
                                      <div class="MicrodashText"
                                        data-data-source="releases" data-metric="releases_authors"></div>
@@ -53,11 +33,12 @@
                     <!-- end senders -->
 
                     <!-- time to attention -->
-                    <div class="row-fluid">
-                        <div class="span12">
+                    <div class="row">
+                        <div class="col-md-12">
                             <div class="well">
                                 <div class="MetricsEvol" data-data-source="releases"
                                      data-metrics="releases_releases"
+                                     data-frame-time="true"
                                      data-min="true"
                                   style="height:120px;"></div>
                                   <div class="MicrodashText"
@@ -72,15 +53,15 @@
                 <!-- end left column -->
 
                 <!-- right column -->
-                <div class="span6">
-                    <div class="row-fluid">
+                <div class="col-md-6">
+                    <div class="row">
                         <table class="table table-striped">
                             <tr>
                                 <td><h5>Forge releases <small> (updated on <span class="GlobalData" data-data-source="releases" data-field="last_date"></span>)</small></h5></td></tr>
-                        </table>               
+                        </table>
                     </div>
-                    <div class="row-fluid">
-                        <div class="span6">
+                    <div class="row">
+                        <div class="col-md-6">
                             <table class="table table-striped">
                                 <tr>
                                     <td>
@@ -91,36 +72,36 @@
                                         Modules
                                     </td>
                                 </tr>
-				<tr>
+                <tr>
                                     <td>
-                                	<span class="GlobalData" data-data-source="releases"
-                                              data-field="releases_modules_30"></span>                                		
+                                    <span class="GlobalData" data-data-source="releases"
+                                              data-field="releases_modules_30"></span>
                                     </td>
                                     <td>Modules updated during last month</td>
-                                </tr>                              
+                                </tr>
                             </table>
                         </div>
-                        <div class="span6">
+                        <div class="col-md-6">
                             <table class="table table-striped">
-                            	<tr>
+                                <tr>
                                     <td>
-                                	<span class="GlobalData" data-data-source="releases"
+                                    <span class="GlobalData" data-data-source="releases"
                                               data-field="releases_authors"></span>
                                     </td>
                                     <td>Module authors</td>
                                 </tr>
                                 <tr>
                                     <td>
-                                	<span class="GlobalData" data-data-source="releases"
+                                    <span class="GlobalData" data-data-source="releases"
                                               data-field="releases_authors_30"></span>
                                     </td>
                                     <td>Module authors active during last month</td>
-                                </tr>                               
+                                </tr>
                             </table>
                         </div>
                     </div>
 
-                    
+
                     <!-- top senders -->
                     <div class="Top" data-data-source="releases" data-period_all="true"
                          data-metric="authors" data-limit="10"
@@ -132,15 +113,3 @@
 
             </div>
             <!-- end msgs sent, senders, stats, top closers -->
-
-
-            <footer>
-                <div id="Footer"></div>
-            </footer>
-        </div>
-
-        <script type="text/javascript" src="VizGrimoireJS/lib/jquery-1.7.1.min.js"></script>
-        <script type="text/javascript" src="VizGrimoireJS/bootstrap/js/bootstrap.js"></script>
-        <script type="text/javascript" src="VizGrimoireJS/vizgrimoire.min.js"></script>
-    </body>
-</html>

@@ -22,7 +22,7 @@ def read_main_conf(conf_file, panel):
     fd = open(conf_file, 'r')
     parser.readfp(fd)
     fd.close()
-    options = {}        
+    options = {}
     if parser.has_section(panel):
         if parser.getboolean(panel,'status'):
             opti = parser.options(panel)
@@ -65,13 +65,28 @@ def include_values(conf, body_template):
         body_template = body_template.replace(replace_pattern,conf[k])
     return body_template
 
+def include_webstats(html_body):
+    """
+    Replace string "REPLACE_WEBSTATS" in html_body with JS code from file
+    webstats.tmpl if present. If not, it just include and empty string
+    """
+    text = "REPLACE_WEBSTATS"
+    try:
+        fd = open("webstats.tmpl","r")
+        jscode = fd.read()
+        fd.close()
+    except:
+        jscode = ""
+    html_body = html_body.replace(text, jscode)
+    return html_body
+
 #python .. --template body.template --content common/list-of-filters.tmpl --conf conf/main.conf --panel scm-repos
 if __name__ == "__main__":
 
     arg = get_arguments()
-    
+
     conf = read_main_conf(arg.conf_file, arg.panel)
-    
+
     fd = open(arg.content_file, "r")
     body = fd.read()
     fd.close()
@@ -81,11 +96,8 @@ if __name__ == "__main__":
     template = fd.read()
     fd.close()
 
+    template = include_webstats(template)
     text = "REPLACE_HERE"
     template = template.replace(text, body)
+
     print template
-    
-    
-
-
-    
