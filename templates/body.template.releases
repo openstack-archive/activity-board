@@ -24,21 +24,21 @@
     <link rel="stylesheet" type="text/css" id="theme" href="./css/vizgrimoire.css">
   </head>
   <body>
-    
+
     <div id="Navbar">
       <div role="navigation" class="navmenu navmenu-default navmenu-fixed-left offcanvas">
-	<a href="#" class="navmenu-brand"><span class="report_name">OpenStack Icehouse</span></a>
-	<div class="SideNavBar" id="SideNavBar">
-	  <ul class="nav navmenu-nav">
-	    <li><a href="./"><i class="fa fa-home"></i>	Home</a></li>
-	    <li><a href="./"><i class="fa fa-home"></i>	Home</a></li>
-	    <li><a href="./"><i class="fa fa-home"></i>	Home</a></li>
-	    <li><a href="./"><i class="fa fa-home"></i>	Home</a></li>
-	</ul>
-	</div>
+    <a href="#" class="navmenu-brand"><span class="report_name">OpenStack Icehouse</span></a>
+    <div class="SideNavBar" id="SideNavBar">
+      <ul class="nav navmenu-nav">
+        <li><a href="./"><i class="fa fa-home"></i>    Home</a></li>
+        <li><a href="./"><i class="fa fa-home"></i>    Home</a></li>
+        <li><a href="./"><i class="fa fa-home"></i>    Home</a></li>
+        <li><a href="./"><i class="fa fa-home"></i>    Home</a></li>
+    </ul>
+    </div>
       </div>
     </div>
-    
+
     <div class="container-fluid">
       <div class="row"><span class="SectionBreadcrumb col-md-12"></span></div>
 
@@ -51,7 +51,7 @@
         <div id="Footer"></div>
       </footer>
     </div>
-    
+
     <!-- Bootstrap core JavaScript
          ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
