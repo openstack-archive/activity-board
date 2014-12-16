@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
-    <meta name="author" content="Luis" >
+    <meta name="author" content="Bitergia" >
     <link rel="shortcut icon" href="../../assets/ico/favicon.png">
 
     <title></title>
@@ -24,9 +24,9 @@
     <link rel="stylesheet" type="text/css" id="theme" href="./css/vizgrimoire.css">
   </head>
   <body>
-    
+
     <div id="Navbar"></div>
-    
+
     <div class="container-fluid">
       <div class="row"><span class="SectionBreadcrumb col-md-12"></span></div>
 
@@ -43,26 +43,21 @@
       <div class="MicrodashText" data-metric="scm_authors"></div>
     </div>
   </div>
-</div>  
-
-<div class="row"><div class="col-md-12"><div class="well">
-<div class="row">
-    <div class="col-md-4">                         
-      <div class="Top" data-data-source="scm" data-metric="authors"
-           data-period="last month" data-limit="100" data-people_links="true"></div>
-    </div>  
-    <div class="col-md-4">                         
-      <div class="Top" data-data-source="scm" data-metric="authors" data-period="last year" data-limit="100" data-people_links="true"></div>
-    </div>
-    <div class="col-md-4">
-      <div class="Top" data-data-source="scm" data-metric="authors" data-period="" data-limit="100" data-people_links="true"></div>
-    </div>
 </div>
 
-</div></div></div>
+<div class="row">
+  <div class="col-md-12">
+    <div class="well">
+
+        <div class="TopByPeriod" data-data-source="scm" data-metric="authors"
+             data-limit="100">
+        </div>
+        
+    </div>
+  </div>
+</div>
 
 <!-- end files, lines -->
-
 
       <!-- END SECTION  HTML-->
 
@@ -70,7 +65,7 @@
         <div id="Footer"></div>
       </footer>
     </div>
-    
+
     <!-- Bootstrap core JavaScript
          ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
@@ -78,6 +73,12 @@
     <script src="./lib/bootstrap-3.1.1.min.js"></script>
     <script src="./lib/jasny-bootstrap-3.1.3.min.js"></script>
     <script src="./lib/vizgrimoire.min.js"></script>
+    <!-- Piwik code will be included here-->
+    <!-- Piwik -->
+
+<!-- End Piwik Code -->
+
+    <!-- End of Piwik code -->
   </body>
 </html>
 

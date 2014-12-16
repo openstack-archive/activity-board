@@ -25,10 +25,26 @@ def get_arguments():
     #print args.accumulate(args.integers)
     return args
 
+
+def include_webstats(html_body):
+    """
+    Replace string "REPLACE_WEBSTATS" in html_body with JS code from file
+    webstats.tmpl if present. If not, it just include and empty string
+    """
+    text = "REPLACE_WEBSTATS"
+    try:
+        fd = open("webstats.tmpl","r")
+        jscode = fd.read()
+        fd.close()
+    except:
+        jscode = ""
+    html_body = html_body.replace(text, jscode)
+    return html_body
+
 if __name__ == "__main__":
 
     text = "REPLACE_HERE"
-    
+
     arg = get_arguments()
     fd = open(arg.template_file, "r")
     template = fd.read()
@@ -38,10 +54,6 @@ if __name__ == "__main__":
     body = fd2.read()
     fd2.close()
 
+    template = include_webstats(template)
     template = template.replace(text, body)
     print template
-    
-    
-
-
-    
