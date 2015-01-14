@@ -17,19 +17,19 @@ cp common/navbar.tmpl ../browser/navbar.html
 
 
 # its
-python apply_template.py --template body.template --content its/overview.tmpl > ../browser/its.html 
+python apply_template.py --template body.template --content its/overview.tmpl > ../browser/its.html
 #python apply_template.py --template body.template --content its/companies.tmpl > ../browser/its-companies.html
 python build_panel.py --template body.template --content common/list-of-filters.tmpl --conf conf/main.conf --panel its-companies > ../browser/its-companies.html
-python apply_template.py --template body.template --content its/contributors.tmpl > ../browser/its-contributors.html 
+python apply_template.py --template body.template --content its/contributors.tmpl > ../browser/its-contributors.html
 #python apply_template.py --template body.template --content its/countries.tmpl > ../browser/its-countries.html
-python build_panel.py --template body.template --content common/list-of-filters.tmpl --conf conf/main.conf --panel its-countries > ../browser/its-countries.html
+#python build_panel.py --template body.template --content common/list-of-filters.tmpl --conf conf/main.conf --panel its-countries > ../browser/its-countries.html
 #python apply_template.py --template body.template --content its/domains.tmpl > ../browser/its-domains.html
-python build_panel.py --template body.template --content common/list-of-filters.tmpl --conf conf/main.conf --panel its-domains > ../browser/its-domains.html
-python apply_template.py --template body.template --content its/projects.tmpl > ../browser/its-projects.html 
+#python build_panel.py --template body.template --content common/list-of-filters.tmpl --conf conf/main.conf --panel its-domains > ../browser/its-domains.html
+#python apply_template.py --template body.template --content its/projects.tmpl > ../browser/its-projects.html
 #python apply_template.py --template body.template --content its/repos.tmpl > ../browser/its-repos.html
 python build_panel.py --template body.template --content common/list-of-filters.tmpl --conf conf/main.conf --panel its-repos > ../browser/its-repos.html
 python apply_template.py --template body.template --content its/states.tmpl > ../browser/its-states.html
-python apply_template.py --template body.template --content its/states-jira.tmpl > ../browser/its-states-jira.html
+#python apply_template.py --template body.template --content its/states-jira.tmpl > ../browser/its-states-jira.html
 
 # irc
 python apply_template.py --template body.template --content irc/overview.tmpl > ../browser/irc.html
@@ -45,8 +45,8 @@ python apply_template.py --template body.template --content mls/contributors.tmp
 #python apply_template.py --template body.template --content mls/countries.tmpl > ../browser/mls-countries.html
 python build_panel.py --template body.template --content common/list-of-filters.tmpl --conf conf/main.conf --panel mls-countries > ../browser/mls-countries.html
 #python apply_template.py --template body.template --content mls/domains.tmpl > ../browser/mls-domains.html
-python build_panel.py --template body.template --content common/list-of-filters.tmpl --conf conf/main.conf --panel mls-domains > ../browser/mls-domains.html
-python apply_template.py --template body.template --content mls/projects.tmpl > ../browser/mls-projects.html
+#python build_panel.py --template body.template --content common/list-of-filters.tmpl --conf conf/main.conf --panel mls-domains > ../browser/mls-domains.html
+#python apply_template.py --template body.template --content mls/projects.tmpl > ../browser/mls-projects.html
 #python apply_template.py --template body.template --content mls/repos.tmpl > ../browser/mls-repos.html
 python build_panel.py --template body.template --content common/list-of-filters.tmpl --conf conf/main.conf --panel mls-repos > ../browser/mls-repos.html
 
@@ -65,8 +65,8 @@ python apply_template.py --template body.template --content scm/contributors.tmp
 #python apply_template.py --template body.template --content scm/countries.tmpl > ../browser/scm-countries.html
 python build_panel.py --template body.template --content common/list-of-filters.tmpl --conf conf/main.conf --panel scm-countries > ../browser/scm-countries.html
 #python apply_template.py --template body.template --content scm/domains.tmpl > ../browser/scm-domains.html
-python build_panel.py --template body.template --content common/list-of-filters.tmpl --conf conf/main.conf --panel scm-domains > ../browser/scm-domains.html
-python apply_template.py --template body.template --content scm/projects.tmpl > ../browser/scm-projects.html
+#python build_panel.py --template body.template --content common/list-of-filters.tmpl --conf conf/main.conf --panel scm-domains > ../browser/scm-domains.html
+#python apply_template.py --template body.template --content scm/projects.tmpl > ../browser/scm-projects.html
 #python apply_template.py --template body.template --content scm/repos.tmpl > ../browser/scm-repos.html
 python build_panel.py --template body.template --content common/list-of-filters.tmpl --conf conf/main.conf --panel scm-repos > ../browser/scm-repos.html
 
@@ -77,16 +77,10 @@ python apply_template.py --template body.template --content scr/companies-summar
 #python apply_template.py --template body.template --content scr/countries.tmpl > ../browser/scr-countries.html
 python build_panel.py --template body.template --content common/list-of-filters.tmpl --conf conf/main.conf --panel scr-countries > ../browser/scr-countries.html
 python apply_template.py --template body.template --content scr/overview.tmpl > ../browser/scr.html
-python apply_template.py --template body.template --content scr/projects.tmpl > ../browser/scr-projects.html
+#python apply_template.py --template body.template --content scr/projects.tmpl > ../browser/scr-projects.html
 #python apply_template.py --template body.template --content scr/repos.tmpl > ../browser/scr-repos.html
 python build_panel.py --template body.template --content common/list-of-filters.tmpl --conf conf/main.conf --panel scr-repos > ../browser/scr-repos.html
 
 # wiki
 python apply_template.py --template body.template --content wiki/overview.tmpl > ../browser/wiki.html
 python apply_template.py --template body.template --content wiki/contributors.tmpl > ../browser/wiki-contributors.html
-
-
-
-
-
-
