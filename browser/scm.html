@@ -54,18 +54,17 @@
       <div class="col-md-12">
         <div class="well">
           <div class="MetricsEvol" data-data-source="scm"
-               data-metrics="scm_authors" data-min="true"
+               data-metrics="scm_authors,scm_newauthors" data-min="true"
                style="height: 120px;"></div>
-          <div class="MicrodashText" data-metric="scm_authors"></div>
+          <div class="MicrodashText" data-metric="scm_authors" data-name="true"></div>
+          <div class="MicrodashText" data-metric="scm_newauthors" data-name="true"></div>
         </div>
       </div>
     </div>
     <!-- end authors -->
 
-    <!-- timezones -->
     <div class="TimezonesBlock" data-data-source="scm"
-         data-metric="commits"></div>
-    <!-- end timezones -->
+     data-metric="commits"></div>
 
     <!-- files -->
     <div class="row">
@@ -79,7 +78,6 @@
     </div>
     <!-- end files -->
 
-    <!-- files, lines -->
     <div class="row">
     <div class="col-md-12">
       <div class="well">
@@ -151,6 +149,7 @@
   </div>
   <!-- end commits, authors, stats, top authors -->
 
+
 </div>
 
       <!-- END SECTION  HTML-->
@@ -169,9 +168,6 @@
     <script src="./lib/vizgrimoire.min.js"></script>
     <script src="./lib/timezones.js"></script>
     <!-- Piwik code will be included here-->
-    <!-- Piwik -->
-
-<!-- End Piwik Code -->
     
     <!-- End of Piwik code -->
   </body>
