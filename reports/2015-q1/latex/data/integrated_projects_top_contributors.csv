@@ -1,0 +1,12 @@
+commits,contributors,projects
+57,Ihar Hrachyshka,neutron
+26,Vitaly Gridnev,sahara
+28,Gordon Chung,ceilometer
+22,Sam Betts,horizon
+63,Angus Salkeld,heat
+37,Davanum Srinivas,nova
+5,Petr Malik,trove
+14,Alistair Coles,swift
+8,Sabari Kumar Murugesan,glance
+25,John Griffith,cinder
+50,Brant Knudson,keystone

@@ -1,0 +1,11 @@
+date,initiator,len,subject
+2015-02-11,Flavio Percoco,70,[openstack-dev] [all][tc] Lets keep our community open  	lets fight for it
+2015-02-24,Daniel P. Berrange,53,[openstack-dev] [all] Re-evaluating the suitability of the 6 month 	release cycle
+2015-01-29,Eugeniya Kudryashova,42,[openstack-dev] [api][nova] Openstack HTTP error codes
+2015-02-04,Matthew Booth,39,[openstack-dev] [all][oslo.db][nova] TL; 	DR Things everybody should know about Galera
+2015-01-05,cpallares,38,[openstack-dev] [Glance] IRC logging
+2015-02-16,Ian Cordasco,35,[openstack-dev] [stable][requirements] External dependency caps  introduced in 499db6b
+2015-02-24,Nikhil Komawar,31,[openstack-dev]  [Glance] Core nominations.
+2015-01-28,Sean Dague,31,[openstack-dev] Deprecation of in tree EC2 API in Nova for Kilo 	release
+2015-02-23,Joe Gordon,31,[openstack-dev] [stable][all] Revisiting the 6 month release cycle
+2015-01-29,Michael Still,30,[OpenStack Foundation] Finding people to work on the EC2 API in Nova
