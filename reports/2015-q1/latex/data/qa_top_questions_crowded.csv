@@ -1,0 +1,11 @@
+qid,subject,site,people
+60961, instance error launcing instance gives error,https://ask.openstack.org/en/question/60961/instance-error-launcing-instance-gives-error/,7
+60616, instances stucks in buildspawning state,https://ask.openstack.org/en/question/60616/instances-stucks-in-buildspawning-state/,7
+62702, guide for installing swift alone,https://ask.openstack.org/en/question/62702/guide-for-installing-swift-alone/,7
+59516, what is the difference between single,https://ask.openstack.org/en/question/59516/what-is-the-difference-between-single-node-and-multi-node-installation-in-openstack/,6
+57519, icehouse on fedora21,https://ask.openstack.org/en/question/57519/icehouse-on-fedora21/,6
+59479, instance and image,https://ask.openstack.org/en/question/59479/instance-and-image/,6
+62098, dhcp request does not reach tapxxx,https://ask.openstack.org/en/question/62098/dhcp-request-does-not-reach-tapxxx-qdhcp-xxx-network-interface/,5
+58944, where does high level openstack discussion,https://ask.openstack.org/en/question/58944/where-does-high-level-openstack-discussion-take-place/,5
+58557, keystone endpoint create 500 error,https://ask.openstack.org/en/question/58557/keystone-endpoint-create-500-error/,5
+58638, does neutron br int accepts nova,https://ask.openstack.org/en/question/58638/does-neutron-br-int-accepts-nova-instances-sending-vlan-tagged-traffic/,5
