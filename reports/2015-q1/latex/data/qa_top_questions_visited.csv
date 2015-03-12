@@ -1,0 +1,11 @@
+qid,site,visits,subject
+60936,https://ask.openstack.org/en/question/60936/failed-to-allocate-the-networks-not-rescheduling/,585, failed to allocate the networks not
+57919,https://ask.openstack.org/en/question/57919/heat-scaling-are-the-scale-up-and-down-urls-authenticated/,405, heat scaling are the scale up
+61852,https://ask.openstack.org/en/question/61852/adding-a-new-datacentre-swift-object-store/,405, adding a new datacentre swift object
+60971,https://ask.openstack.org/en/question/60971/neutron-error-unable-to-create-tunnel-port-invalid-remote-ip-instance\_tunnels\_interface\_ip\_address/,308, neutron error unable to create tunnel
+57870,https://ask.openstack.org/en/question/57870/ubuntu-1404-all-in-one-vm-using-devstack-fails/,303, ubuntu 1404 all in one vm
+59964,https://ask.openstack.org/en/question/59964/openstack-instance-high-availabilityhow-to-make-pets-vm-highly-available/,302, openstack instance high availabilityhow to make
+60769,https://ask.openstack.org/en/question/60769/how-to-isolate-tenant-networks-connected-to-a-shared-router/,245, how to isolate tenant networks connected
+61192,https://ask.openstack.org/en/question/61192/keystone-unable-to-establish-connection/,234, keystone unable to establish connection
+58965,https://ask.openstack.org/en/question/58965/have-you-ever-experienced-anything-worse-than-openstack/,217, have you ever experienced anything worse
+60944,https://ask.openstack.org/en/question/60944/attempt-to-reproduce-installing-nova-docker-with-devstack-per-larsks/,210, attempt to reproduce installing nova docker
