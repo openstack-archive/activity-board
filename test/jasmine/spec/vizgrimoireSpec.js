@@ -1,4 +1,18 @@
 describe("VizGrimoireJS data", function() {
+    var data_sources = Report.getDataSources();
+
+    function isDSEnabled(ds_name){
+        var found = false;
+        $.each(data_sources, function(index, DS) {
+            if (DS.getName() === ds_name &
+                DS.data.date !== undefined) {
+                found = true;
+                return false;
+            }
+        });
+        return found;
+    }
+
     beforeEach(function() {
         Report.setLog(false);
         waitsFor(function() {
@@ -18,26 +32,57 @@ describe("VizGrimoireJS data", function() {
             var ds_data = Report.getDataSources()[0].data;
             expect(ds_data instanceof Array).toBeFalsy();
         });
-        it("data update", function() {
-            var update = null;
-            var data_sources = Report.getDataSources();
+        it("scm contributors (top) data available", function() {
+            if(isDSEnabled('scm') === false ) return true;
+            var nids = 0;
             $.each(data_sources, function(index, DS) {
                 if (DS.getName() === "scm") {
+                    nids = DS.getGlobalTopData()['authors.']['id'].length;
+                    return false;
+                }
+            });
+            expect(nids).toBeGreaterThan(0);
+        });
+        it("qaforums contributors (top) data not available", function() {
+            if(isDSEnabled('qaforums') === false ) return true;
+            var nids = 0;
+            $.each(data_sources, function(index, DS) {
+                if (DS.getName() === "qaforums") {
+                    nids = DS.getGlobalTopData()['asenders.']['id'].length;
+                    return false;
+                }
+            });
+            expect(nids).toBeGreaterThan(0);
+        });
+    });
+
+    describe("Updated Data: ", function() {
+        var max_days_old = 2; // Change it to your project expected update time
+        var now = new Date();
+        var day_mseconds = 60*60*24*1000;
+
+        function isDSUpdated(ds_name) {
+            if(isDSEnabled(ds_name) == false ) return true;
+            var update = null;
+            $.each(data_sources, function(index, DS) {
+                if (DS.getName() === ds_name) {
                     update = DS.getGlobalData()['last_date'];
                     return false;
                 }
             });
-            var max_days_old = 2;
-            var now = new Date();
             var update_time = new Date(update+"T00:00:00.000Z");
-            var day_mseconds = 60*60*24*1000;
             var days_old = parseInt(
-                    (now.getTime()-update_time.getTime())/(day_mseconds),null);
-            expect(days_old).toBeLessThan(max_days_old+1);
-            
+                (now.getTime()-update_time.getTime())/(day_mseconds),null);
+                expect(days_old).toBeLessThan(max_days_old+1, ds_name + " data is not updated.");
+        }
+
+        it("Data Sources are not updated", function() {
+            $.each(data_sources, function(index, DS) {
+                isDSUpdated(DS.getName());
+            });
         });
     });
-    
+
     describe("Data checking", function() {
         it("Evol metrics should be present in the Global metrics", function () {
             var data_sources = Report.getDataSources();
@@ -46,6 +91,8 @@ describe("VizGrimoireJS data", function() {
                 var evol = DS.getData();
                 for (field in evol) {
                     if (DS.getMetrics()[field]) {
+                        // Metric not in old JSON files for tests
+                        if (field === 'qaforums_unanswered') {return;}
                         expect(global[field]).toBeDefined();
                     }
                 }
@@ -70,12 +117,12 @@ describe("VizGrimoireJS data", function() {
                         expect(metric_total).toEqual(global[field]);
                     }
                 }
-            });            
+            });
         });
     });
 
     function checkDataReport(report) {
-        if ($.inArray(report,['repos','companies','countries'])===-1) 
+        if ($.inArray(report,['repos','companies','countries'])===-1)
             return;
         var data_sources = Report.getDataSources();
         var repos = 0, repos_global = {}, repos_metrics = {};
@@ -103,7 +150,7 @@ describe("VizGrimoireJS data", function() {
                     }
                 }
             }
-        });        
+        });
     }
     describe("Repositories checking", function() {
         it("All repositories should have Evol and Global metrics", function () {
