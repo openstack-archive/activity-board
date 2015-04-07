@@ -1,0 +1,107 @@
+<div class="well">
+  <div class="row">
+    <div class="col-md-3">
+      <p><i><b>Evolution of States</b> charts show the evolution of
+          the states in the analysis of the issue tracking system.
+      </i></p>
+
+      <p><i>Each chart represents the number of issues in such state
+          in each period of time.</i></P>
+
+    </div>
+    <div class="col-md-9">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="MetricsEvol" data-data-source="its" data-metrics="Open"
+               data-min="false" help="false" data-custom-title="<strong>Open</strong>"  style="height:120px;"></div>
+        </div>
+        <div class="col-md-6">
+          <div class="MetricsEvol" data-data-source="its" data-metrics="In Progress"
+               data-min="false" help="false" data-custom-title="<strong>In Progress</strong>" style="height:120px;"></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="MetricsEvol" data-data-source="its" data-metrics="Resolved"
+               data-min="false" data-custom-title="<strong>Resolved</strong>" help="false" style="height:120px;"></div>
+        </div>
+        <div class="col-md-6">
+          <div class="MetricsEvol" data-data-source="its" data-metrics="Closed"
+               data-min="false" data-custom-title="<strong>Closed</strong>" help="false" style="height:120px;"></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="MetricsEvol" data-data-source="its" data-metrics="Reviewable"
+               data-min="false" data-custom-title="<strong>Reviewable</strong>" help="false" style="height:120px;"></div>
+        </div>
+        <div class="col-md-6">
+          <div class="MetricsEvol" data-data-source="its" data-metrics="Ready To Review"
+               data-min="false" data-custom-title="<strong>Ready To Review</strong>" help="false" style="height:120px;"></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="MetricsEvol" data-data-source="its" data-metrics="Reopened"
+               data-min="false" data-custom-title="<strong>Reopened</strong>" help="false" style="height:120px;"></div>
+        </div>
+        <div class="col-md-6"></div>
+      </div>
+    </div>
+  </div>            
+</div>
+
+<div class="well">
+  <div class="row">
+    <div class="col-md-3">
+      <p><i><b>Current Status</b> charts show the current 'photo' of each of the states.
+      </i></p>
+      <p><i>For each of the states shown, it is specified when the issue was born.</i></P>
+    </div>
+    <div class="col-md-9">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="MetricsEvol" data-data-source="its" data-metrics="current_Open"
+               data-min="false" help="false" data-custom-title="<strong>Current status 'Open'</strong>"  style="height:120px;"></div>
+        </div>
+        <div class="col-md-6">
+          <div class="MetricsEvol" data-data-source="its" data-metrics="current_In Progress"
+               data-min="false" help="false" data-custom-title="<strong>Current status 'In Progress'</strong>" style="height:120px;"></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="MetricsEvol" data-data-source="its" data-metrics="current_Resolved"
+               data-min="false" data-custom-title="<strong>Current status 'Resolved'</strong>" help="false" style="height:120px;"></div>
+        </div>
+        <div class="col-md-6">
+          <div class="MetricsEvol" data-data-source="its" data-metrics="current_Closed"
+               data-min="false" data-custom-title="<strong>Current status 'Closed'</strong>" help="false" style="height:120px;"></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="MetricsEvol" data-data-source="its" data-metrics="current_Reviewable"
+               data-min="false" data-custom-title="<strong>Current status 'Reviewable'</strong>" help="false" style="height:120px;"></div>
+        </div>
+        <div class="col-md-6">
+          <div class="MetricsEvol" data-data-source="its" data-metrics="current_Reopened"
+               data-min="false" data-custom-title="<strong>Current status 'Reopened'</strong>" help="false" style="height:120px;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="well">
+  <div class="row">
+    <div class="col-md-3">
+      <p><i><b>The most likely changes</b> tables show the percentages of changes among states.
+      </i></p>
+    </div>
+    <div class="col-md-9">
+      <div class="MarkovTable" data-data-source="its" data-title="Transitions among statuses"></div>
+    </div>
+  </div>
+  
+
