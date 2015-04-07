@@ -22,8 +22,12 @@
         "its": [
             "companies",
             "contributors",
-	    "states",
+	        "states",
             "repos"
+        ],
+        "storyboard": [
+            "companies",
+            "contributors"
         ],
         "scr": [
             "companies"

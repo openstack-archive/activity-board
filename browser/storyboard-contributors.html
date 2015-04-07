@@ -29,41 +29,30 @@
 
       <!-- Section HTML will be placed here, do not modify manually -->
       <!-- REPLACE SECTION HTML -->
-      <div class="row">
+      <div class="repository-selector" data-data-source="its_1"></div>
+
+<!-- commits, authors, stats, top authors -->
+<div class="row">
   <div class="col-md-12">
-    <div class="wellmin">
-      <div class="PersonData"></div>
+    <div class="well">
+      <div class="MetricsEvol" data-data-source="its_1" data-metrics="its_1_closers"
+           data-min="true" style="height:120px;"></div>
+      <div class="MicrodashText" data-metric="its_1_closers"></div>
     </div>
   </div>
 </div>
-
 <div class="row">
+  <div class="col-md-12">
+    <div class="well">
 
-  <div class="PersonSummaryBlock" data-data-source="scm"
-       data-metrics="scm_commits"></div>
+        <div class="TopByPeriod" data-data-source="its_1" data-metric="closers"
+             data-limit="100">
+        </div>
 
-  <div class="PersonSummaryBlock" data-data-source="scr"
-       data-metrics="scr_closed"></div>
-
-  <div class="PersonSummaryBlock" data-data-source="its"
-       data-metrics="its_closed"></div>
-
-  <div class="PersonSummaryBlock" data-data-source="its_1" data-data-realname="storyboard"
-       data-metrics="its_1_closed"></div>
-
-  <div class="PersonSummaryBlock" data-data-source="mls"
-       data-metrics="mls_sent"></div>
-
-  <div class="PersonSummaryBlock" data-data-source="irc"
-       data-metrics="irc_sent"></div>
-
-  <div class="PersonSummaryBlock" data-data-source="mediawiki"
-       data-metrics="revisions"></div>
-
-  <div class="PersonSummaryBlock" data-data-source="releases"
-       data-metrics="releases_releases"></div>
-
+    </div>
+  </div>
 </div>
+<!-- end files, lines -->
 
       <!-- END SECTION  HTML-->
 
