@@ -49,8 +49,16 @@ var Timezones = {};
     };
 
     function loadTimeZonesData (ds_name, cb) {
+        var json_file,
+            release_name;
         suffix = ds_name.toLowerCase();
-        var json_file = "data/json/" + suffix + "-timezone.json";
+        //var json_file = "data/json/" + suffix + "-timezone.json";
+        if (Utils.isReleasePage() === true){
+            release_name = $.urlParam('release');
+            json_file = "data/json/" + release_name + '/' + suffix + "-timezone.json";
+        }else{
+            json_file = "data/json/" + suffix + "-timezone.json";
+        }
         $.when($.getJSON(json_file)
                 ).done(function(json_data) {
                 data_tz = json_data;
