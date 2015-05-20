@@ -1,0 +1,8 @@
+Verified+2: Jenkins
+Code-Review+2: Daniel Izquierdo <dizquierdo@bitergia.com>
+Workflow+1: Daniel Izquierdo <dizquierdo@bitergia.com>
+Submitted-by: Jenkins
+Submitted-at: Wed, 20 May 2015 14:23:19 +0000
+Reviewed-on: https://review.openstack.org/182995
+Project: openstack-infra/activity-board
+Branch: refs/heads/master
