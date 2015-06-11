@@ -6,6 +6,9 @@
     <meta name="description" content="">
     <meta name="author" content="Bitergia" >
     <link rel="shortcut icon" href="../../assets/ico/favicon.png">
+
+    <title></title>
+
     <!-- Bootstrap core CSS -->
     <link href="./css/bootstrap.min.css" rel="stylesheet">
     <link href="./css/jasny-bootstrap.min.css" rel="stylesheet">
@@ -15,6 +18,9 @@
 
     <!-- icons -->
     <link rel="stylesheet" href="./css/awesome/css/font-awesome.min.css">
+
+    <!-- Type ahead style -->
+    <link href="./css/typeahead.css" rel="stylesheet">
 
     <!-- custom -->
     <!-- <link rel="stylesheet" href="VizGrimoireJS/custom.css">-->
@@ -63,14 +69,27 @@
          ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="./lib/jquery-1.11.1.min.js"></script>
+    <script src="./lib/jquery.tablesorter.min.js"></script>
     <script src="./lib/bootstrap-3.1.1.min.js"></script>
     <script src="./lib/jasny-bootstrap-3.1.3.min.js"></script>
     <script src="./lib/vizgrimoire.min.js"></script>
+    <script src="./lib/timezones.js"></script>
+    <script src="./lib/filter_panel.js"></script>
+    <script src="./lib/events.js"></script>
+    <script src="./lib/project_comparison.js"></script>
+    <script src="./lib/typeahead.jquery.js"></script>
+    <script src="./lib/search.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('.collapse').on('shown.bs.collapse', function(){
+                $(this).parent().find(".fa-plus").removeClass("fa-plus").addClass("fa-minus");
+                }).on('hidden.bs.collapse', function(){
+                    $(this).parent().find(".fa-minus").removeClass("fa-minus").addClass("fa-plus");
+                });
+        });
+    </script>
     <!-- Piwik code will be included here-->
-    <!-- Piwik -->
-
-<!-- End Piwik Code -->
-
+    
     <!-- End of Piwik code -->
   </body>
 </html>
