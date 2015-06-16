@@ -1,0 +1,11 @@
+date,initiator,subject,people
+2015-04-24,jaypipes,[openstack-dev] Please stop reviewing code while asking 	questions,25
+2015-05-12,Marco.Fargetta@ct.infn.it,[openstack-dev] [nova][all] Architecture Diagrams in ascii art?,24
+2015-04-24,Dean Troyer,[openstack-dev] [all] Question for the TC candidates,23
+2015-06-03,Salvatore Orlando,[openstack-dev] [all][infra][tc][ptl] Scaling up code review  process (subdir cores),19
+2015-05-26,ArkadyKanevsky,[openstack-dev] [cinder] Some Changes to Cinder Core,17
+2015-04-23,Kyle Mestery,[openstack-dev] [Neutron] A big tent home for Neutron backend 	code,16
+2015-04-07,Gordon Chung,[openstack-dev] [all] how to send messages (and events) to our  users,16
+2015-05-08,Chris Jones,[openstack-dev] [TripleO] Core reviewer update proposal,15
+2015-04-27,SpamapS,[openstack-dev] [Zaqar] Call for adoption (or exclusion?),15
+2015-05-08,James Polley,[openstack-dev] [all] who is the ptl of trove?,14
