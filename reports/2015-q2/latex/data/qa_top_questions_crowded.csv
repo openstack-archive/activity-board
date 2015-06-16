@@ -1,0 +1,11 @@
+qid,subject,site,people
+65678, cant create or delete instances,https://ask.openstack.org/en/question/65678/cant-create-or-delete-instances/,7
+67805, no valid host was found,https://ask.openstack.org/en/question/67805/no-valid-host-was-found/,7
+64853, error unable to connect to neutron,https://ask.openstack.org/en/question/64853/error-unable-to-connect-to-neutron/,7
+66833, kilo on centos7 keystone throws http,https://ask.openstack.org/en/question/66833/kilo-on-centos7-keystone-throws-http-500-except-when-using-os\_token/,7
+64318, unable ping google from instance,https://ask.openstack.org/en/question/64318/unable-ping-google-from-instance/,6
+64849, maximum amount of instances deployed at,https://ask.openstack.org/en/question/64849/maximum-amount-of-instances-deployed-at-same-time/,6
+66214, migration from older releases to kilo,https://ask.openstack.org/en/question/66214/migration-from-older-releases-to-kilo/,5
+66564, accessing the vm from internet,https://ask.openstack.org/en/question/66564/accessing-the-vm-from-internet/,5
+66980, keystone socket error errno 98 address,https://ask.openstack.org/en/question/66980/keystone-socket-error-errno-98-address-already-in-use/,5
+66061, cirros instance cannot get ip address,https://ask.openstack.org/en/question/66061/cirros-instance-cannot-get-ip-address/,5

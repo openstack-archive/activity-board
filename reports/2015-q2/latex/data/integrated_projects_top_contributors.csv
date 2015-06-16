@@ -1,0 +1,12 @@
+commits,contributors,projects
+62,Kevin Benton,neutron
+29,Pino Toscano,sahara
+23,Gordon Chung,ceilometer
+29,Thai Tran,horizon
+42,Tianhua Huang,heat
+50,Dan Smith,nova
+27,Sushil Kumar,trove
+19,Mike Barton,swift
+13,Victor Stinner,glance
+31,John Griffith,cinder
+71,Brant Knudson,keystone

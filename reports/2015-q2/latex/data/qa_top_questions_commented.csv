@@ -1,0 +1,11 @@
+qid,site,comments,subject
+64387,https://ask.openstack.org/en/question/64387/how-can-i-assign-public-ips-from-physical-router-to-openstack-network-node/,5, how can i assign public ips
+65860,https://ask.openstack.org/en/question/65860/dhcp-discover-requests-not-answered/,5, dhcp discover requests not answered
+65272,https://ask.openstack.org/en/question/65272/instance-private-ip-not-pingable/,5, instance private ip not pingable
+66855,https://ask.openstack.org/en/question/66855/add-another-compute-host-to-juno-multinode-setup/,5, add another compute host to juno
+65879,https://ask.openstack.org/en/question/65879/why-doesnt-openstack-free-resources-when-instance-is-shelved/,5, why doesnt openstack free resources when
+64853,https://ask.openstack.org/en/question/64853/error-unable-to-connect-to-neutron/,5, error unable to connect to neutron
+67572,https://ask.openstack.org/en/question/67572/rdo-kilo-novalidhost-no-valid-host-was-found-there-are-not-enough-hosts-available/,5, rdo kilo novalidhost no valid host
+65035,https://ask.openstack.org/en/question/65035/alternative-to-unnumbered-interface/,5, alternative to unnumbered interface
+65275,https://ask.openstack.org/en/question/65275/nova-docker-arm-error-cannot-setup-network-cannot-find-any-pid-under-container/,5, nova docker arm error cannot setup
+65905,https://ask.openstack.org/en/question/65905/when-instance-is-rebooted-instance-interface-on-compute-node-deleted/,5, when instance is rebooted instance interface
