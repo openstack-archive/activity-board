@@ -1,0 +1,7 @@
+metricsnames,netvalues,relativevalues,datasource
+commits,69838,2,Gits
+closed tickets,16008,32,Tickets
+sent emails,39593,17,Mailing Lists
+submitted reviews,73545,24,Gerrit
+posted questions,5707,70,Askbot
+messages,1917041,2,IRC

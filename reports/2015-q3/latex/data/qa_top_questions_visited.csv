@@ -1,0 +1,11 @@
+qid,site,visits,subject
+81895,https://ask.openstack.org/en/question/81895/how-openstack-comunicates-with-hyper-v-which-fw-ports-i-need-to-liberate/,1336, how openstack comunicates with hyper v
+78232,https://ask.openstack.org/en/question/78232/openstack-deployment-on-two-nodes-with-one-nic/,353, openstack deployment on two nodes with
+79821,https://ask.openstack.org/en/question/79821/no-internet-connectivity-on-instances-with-each-other-and-external-network/,286, no internet connectivity on instances with
+69453,https://ask.openstack.org/en/question/69453/launching-a-docker-instance-in-openstack-rdo-kilo-fails-with-no-valid-host-was-found/,282, launching a docker instance in openstack
+78144,https://ask.openstack.org/en/question/78144/problems-with-swift-and-keystone-on-kilo/,280, problems with swift and keystone on
+69237,https://ask.openstack.org/en/question/69237/how-to-setup-swift-with-commvault/,237, how to setup swift with commvault
+78574,https://ask.openstack.org/en/question/78574/how-to-change-keystone-endpoint-urls-to-https/,228, how to change keystone endpoint urls
+78727,https://ask.openstack.org/en/question/78727/how-can-i-use-a-snapshot-created-in-one-openstack-environment-on-another-openstack-environment/,199, how can i use a snapshot
+80094,https://ask.openstack.org/en/question/80094/status-fix-released/,197, status fix released
+78757,https://ask.openstack.org/en/question/78757/kvm-or-qemu/,183, kvm or qemu
