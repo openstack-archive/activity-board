@@ -1,0 +1,11 @@
+date,initiator,len,subject
+2015-09-17,Tristan Cacqueray,55,[openstack-dev] [all][elections] PTL nomination period is now over
+2015-09-15,Monty Taylor,45,[openstack-dev] [nova][neutron][devstack] New proposed 'default' 	network model
+2015-09-02,Tamara.Johnston,41,[OpenStack Foundation] [Diversity] re: Diversity Workgroup APAC  2015-08-27
+2015-09-01,Alexis Lee,38,[OpenStack Foundation] [Diversity] re: Diversity Workgroup APAC  2015-08-27
+2015-07-08,Tang Chen,36,[openstack-dev] [CI] How to set a proxy for zuul.
+2015-09-23,Matt Riedemann,33,[openstack-dev] [nova][cinder] how to handle AZ bug 1496235?
+2015-09-25,Ihar Hrachyshka,33,[openstack-dev] [all] -1 due to line length violation in commit 	messages
+2015-09-21,Banashankar KV,32,[openstack-dev]  [neutron][lbaas] - Heat support for LbaasV2
+2015-08-12,Kyle Mestery,32,[openstack-dev] [neutron] I am pleased to propose two new Neutron 	API/DB/RPC core reviewers!
+2015-09-24,melanie witt,30,[openstack-dev] [glance][nova] how to upgrade from v1 to v2?

@@ -1,0 +1,186 @@
+\documentclass[a4wide,11pt]{article}
+\usepackage[dvips]{graphicx}
+\usepackage{url}
+\usepackage{epstopdf}
+\usepackage{float}
+\usepackage{csvsimple}
+\usepackage{hyperref}
+\usepackage{longtable}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\usepackage{graphicx}
+
+\begin{document}
+
+\title{OpenStack Community Activity Report: Trove\\
+      July-September, 2015 \\
+      Report sponsored by the OpenStack Foundation\\
+      %~~\\~~\\  \includegraphics[scale=.35]{openstack.eps}       \\
+        ~~\\~~\\  \includegraphics[scale=.35]{logo.eps}       \\}
+
+
+
+
+\maketitle
+
+\newpage
+
+\input{title_activity.tex}
+
+\begin{tabular}{p{7cm} p{5cm}}
+    \vspace{0pt} 
+    \includegraphics[scale=.35]{figs/commitstrove.eps}
+    & 
+    \vspace{0pt}
+    \begin{tabular}{l|r|r|}%
+    \bfseries Period & \bfseries Commits & \bfseries Reviews % specify table head
+    \csvreader[head to column names]{data/commitstrove.csv}{}% use head of csv as column names
+    {\\\labels & \commits & \submitted}
+    \end{tabular}
+\end{tabular}
+
+\begin{tabular}{p{7cm} p{5cm}}
+    \vspace{0pt} 
+    \includegraphics[scale=.35]{figs/closedtrove.eps}
+    & 
+    \vspace{0pt}
+    \begin{tabular}{l|r|r|}%
+\bfseries Period & \bfseries Closed & \bfseries Opened
+    \csvreader[head to column names]{data/closedtrove.csv}{}% use head of csv as column names
+    {\\\labels & \closed & \opened}
+    \end{tabular}
+\end{tabular}
+
+\begin{tabular}{p{7cm} p{5cm}}
+    \vspace{0pt} 
+    \includegraphics[scale=.35]{figs/submitted_reviewstrove.eps}
+    & 
+    \vspace{0pt}
+    \begin{tabular}{l|r|r|}%
+    \bfseries Period & \bfseries Merged & \bfseries Abandoned % specify table head
+    \csvreader[head to column names]{data/submitted_reviewstrove.csv}{}% use head of csv as column names
+    {\\\labels & \merged & \abandoned}
+    \end{tabular}
+\end{tabular}
+
+\input{title_community.tex}
+
+\begin{tabular}{p{7cm} p{5cm}}
+    \vspace{0pt} 
+    \includegraphics[scale=.35]{figs/active_core_scrtrove.eps}
+    & 
+    \vspace{0pt}
+    \begin{tabular}{l|l}%
+    \bfseries Period & \bfseries Active Core % specify table head
+    \csvreader[head to column names]{data/active_core_scrtrove.csv}{}% use head of csv as column names
+    {\\\labels & \activecorereviewers}
+    \end{tabular}
+\end{tabular}
+
+\begin{tabular}{p{7cm} p{5cm}}
+    \vspace{0pt} 
+    \includegraphics[scale=.35]{figs/authorstrove.eps}
+    & 
+    \vspace{0pt}
+    \begin{tabular}{l|l}%
+    \bfseries Period & \bfseries Authors % specify table head
+    \csvreader[head to column names]{data/authorstrove.csv}{}% use head of csv as column names
+    {\\\labels & \authors}
+    \end{tabular}
+\end{tabular}
+
+\begin{tabular}{p{7cm} p{5cm}}
+    \vspace{0pt}
+\begin{tabular}{l|l}%
+    \bfseries Commit (s) & \bfseries Author % specify table head
+    \csvreader[head to column names]{data/scm_top_authors_project_trove.csv}{}% use head of csv as column names
+    {\\\hline\csvcoli&\csvcolii}% specify your coloumns here
+\end{tabular}
+&
+\vspace{0pt}
+\begin{tabular}{l|l}%
+    \bfseries Commit (s) & \bfseries Organizations % specify table head
+    \csvreader[head to column names]{data/scm_top_companies_project_trove.csv}{}% use head of csv as column names
+    {\\\hline\csvcoli&\csvcolii}% specify your coloumns here
+\end{tabular}
+\end {tabular}
+
+\input{title_process.tex}
+
+\begin{tabular}{p{7cm} p{5cm}}
+    \vspace{0pt} 
+    \includegraphics[scale=.35]{figs/bmitrove.eps}
+    & 
+    \vspace{0pt}
+    \begin{tabular}{l|l}%
+    \bfseries Period & \bfseries Closed/Opened % specify table head
+    \csvreader[head to column names]{data/bmitrove.csv}{}% use head of csv as column names
+    {\\\labels & \bmi}
+    \end{tabular}
+\end{tabular}
+
+\begin{tabular}{p{7cm} p{5cm}}
+    \vspace{0pt} 
+    \includegraphics[scale=.35]{figs/bmiscrtrove.eps}
+    & 
+    \vspace{0pt}
+    \begin{tabular}{l|l}%
+    \bfseries Period & \bfseries (Aband. and Merg.)/Subm. % specify table head
+    \csvreader[head to column names]{data/submitted_reviewstrove.csv}{}% use head of csv as column names
+    {\\\labels & \bmi}
+    \end{tabular}
+\end{tabular}
+
+
+\begin{tabular}{p{7cm} p{5cm}}
+    \vspace{0pt} 
+    \includegraphics[scale=.35]{figs/timetoreview_mediantrove.eps}
+    & 
+    \vspace{0pt}
+    \begin{tabular}{l|r|r|}%
+    \bfseries Period & \bfseries Median & \bfseries Mean % specify table head
+    \csvreader[head to column names]{data/timetoreview_mediantrove.csv}{}% use head of csv as column names
+    {\\\labels & \mediantime & \meantime}
+    \end{tabular}
+\end{tabular}
+
+
+
+\begin{tabular}{p{7cm} p{5cm}}
+    \vspace{0pt} 
+    \includegraphics[scale=.35]{figs/patchsets_avgtrove.eps}
+    & 
+    \vspace{0pt}
+    \begin{tabular}{l|r|r|}%
+    \bfseries Period & \bfseries Median & \bfseries Mean % specify table head
+    \csvreader[head to column names]{data/scr_patchsets_iterationstrove.csv}{}% use head of csv as column names
+    {\\\labels & \medianpatchsets & \meanpatchsets}
+    \end{tabular}
+\end{tabular}
+
+\begin{tabular}{p{7cm} p{5cm}}
+    \vspace{0pt} 
+    \includegraphics[scale=.35]{figs/waiting4reviewer_avgtrove.eps}
+    & 
+    \vspace{0pt}
+    \begin{tabular}{l|r|r|}%
+    \bfseries Period & \bfseries Median & \bfseries Mean % specify table head
+    \csvreader[head to column names]{data/timewaiting4reviewer_mediantrove.csv}{}% use head of csv as column names
+    {\\\labels & \mediantime & \meantime}
+    \end{tabular}
+\end{tabular}
+
+\begin{tabular}{p{7cm} p{5cm}}
+    \vspace{0pt} 
+    \includegraphics[scale=.35]{figs/waiting4submitter_avgtrove.eps}
+    & 
+    \vspace{0pt}
+    \begin{tabular}{l|r|r|}%
+    \bfseries Period & \bfseries Median & \bfseries Mean % specify table head
+    \csvreader[head to column names]{data/timewaiting4submitter_mediantrove.csv}{}% use head of csv as column names
+    {\\\labels & \mediantime & \meantime}
+    \end{tabular}
+\end{tabular}
+
+
+\end{document}
