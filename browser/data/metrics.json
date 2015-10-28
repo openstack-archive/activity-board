@@ -58,6 +58,12 @@
         "name" : "Organziations",
         "desc" : "Number of organizations (companies, etc.) with persons active in the ticketing system"
     }, 
+    "its_organizations" : {
+        "divid" : "its_organizations",
+        "column" : "organizations",
+        "name" : "Organziations",
+        "desc" : "Number of organizations (companies, etc.) with persons active in the ticketing system"
+    },
     "its_countries" : {
         "divid" : "its_countries",
         "column" : "countries",
@@ -115,6 +121,12 @@
     "mls_companies" : {
         "divid" : "mls_companies",
         "column" : "companies",
+        "name" : "Organizations",
+        "desc" : "Number of organizations (companies, etc.) with persons active in mailing list(s)"
+    },
+    "mls_organizations" : {
+        "divid" : "mls_organizations",
+        "column" : "organizations",
         "name" : "Organizations",
         "desc" : "Number of organizations (companies, etc.) with persons active in mailing list(s)"
     },
@@ -204,6 +216,12 @@
     "scm_companies" : {
         "divid" : "scm_companies",
         "column" : "companies",
+        "name" : "Organizations",
+        "desc" : "Number of organizations (companies, etc.) with persons active in changing code"
+    },
+    "scm_organizations" : {
+        "divid" : "scm_organizations",
+        "column" : "organizations",
         "name" : "Organizations",
         "desc" : "Number of organizations (companies, etc.) with persons active in changing code"
     },
@@ -309,6 +327,12 @@
     "scr_companies" : {
         "divid" : "scr_companies",
         "column" : "companies",
+        "name" : "Organizations",
+        "desc" : "Number of organizations (companies, etc.) with persons active in code review"
+    },
+    "scr_organizations" : {
+        "divid" : "scr_organizations",
+        "column" : "organizations",
         "name" : "Organizations",
         "desc" : "Number of organizations (companies, etc.) with persons active in code review"
     },
