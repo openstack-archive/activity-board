@@ -1,0 +1,11 @@
+date,initiator,len,subject
+2015-10-07,Ed Leafe,107,[openstack-dev] Scheduler proposal
+2015-11-06,Tony Breeds,39,[openstack-dev] [stable][all] Keeping Juno "alive" for longer.
+2015-10-14,Tang Chen,39,[openstack-dev] [Nova] Migration state machine proposal.
+2015-11-16,Jonathan Proulx,39,[Openstack-operators] OPs Midcycle location discussion.
+2015-11-03,Robert Collins,38,[openstack-dev] [all] Outcome of distributed lock manager 	discussion @ the summit
+2015-10-01,Ihar Hrachyshka,36,[openstack-dev] [neutron] New cycle started. What are you up to  	folks?
+2015-11-12,Artur Korzeniewski,35,[openstack-dev] [nova][neutron][upgrade] Grenade multinode partial  upgrade
+2015-11-19,Vladimir Kozhukalov,33,[openstack-dev] [Fuel] Getting rid of Docker containers on the Fuel  master node
+2015-11-09,Tom Cameron,31,[Openstack-operators] [openstack-dev] [stable][all] Keeping  Juno "alive" for longer.
+2015-11-30,Steve Martinelli,30,[Openstack-operators] [keystone] Removing functionality that was  deprecated in Kilo and upcoming deprecated functionality in Mitaka

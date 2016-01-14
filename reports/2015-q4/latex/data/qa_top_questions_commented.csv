@@ -1,0 +1,11 @@
+qid,site,comments,subject
+85007,https://ask.openstack.org/en/question/85007/compute\_nodes-tables-does-not-get-populated-with-numa\_topology-information-in-liberty/,5, compute\_nodes tables does not get populated
+83715,https://ask.openstack.org/en/question/83715/instances-are-not-able-to-access-internet-although-there-is-inter-vm-connectivity/,5, instances are not able to access
+82666,https://ask.openstack.org/en/question/82666/cant-ping-floating-or-instance-ip/,5, cant ping floating or instance ip
+84772,https://ask.openstack.org/en/question/84772/bindingvif\_type-binding\_failed/,5, bindingvif\_type binding\_failed
+85860,https://ask.openstack.org/en/question/85860/neutron-server-failed-to-start/,5, neutron server failed to start
+83762,https://ask.openstack.org/en/question/83762/no-valid-host-was-found-there-are-not-enough-hosts-available/,5, no valid host was found there
+83058,https://ask.openstack.org/en/question/83058/ip-netns-does-not-show-anything/,5, ip netns does not show anything
+85457,https://ask.openstack.org/en/question/85457/vif\_typebinding\_failed-and-cant-launch-instances-error-message-could-not-clean-up-failed-build-not-rescheduling/,5, vif\_typebinding\_failed and cant launch instances error
+86236,https://ask.openstack.org/en/question/86236/error-unable-to-retrieve-usage-information-dashboard/,5, error unable to retrieve usage information
+85892,https://ask.openstack.org/en/question/85892/more-tenants-than-floating-ips-how-to-provide-connectivity/,5, more tenants than floating ips how

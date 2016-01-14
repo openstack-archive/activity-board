@@ -1,0 +1,186 @@
+\documentclass[a4wide,11pt]{article}
+\usepackage[dvips]{graphicx}
+\usepackage{url}
+\usepackage{epstopdf}
+\usepackage{float}
+\usepackage{csvsimple}
+\usepackage{hyperref}
+\usepackage{longtable}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\usepackage{graphicx}
+
+\begin{document}
+
+\title{OpenStack Community Activity Report: ChefOpenStack\\
+      October-December, 2015 \\
+      Report sponsored by the OpenStack Foundation\\
+      %~~\\~~\\  \includegraphics[scale=.35]{openstack.eps}       \\
+        ~~\\~~\\  \includegraphics[scale=.35]{logo.eps}       \\}
+
+
+
+
+\maketitle
+
+\newpage
+
+\input{title_activity.tex}
+
+\begin{tabular}{p{7cm} p{5cm}}
+    \vspace{0pt} 
+    \includegraphics[scale=.35]{figs/commitsChefOpenStack.eps}
+    & 
+    \vspace{0pt}
+    \begin{tabular}{l|r|r|}%
+    \bfseries Period & \bfseries Commits & \bfseries Reviews % specify table head
+    \csvreader[head to column names]{data/commitsChefOpenStack.csv}{}% use head of csv as column names
+    {\\\labels & \commits & \submitted}
+    \end{tabular}
+\end{tabular}
+
+\begin{tabular}{p{7cm} p{5cm}}
+    \vspace{0pt} 
+    \includegraphics[scale=.35]{figs/closedChefOpenStack.eps}
+    & 
+    \vspace{0pt}
+    \begin{tabular}{l|r|r|}%
+    \bfseries Period & \bfseries Closed & \bfseries Opened
+    \csvreader[head to column names]{data/closedChefOpenStack.csv}{}% use head of csv as column names
+    {\\\labels & \closed & \opened}
+    \end{tabular}
+\end{tabular}
+
+\begin{tabular}{p{7cm} p{5cm}}
+    \vspace{0pt} 
+    \includegraphics[scale=.35]{figs/submitted_reviewsChefOpenStack.eps}
+    & 
+    \vspace{0pt}
+    \begin{tabular}{l|r|r|}%
+    \bfseries Period & \bfseries Merged & \bfseries Abandoned % specify table head
+    \csvreader[head to column names]{data/submitted_reviewsChefOpenStack.csv}{}% use head of csv as column names
+    {\\\labels & \merged & \abandoned}
+    \end{tabular}
+\end{tabular}
+
+
+\input{title_community.tex}
+
+\begin{tabular}{p{7cm} p{5cm}}
+    \vspace{0pt} 
+    \includegraphics[scale=.35]{figs/active_core_scrChefOpenStack.eps}
+    & 
+    \vspace{0pt}
+    \begin{tabular}{l|l}%
+    \bfseries Period & \bfseries Active Core % specify table head
+    \csvreader[head to column names]{data/active_core_scrChefOpenStack.csv}{}% use head of csv as column names
+    {\\\labels & \activecorereviewers}
+    \end{tabular}
+\end{tabular}
+
+\begin{tabular}{p{7cm} p{5cm}}
+    \vspace{0pt} 
+    \includegraphics[scale=.35]{figs/authorsChefOpenStack.eps}
+    & 
+    \vspace{0pt}
+    \begin{tabular}{l|l}%
+    \bfseries Period & \bfseries Authors % specify table head
+    \csvreader[head to column names]{data/authorsChefOpenStack.csv}{}% use head of csv as column names
+    {\\\labels & \authors}
+    \end{tabular}
+\end{tabular}
+
+\begin{tabular}{p{7cm} p{5cm}}
+    \vspace{0pt}
+\begin{tabular}{l|l}%
+    \bfseries Commit (s) & \bfseries Author % specify table head
+    \csvreader[head to column names]{data/scm_top_authors_project_ChefOpenStack.csv}{}% use head of csv as column names
+    {\\\hline\csvcoli&\csvcolii}% specify your coloumns here
+\end{tabular}
+&
+\vspace{0pt}
+\begin{tabular}{l|l}%
+    \bfseries Commit (s) & \bfseries Organizations % specify table head
+    \csvreader[head to column names]{data/scm_top_companies_project_ChefOpenStack.csv}{}% use head of csv as column names
+    {\\\hline\csvcoli&\csvcolii}% specify your coloumns here
+\end{tabular}
+\end {tabular}
+
+\input{title_process.tex}
+
+\begin{tabular}{p{7cm} p{5cm}}
+    \vspace{0pt} 
+    \includegraphics[scale=.35]{figs/bmiChefOpenStack.eps}
+    & 
+    \vspace{0pt}
+    \begin{tabular}{l|l}%
+    \bfseries Period & \bfseries Closed/Opened % specify table head
+    \csvreader[head to column names]{data/bmiChefOpenStack.csv}{}% use head of csv as column names
+    {\\\labels & \bmi}
+    \end{tabular}
+\end{tabular}
+
+\begin{tabular}{p{7cm} p{5cm}}
+    \vspace{0pt} 
+    \includegraphics[scale=.35]{figs/bmiscrChefOpenStack.eps}
+    & 
+    \vspace{0pt}
+    \begin{tabular}{l|l}%
+    \bfseries Period & \bfseries (Aband. and Merg.)/Subm. % specify table head
+    \csvreader[head to column names]{data/submitted_reviewsChefOpenStack.csv}{}% use head of csv as column names
+    {\\\labels & \bmi}
+    \end{tabular}
+\end{tabular}
+
+
+\begin{tabular}{p{7cm} p{5cm}}
+    \vspace{0pt} 
+    \includegraphics[scale=.35]{figs/timetoreview_medianChefOpenStack.eps}
+    & 
+    \vspace{0pt}
+    \begin{tabular}{l|r|r|}%
+    \bfseries Period & \bfseries Median & \bfseries Mean % specify table head
+    \csvreader[head to column names]{data/timetoreview_medianChefOpenStack.csv}{}% use head of csv as column names
+    {\\\labels & \mediantime & \meantime}
+    \end{tabular}
+\end{tabular}
+
+
+\begin{tabular}{p{7cm} p{5cm}}
+    \vspace{0pt} 
+    \includegraphics[scale=.35]{figs/patchsets_avgChefOpenStack.eps}
+    & 
+    \vspace{0pt}
+    \begin{tabular}{l|r|r|}%
+    \bfseries Period & \bfseries Median & \bfseries Mean % specify table head
+    \csvreader[head to column names]{data/scr_patchsets_iterationsChefOpenStack.csv}{}% use head of csv as column names
+    {\\\labels & \medianpatchsets & \meanpatchsets}
+    \end{tabular}
+\end{tabular}
+
+\begin{tabular}{p{7cm} p{5cm}}
+    \vspace{0pt} 
+    \includegraphics[scale=.35]{figs/waiting4reviewer_avgChefOpenStack.eps}
+    & 
+    \vspace{0pt}
+    \begin{tabular}{l|r|r|}%
+    \bfseries Period & \bfseries Median & \bfseries Mean % specify table head
+    \csvreader[head to column names]{data/timewaiting4reviewer_medianChefOpenStack.csv}{}% use head of csv as column names
+    {\\\labels & \mediantime & \meantime}
+    \end{tabular}
+\end{tabular}
+
+\begin{tabular}{p{7cm} p{5cm}}
+    \vspace{0pt} 
+    \includegraphics[scale=.35]{figs/waiting4submitter_avgChefOpenStack.eps}
+    & 
+    \vspace{0pt}
+    \begin{tabular}{l|r|r|}%
+    \bfseries Period & \bfseries Median & \bfseries Mean % specify table head
+    \csvreader[head to column names]{data/timewaiting4submitter_medianChefOpenStack.csv}{}% use head of csv as column names
+    {\\\labels & \mediantime & \meantime}
+    \end{tabular}
+\end{tabular}
+
+
+\end{document}
