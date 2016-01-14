@@ -1,0 +1,8 @@
+Code-Review+2: Luis Cañas-Díaz <lcanas@bitergia.com>
+Workflow+1: Luis Cañas-Díaz <lcanas@bitergia.com>
+Verified+2: Jenkins
+Submitted-by: Jenkins
+Submitted-at: Thu, 14 Jan 2016 12:12:50 +0000
+Reviewed-on: https://review.openstack.org/267498
+Project: openstack-infra/activity-board
+Branch: refs/heads/master
